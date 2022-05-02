@@ -1,0 +1,199 @@
+.fab-container {
+  position: relative;
+}
+
+.selected-photo {
+  width: 100%;
+  height: 100vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.type-toggle {
+  -webkit-padding-start: 0.5rem;
+          padding-inline-start: 0.5rem;
+}
+
+.type-toggle .show-option,
+.type-toggle .hide-option {
+  font-size: 1.2rem;
+  display: block;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.type-toggle .show-option:not(ion-icon),
+.type-toggle .hide-option:not(ion-icon) {
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.image-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.image-list .image {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 32%;
+}
+
+.col-image {
+  padding: 1px !important;
+}
+
+.blink {
+  background-color: red;
+  -webkit-animation-name: blink;
+  animation-name: blink;
+  -webktit-animation-timing-function: linear;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
+.blink-infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.blink-5 {
+  -webkit-animation-iteration-count: 5;
+  animation-iteration-count: 5;
+}
+
+.blink-furiously {
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+}
+
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.walkthrough-slides {
+  width: 100%;
+}
+
+.slide-item {
+  width: 100%;
+}
+
+.button_div {
+  width: 100%;
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.slide-row {
+  display: block;
+  position: absolute;
+  top: 0px;
+}
+
+ion-range {
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: -20px;
+}
+
+ion-segment {
+  background: #fff !important;
+  margin-top: -15px;
+}
+
+ion-datetime {
+  padding-left: 0;
+}
+
+.active {
+  background: #000;
+  --background: #000;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.active div .tag {
+  background: #fff;
+  color: #000;
+}
+
+.info-wrapper {
+  padding: 15px 20px;
+}
+
+.info-title {
+  margin-top: 6%;
+  color: var(--ion-color-darkest);
+}
+
+ion-slides {
+  --bullet-background: var(--ion-color-darkest);
+  --bullet-background-active:  var(--ion-color-darkest);
+}
+
+.botton_btn {
+  width: 40%;
+  margin: auto;
+}
+
+/* Set the width to the full container and center the content */
+/* Set the flex in order to size the text width to its content */
+ion-select::part(placeholder),
+ion-select::part(text) {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+/* Set the placeholder color and opacity */
+ion-select::part(placeholder) {
+  color: #000;
+  opacity: 1;
+}
+
+/*
+* Set the font of the first letter of the placeholder
+* Shadow parts work with pseudo-elements, too!
+* https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements
+*/
+ion-select::part(placeholder)::first-letter {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Set the text color */
+ion-select::part(text) {
+  color: #000;
+}
+
+/* Set the icon color and opacity */
+ion-select::part(icon) {
+  color: #000;
+  opacity: 1;
+}
+/*# sourceMappingURL=qr-scanner.css.map */

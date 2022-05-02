@@ -1,0 +1,25 @@
+
+<ion-content>
+  <ion-slides class="walkthrough-slides" pager="true" [options]="slidesOptions">
+    <ion-slide class="slide-item" *ngFor="let item of slider_list" >
+      <div class="slide-row">
+        <div class="img-wrapper">
+            <ion-img class="box-shadow slider-image box-border-bottom" [src]="item.img_url"  ></ion-img>
+        </div>
+          <div class="info-wrapper">
+            <h3 class="info-title large-font bold-font">{{ item.title}}</h3>
+            <p class="medium-font regular-font">
+             {{ item.description}}
+            </p>         
+          </div>
+      </div>      
+    </ion-slide>    
+  </ion-slides>
+  <div class="button_div">  
+    <ion-button expand="full" color="light" class="bold-font box-shadow botton_btn input-border"  shape="round" [routerLink]="['/auth/sign-in']" >
+      {{"auth.signin" | translate}}</ion-button>
+    <ion-button expand="full"  color="darkest"  class="bold-font box-shadow botton_btn input-border" shape="round"   [routerLink]="['/auth/sign-up']" >
+      {{"auth.signup" | translate}}</ion-button>
+  </div>
+  
+</ion-content>

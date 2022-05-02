@@ -1,0 +1,158 @@
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+
+    <ion-title class="medium-font bold-font">{{hash?searchUser: "explore.title" | translate}}</ion-title>
+
+    <ion-buttons slot="end" (click)="openFilters()">
+      <!-- <ion-badge color="danger">{{ getUnreadMessagesCount() }}</ion-badge> -->
+      <span *ngIf="!this.outputFilters.reset" style="
+    font-size: 4rem;
+    position: absolute;
+    color: red;
+    top: -48px;
+    right: -6px;
+    
+    ">.</span>
+      <ion-icon slot="icon-only" name="filter-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+
+  </ion-toolbar>
+  <ion-toolbar color="light" class="ion-no-padding">
+    <ion-searchbar [(ngModel)]="searchUser" (ngModelChange)="searchEvent() "[placeholder]="this.translate.get('explore.input.placeholder')" mode="ios"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content  class="box-border-top" cache-view="false" *ngIf="!searchUser">
+  <!-- <ion-segment [(ngModel)]="icons" color="primary">
+    <ion-segment-button value="post">
+      <ion-icon name="apps"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="people">
+      <ion-icon name="person"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="hashtag">
+      <i class="fa fa-hashtag"></i>
+    </ion-segment-button>
+  </ion-segment> -->
+
+  <!-- <div *ngIf="!loading">
+    <app-stories [stories]="stories" [addStory]="false"></app-stories>
+  </div> -->
+
+  <!-- <div *ngIf="loading"
+    style="position:fixed; display: flex; width: 100%; height: 70%; align-items: center; justify-content: center; z-index: 9999;">
+    <ion-spinner name="circles"></ion-spinner>
+  </div> -->
+
+  
+  <ion-grid class="ion-padding" *ngIf="!(explore$ | async)?.length && outputFilters.reset"> 
+    <ion-row>
+      <ion-col class="ion-margin-vertical ion-padding-vertical">
+        <!-- <div class=" ion-text-center">
+           <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> 
+          <p class="bold-font medium-font">{{"marketplace.noexplore.title" | translate}}</p>
+          <p class="regular-font medium-font">{{"marketplace.noexplore.description" | translate}}</p>
+        </div> -->
+        <div class=" ion-text-center ion-padding">
+          <svg xml:space="preserve" viewBox="0 0 100 100" y="0" x="0" xmlns="http://www.w3.org/2000/svg"
+             id="圖層_1" version="1.1" 
+             style="height: 100%; width: 45%; background:  #fafafa; shape-rendering: auto;" width="200px" height="200px"><g class="ldl-scale" style="transform-origin: 50% 50%; transform: rotate(0deg) scale(0.8, 0.8);"><g class="ldl-ani"><g class="ldl-layer"><g class="ldl-ani" style="transform: scale(0.91); transform-origin: 50px 50px; animation: 1.11111s linear -0.740741s infinite normal forwards running breath-dfc2b681-858a-4d84-bbf4-42ea01032905;"><path stroke-miterlimit="10" stroke-width="3" stroke="#333" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M50 46.6V34.8c-5.4 0-9.8-4.4-9.8-9.8s4.4-9.8 9.8-9.8 9.8 4.4 9.8 9.8" style="stroke: rgb(0, 0, 0);"></path></g></g><g class="ldl-layer"><g class="ldl-ani" style="transform: scale(0.91); transform-origin: 50px 50px; animation: 1.11111s linear -0.925926s infinite normal forwards running breath-dfc2b681-858a-4d84-bbf4-42ea01032905;"><path d="M15.2 65.5h69.7v6.1H15.2z" stroke-miterlimit="10" stroke-width="3" stroke="#333" fill="#f8b26a" style="fill: rgb(255, 255, 255); stroke: rgb(0, 0, 0);"></path></g></g><g class="ldl-layer"><g class="ldl-ani" style="transform: scale(0.91); transform-origin: 50px 50px; animation: 1.11111s linear -1.11111s infinite normal forwards running breath-dfc2b681-858a-4d84-bbf4-42ea01032905;"><path stroke-miterlimit="10" stroke-width="3" stroke="#333" fill="#f8b26a" d="M89.5 64.6L52.7 42h0c-1.7-.7-3.6-.7-5.4 0h0L10.5 64.6c-1.9.9-3.2 3.1-3 5.5.3 3.4 3.2 5.5 5.9 4.5L50 54.9l36.6 19.7c2.7 1 5.6-1.1 5.9-4.5.2-2.4-1.1-4.6-3-5.5z" style="fill: rgb(255, 255, 255); stroke: rgb(0, 0, 0);"></path></g></g><metadata xmlns:d="https://loading.io/stock/">
+
+            </metadata></g></g><style id="breath-dfc2b681-858a-4d84-bbf4-42ea01032905" data-anikit="">@keyframes breath-dfc2b681-858a-4d84-bbf4-42ea01032905
+            {
+              0% {
+                animation-timing-function: cubic-bezier(0.9647,0.2413,-0.0705,0.7911);
+                transform: scale(0.9099999999999999);
+              }
+              51% {
+                animation-timing-function: cubic-bezier(0.9226,0.2631,-0.0308,0.7628);
+                transform: scale(1.02994);
+              }
+              100% {
+                transform: scale(0.9099999999999999);
+              }
+            }</style></svg>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+  <ion-grid class="ion-padding" *ngIf="outputFilters.reset"> 
+
+    <app-post-grid [timeline]="explore$ | async "></app-post-grid>
+
+    <ion-infinite-scroll threshold="30%" (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      [loadingText]="this.translate.get('marketplace.loading.text')">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-grid>
+ 
+
+
+  <!--FILTERS SECTION-->
+  <ion-grid class="ion-padding" *ngIf="!fullExplore.length && !outputFilters.reset"> 
+    <ion-row>
+      <ion-col class="ion-margin-vertical ion-padding-vertical">
+
+        <div class=" ion-text-center ion-padding">
+          <svg xml:space="preserve" viewBox="0 0 100 100" y="0" x="0" xmlns="http://www.w3.org/2000/svg"
+             id="圖層_1" version="1.1" 
+             style="height: 100%; width: 45%; background:  #fafafa; shape-rendering: auto;" width="200px" height="200px"><g class="ldl-scale" style="transform-origin: 50% 50%; transform: rotate(0deg) scale(0.8, 0.8);"><g class="ldl-ani"><g class="ldl-layer"><g class="ldl-ani" style="transform: scale(0.91); transform-origin: 50px 50px; animation: 1.11111s linear -0.740741s infinite normal forwards running breath-dfc2b681-858a-4d84-bbf4-42ea01032905;"><path stroke-miterlimit="10" stroke-width="3" stroke="#333" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M50 46.6V34.8c-5.4 0-9.8-4.4-9.8-9.8s4.4-9.8 9.8-9.8 9.8 4.4 9.8 9.8" style="stroke: rgb(0, 0, 0);"></path></g></g><g class="ldl-layer"><g class="ldl-ani" style="transform: scale(0.91); transform-origin: 50px 50px; animation: 1.11111s linear -0.925926s infinite normal forwards running breath-dfc2b681-858a-4d84-bbf4-42ea01032905;"><path d="M15.2 65.5h69.7v6.1H15.2z" stroke-miterlimit="10" stroke-width="3" stroke="#333" fill="#f8b26a" style="fill: rgb(255, 255, 255); stroke: rgb(0, 0, 0);"></path></g></g><g class="ldl-layer"><g class="ldl-ani" style="transform: scale(0.91); transform-origin: 50px 50px; animation: 1.11111s linear -1.11111s infinite normal forwards running breath-dfc2b681-858a-4d84-bbf4-42ea01032905;"><path stroke-miterlimit="10" stroke-width="3" stroke="#333" fill="#f8b26a" d="M89.5 64.6L52.7 42h0c-1.7-.7-3.6-.7-5.4 0h0L10.5 64.6c-1.9.9-3.2 3.1-3 5.5.3 3.4 3.2 5.5 5.9 4.5L50 54.9l36.6 19.7c2.7 1 5.6-1.1 5.9-4.5.2-2.4-1.1-4.6-3-5.5z" style="fill: rgb(255, 255, 255); stroke: rgb(0, 0, 0);"></path></g></g><metadata xmlns:d="https://loading.io/stock/">
+
+            </metadata></g></g><style id="breath-dfc2b681-858a-4d84-bbf4-42ea01032905" data-anikit="">@keyframes breath-dfc2b681-858a-4d84-bbf4-42ea01032905
+            {
+              0% {
+                animation-timing-function: cubic-bezier(0.9647,0.2413,-0.0705,0.7911);
+                transform: scale(0.9099999999999999);
+              }
+              51% {
+                animation-timing-function: cubic-bezier(0.9226,0.2631,-0.0308,0.7628);
+                transform: scale(1.02994);
+              }
+              100% {
+                transform: scale(0.9099999999999999);
+              }
+            }</style></svg>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+ 
+  
+</ion-content>
+
+
+<ion-content   class="box-border-top" *ngIf="searchUser" >
+  <!-- No other users to send friend request right now. -->
+  <ion-grid class="ion-padding" *ngIf="accounts && (accounts.length == 0 || (accounts.length == excludedIds.length))">
+    <ion-row>
+      <ion-col class="ion-margin-vertical ion-padding-vertical">
+        <div class=" ion-text-center">
+          <!-- <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> -->
+          <p class="bold-font medium-font">{{"new.message.notfound.title" | translate}}</p>
+          <p class="regular-font medium-font">{{"new.message.notfound.description" | translate}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+
+
+  <ion-grid class="ion-padding"  *ngIf="accounts && accounts.length > 0 && accounts.length > excludedIds.length"> 
+    <app-user-list [accounts]="accounts | searchFilter: [excludedIds, searchUser]"
+    [following]="following"
+    [title]="this.translate.get('explore.search.text')"
+    >
+    </app-user-list>
+
+  </ion-grid>
+ 
+
+  <!-- Show other users excluding yourself, and friends with the help of searchFilter pipe. && accounts.length == excludedIds.length-->
+
+</ion-content>

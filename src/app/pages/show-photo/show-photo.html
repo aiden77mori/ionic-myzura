@@ -1,0 +1,111 @@
+
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" *ngIf="actualView == 'default' || actualView == 'edit'" >
+    <ion-buttons slot="start" (click)="back()">
+      <ion-icon slot="icon-only"  name="arrow-back-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <!-- <ion-title class="ion-text-center medium-font bold-font">
+        <ion-button color="transparent" (click)="changeView(this.translate.get('show.photo.page.brightness'), this.translate.get('show.photo.page.brightness'))">
+          <ion-icon name="sunny-outline"></ion-icon>
+        </ion-button>
+    </ion-title> -->
+    <ion-buttons slot="end" >
+      <ion-button color="primary" class="medium-font"  (click)="next()">
+        {{"show.photo.page.next" | translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar *ngIf="isCustomFilter()">
+    <ion-title  class="medium-font bold-font">{{title}}</ion-title>
+  </ion-toolbar>
+
+  
+  <ion-segment  *ngIf="actualView != 'default' && actualView != 'edit'"  mode="md" color="black" (ionChange)="changeSegment($event, true)">
+    <ion-segment-button value="default" (ionSelect)="cancel($event)">
+      {{"show.photo.page.cancel" | translate}}
+    </ion-segment-button>
+    <ion-segment-button value="edit" (ionSelect)="done($event)">
+      {{"show.photo.page.done" | translate}}    </ion-segment-button>
+  </ion-segment>
+
+  <ion-segment *ngIf="actualView == 'default' || actualView == 'edit'"  [(ngModel)]="actualView" mode="md" color="black"  (ionChange)="changeSegment($event)">
+    <ion-segment-button value="default">
+      {{"show.photo.page.filter" | translate}} 
+    </ion-segment-button>
+    <ion-segment-button value="edit" >
+      {{"show.photo.page.edit" | translate}}
+    </ion-segment-button>
+  </ion-segment>
+
+</ion-header>
+
+
+<ion-content  class="box-border-top" >
+  
+  <div id="imageFilter3">
+    <img [src]="src | cdvphotolibrary" [class]="filter.class" (press)="press($event)" (touchend)="end()"
+      id="imageFilter" #imageFilter>
+  </div>
+
+  <canvas id="imageFilter2" hidden="true"></canvas>
+
+
+  <ion-slides class="image-slider" [options]="slideOpts" pager="false" *ngIf="actualView == 'default'">
+    <ion-slide class="filter-box" *ngFor="let filter2 of filters  trackBy: trackByFunction"
+      (click)="changeFilter(filter2)">
+      <div class="filter-option">
+        <div class="title-slider" [ngClass]="{'active' : filter2.name == filter.name }">{{filter2.name}}</div>
+        <img [src]="src | cdvphotolibrary" class="thumb-img {{filter2.class}}" />
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+
+  <ion-slides class="image-slider" [options]="slideOpts" pager="false" *ngIf="actualView == 'edit'">
+    <ion-slide class="filter-box" *ngFor="let customFilter of customFilters  trackBy: trackByFunction"
+      (click)="changeFilter(customFilter)" text-center="">      
+      <div class="filter-option">        
+        <div class="border-filter small-input-border box-shadow" (click)="changeView(customFilter.name, customFilter.name)">
+          <ion-icon class="icon-filter large-font ion-margin" [name]="customFilter.icon"></ion-icon>
+        </div>
+        <div *ngIf="isFilterUsed(customFilter.filter)" class="dot">.</div>
+      </div>
+      <div><p class="small-font">{{customFilter.name}}</p></div>
+    </ion-slide>
+  </ion-slides>
+
+
+  <ion-item *ngIf="actualView == this.translate.get('show.photo.page.brightness')">
+    <ion-label>{{this.customFilters[0].val}}</ion-label>
+    <ion-range min="0" step="0.01" max="10" color="dark" brightness type="brightness" [(ngModel)]="this.customFilters[0].val"  (ionChange)="changeFilterManual(0)"
+      imageId="imageFilter">
+    </ion-range>
+  </ion-item>
+
+
+  <ion-item *ngIf="actualView == this.translate.get('show.photo.page.contrast')">
+    <ion-label>{{this.customFilters[1].val}}</ion-label>
+    <ion-range min="0" step="0.01"  max="10" color="dark" brightness type="contrast" [(ngModel)]="this.customFilters[1].val"  (ionChange)="changeFilterManual(1)"
+      imageId="imageFilter">
+    </ion-range>
+  </ion-item>
+
+
+  <ion-item *ngIf="actualView == this.translate.get('show.photo.page.saturation')">
+    <ion-label>{{this.customFilters[2].val}}</ion-label>
+    <ion-range  min="0" step="0.01"  max="10" brightness type="saturate" [(ngModel)]="this.customFilters[2].val"  (ionChange)="changeFilterManual(2)"
+      imageId="imageFilter">
+    </ion-range>
+  </ion-item>
+
+  <ion-item *ngIf="actualView == this.translate.get('show.photo.page.fade')">
+    <ion-label>{{this.customFilters[3].val}}</ion-label>
+    <ion-range  min="0" step="0.01"  max="1" color="dark" brightness type="opacity" [(ngModel)]="this.customFilters[3].val" imageId="imageFilter"  (ionChange)="changeFilterManual(3)">
+    </ion-range>
+  </ion-item>
+
+</ion-content>
+
+
+

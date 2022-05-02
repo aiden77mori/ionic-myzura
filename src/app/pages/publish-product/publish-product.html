@@ -1,0 +1,138 @@
+<ion-header  class="ion-no-border ion-padding-horizontal" *ngIf="step=='photo'">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start" (click)="back()" >
+      <ion-icon slot="icon-only"  name="arrow-back-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+
+    <ion-buttons slot="start" (click)="backPhoto()" *ngIf="step!='photo'">
+      <ion-icon slot="icon-only"  name="arrow-back-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font"> {{"product.upload.title" | translate}} </ion-title>
+
+    <ion-buttons slot="end" >
+      <ion-button color="primary" class="medium-font"  (click)="next()">
+        {{"publish.page.next" | translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header  class="ion-no-border ion-padding-horizontal" *ngIf="step!='photo'">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start" (click)="backPhoto()">
+      <ion-icon slot="icon-only"  name="arrow-back-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font"> {{"product.upload.title" | translate}} </ion-title>
+
+    <ion-buttons slot="end" >
+      <ion-button color="primary" class="medium-font"  (click)="shareCheck()">
+        {{"publish.page.post" | translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content  class="box-border-top" >
+
+  <ion-grid class="ion-no-padding ion-no-margin fadeInUp animated faster"  *ngIf="step == 'photo'">
+      <ion-row>
+        <ion-col size="12" class="ion-margin">
+          <!-- <p class="ion-text-start ion-no-margin bold-font  xlarge-font">{{"publish.page.tag.clothes" | translate}} </p>
+          <p class="ion-text-start ion-no-margin regular-font medium-font">{{"publish.page.tag.clothes.description" | translate}} </p> -->
+          <p class="ion-text-start ion-no-margin bold-font  xlarge-font">{{"product.upload.title" | translate}} </p>
+          <p class="ion-text-start ion-no-margin regular-font medium-font"> {{"product.upload.description" | translate}} </p>
+        </ion-col>
+        <ion-col size="12"  class="ion-no-padding ion-no-margin" >
+          <div class="image-shell">
+            <img id="myProduct" [src]='sanitizer.bypassSecurityTrustResourceUrl(image)' >
+          </div>
+        
+        </ion-col>
+
+        <ion-col size="12" class="ion-padding">
+          <ion-item lines='none' class="input-item input-border  small-font box-shadow">
+            <ion-input class="input-border" type="text" [placeholder]="this.translate.get('product.upload.iname')" [(ngModel)]="name" clearInput autocapitalize="off" ></ion-input>
+          </ion-item>
+     
+
+        </ion-col>
+        <ion-col size="12" class="ion-padding">
+      
+          <ion-item lines='none' class="input-item input-border  small-font box-shadow">
+            <ion-textarea  class="input-border" fz-elastic [placeholder]="this.translate.get('product.upload.idescription')" [(ngModel)]="description"></ion-textarea>
+          </ion-item> 
+
+        </ion-col>
+
+        <div class="hr"></div>
+
+      </ion-row>
+    </ion-grid>
+
+ 
+
+  
+
+    <ion-grid class="fadeInUp animated faster ion-padding" *ngIf="step == 'details'">
+      <ion-row >
+
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <p class="ion-text-start ion-no-margin bold-font  xlarge-font">{{"product.upload.title" | translate}}  </p>
+          <p class="ion-text-start ion-no-margin regular-font medium-font"> {{"product.upload.description2" | translate}} </p>
+        </ion-col>
+        <ion-col size="12" class="ion-margin-top">
+          <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+            <ion-label><p class="small-font ion-float-left bold-font"> {{"qrscanner.selectbrand.text"  | translate}}</p></ion-label>
+            <ion-select okText="OK" cancelText="Close" [(ngModel)]="brand"  multiple="false" color="darkest">
+              <ion-select-option *ngFor="let b of brands" [value]="b.name">{{ b.name}}</ion-select-option>
+            </ion-select>
+
+           
+          </ion-item>
+
+          <div *ngIf="brand=='Other'" class="ion-margin-top">
+            <ion-item lines='none' class="input-item input-border  small-font box-shadow">
+              <ion-input class="input-border" type="text" [placeholder]="this.translate.get('product.upload.ibrand')" [(ngModel)]="brandOther" clearInput autocapitalize="off" ></ion-input>
+            </ion-item>
+          </div>
+        </ion-col>
+
+        <ion-col size="12" class="ion-margin-top">
+          <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+            <ion-label><p class="small-font ion-float-left bold-font"> {{"qrscanner.categroy.text"  | translate}}</p></ion-label>
+            <ion-select okText="OK" cancelText="Close" [(ngModel)]="category"  multiple="false" color="darkest">
+              <ion-select-option *ngFor="let cat of categories" [value]="cat.name">{{ getCategoryTranslation(cat.name)}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12" class="ion-margin-top">
+          <ion-item lines='none' class="input-item input-border no-padding small-font box-shadow">
+            <ion-segment color="black" value='female' mode="md" (ionChange)="genderChanged($event)">
+            <ion-segment-button  value="male">
+              <ion-label>{{"auth.bodyMeasures.male" | translate}}</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="female">
+              <ion-label>{{"auth.bodyMeasures.female" | translate}}</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="other">
+              <ion-label>{{"auth.bodyMeasures.other" | translate}}</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          </ion-item>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+
+
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,67 @@
+
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start" (click)="back()">
+      <ion-icon slot="icon-only"  name="arrow-back-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font"> {{"crop.profile.page.title"  | translate}} </ion-title>
+
+    <ion-buttons slot="end" >
+      <ion-button color="primary" class="medium-font"  (click)="done()">
+        {{"crop.profile.page.done" | translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-segment mode="md" color="black" value="square"  (ionChange)="changeSegment($event)" >
+    <ion-segment-button value="square" (click)="crop_square_image()">
+      <ion-icon name="tablet-landscape-outline"></ion-icon>
+      <!-- SQUARE  -->
+    </ion-segment-button>
+    <ion-segment-button value="portrait" disabled (click)="crop_portrait_image()">
+      <ion-icon name="tablet-portrait-outline"></ion-icon>
+      <!-- PORTRAIT -->
+    </ion-segment-button>
+  </ion-segment>
+
+
+  
+
+</ion-header>
+
+
+<ion-content   class="box-border-top" >
+     <!-- <img [src]="src| cdvphotolibrary"> -->
+    <!--
+     -->
+
+
+
+ <ion-grid class="ion-no-padding ion-no-margin fadeInUp animated faster" >
+  <ion-row>
+
+    <ion-col size="12"  class="ion-no-padding ion-no-margin" >
+      <div id="imagecrop_div">
+ 
+        <image-cropper class="image_croper"    
+            [imageURL]=" src | cdvphotolibrary"
+            [aspectRatio]="cropradio ==1? 1/1 : 4/5"
+            [resizeToWidth]="1080"
+            [resizeToHeight]="cropradio ==1? 1080: 1350"
+            [alignImage]="'center'"
+            format="jpeg"
+            imageQuality="30"
+            autoCrop = "false"
+            (imageCropped)="imageCropped($event)">
+        </image-cropper>
+    
+     
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
+
+
+
+

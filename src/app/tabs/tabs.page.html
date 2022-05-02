@@ -1,0 +1,95 @@
+<!--
+  <ion-tabs class="ion-no-border" #myTabs  (ionTabsDidChange)="getSelectedTab()">
+    <div class="">
+
+    </div>
+
+    <div class="fab-container" *ngIf="activeTabName == 'profile'">
+      <ion-fab vertical="bottom" horizontal="end"  slot="fixed" >
+        <ion-fab-button (click)="openAdd()" ion-fab color="black" class="take-photo" >
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </div>
+
+  <div class="tabs">
+    <ion-tab-bar  slot="bottom" class="box-border-top">
+      <ion-tab-button  tab="reviews" (click)="ScrollToTop('reviews')" >
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="interest" (click)="ScrollToTop('interest')" >
+        <ion-icon name="basket-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button class=" force-white">
+        <ion-fab vertical="bottom" horizontal="center" >
+          <ion-fab-button (click)="openQR()" ion-fab color="black" class="take-photo" >
+            <ion-icon name="qr-code"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </ion-tab-button>
+
+
+      <ion-tab-button tab="explore"  (click)="ScrollToTop('explore')">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="profile">
+          <img *ngIf="user?.profilePic" class="small-input-border" [src]="user?.profilePic" width="32" height="32">
+
+          <ion-icon *ngIf="!user" name="person-circle-outline"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </div>
+
+</ion-tabs> -->
+<ion-tabs  class="ion-no-border" #myTabs  (ionTabsDidChange)="getSelectedTab()" >
+  <div class="fab-container" *ngIf="activeTabName == 'profile' && showAdd()">
+    <ion-fab vertical="bottom" horizontal="end"  slot="fixed" class="add-review" >
+      <ion-fab-button (click)="openAdd()" ion-fab color="darkest" class="take-photo" >
+        <ion-icon name="duplicate"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+
+  <!-- <div class="fab-container" *ngIf="activeTabName == 'outfits'">
+    <ion-fab vertical="bottom" horizontal="end"  slot="fixed" class="add-review" >
+      <ion-fab-button (click)="openAddOutfit()" ion-fab color="black" class="take-photo" >
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div> -->
+
+
+
+  <div [hidden]="hideTabs() || isKeyboardOpen()">
+    <ion-fab vertical="bottom" horizontal="center" translucent="true"  color="darkest">
+      <ion-fab-button (click)="openQR()" >
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-tab-bar slot="bottom" class="ion-no-border">
+      <ion-tab-button tab="reviews" (click)="ScrollToTop('reviews')" class="reviews">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="marketplace" (click)="ScrollToTop('marketplace')" class="interest">
+        <ion-icon name="basket-outline"></ion-icon>
+      </ion-tab-button>
+
+      <svg height="50" viewBox="0 0 100 50" width="100" xmlns="http://www.w3.org/2000/svg"><path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z" fill="red" fill-rule="evenodd"></path></svg>
+
+      <ion-tab-button tab="outfits" class="outfit">
+        <ion-icon name="shirt-outline"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="profile" class="profile">
+        <img *ngIf="user?.photos" class="small-input-border" [src]="user.photos['64']" width="32" height="32">
+        <ion-icon *ngIf="!user || (user && !user.photos)" name="person-circle-outline"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+
+  </div>
+</ion-tabs>

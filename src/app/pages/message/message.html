@@ -1,0 +1,65 @@
+
+
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start" (click)="back()">
+      <ion-icon slot="icon-only"  name="arrow-back-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font">{{title}} </ion-title>
+  </ion-toolbar> 
+</ion-header>
+
+
+<ion-content   class="box-border-top" >
+  <!-- Messages -->
+  <div class="messages">
+    <p class="center" *ngIf="startIndex > 0"><span tappable (click)="loadPreviousMessages()">{{"message.page.load.more" | translate}}</span></p>
+    <div class="message" *ngFor="let message of messagesToShow" [ngClass]="isSender(message)? 'sender': 'contact'" >
+      <!--  Message -->
+      <div class="avatar" tappable  (click)="viewUser(message.sender)" >
+        <img [src]="message.avatar? message.avatar: 'assets/profile.png' "  (load)="doScroll()" />
+      </div>            
+      <div class="content" [ngClass]="isSender(message)? 'sender': 'contact'">
+        <div *ngIf="message.type == 'text'">
+          <p class="medium-font">{{message.message}}</p>          
+        </div>
+        <div *ngIf="message.type == 'image'">
+          <img tappable (click)="enlargeImage(message.url)" src="{{message.url}}" (load)="doScroll()" />          
+        </div>
+        <div class="timestamp">
+          <span>{{message.date | DateFormatPipe}}</span>
+        </div>
+      </div>      
+    </div>
+  </div>
+</ion-content>
+<!-- Message Box -->
+<ion-footer>
+
+  <div class="bottom-bar  ion-margin  ">
+    <div class="blog_userimg  xlarge-font" tappable (click)="sendPhoto()">
+      <ion-icon name="camera"></ion-icon>
+    </div>
+    <div class="input-text">
+        <!-- <ion-textarea  class="input-border"   autoGrow="true"  fz-elastic [placeholder]="  'Add a comment as ' + user_info.name " [(ngModel)]="commentText"></ion-textarea> -->
+        <ion-searchbar id="commentText" class="text" search-icon="undefined" placeholder="Type your message" [(ngModel)]="message" (focus)="scrollBottom()" (keypress)="onType($event.keyCode)" mode="ios"></ion-searchbar>
+
+      <!-- <ion-input type="text" placeholder="Type your comment" [(ngModel)]="commentText"></ion-input>   -->
+    </div>
+    <div class="send-button xlarge-font" tappable tappable (click)="send()">
+      <ion-icon name="send"></ion-icon>
+    </div>
+  </div>
+
+
+
+  <!-- <div class="bottom_bar">
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+      <ion-fab-button ion-fab mini tappable (click)="sendPhoto()"><ion-icon name="camera"></ion-icon></ion-fab-button>
+    </ion-fab>
+    <ion-input type="text" placeholder="Type your message" [(ngModel)]="message" (focus)="scrollBottom()" (keypress)="onType($event.keyCode)"></ion-input>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button ion-fab mini tappable (click)="send()" [disabled]="!message"><ion-icon name="send"></ion-icon></ion-fab-button>
+    </ion-fab>
+  </div> -->
+</ion-footer>

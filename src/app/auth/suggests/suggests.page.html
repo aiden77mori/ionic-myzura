@@ -1,0 +1,112 @@
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="arrow-back-outline" class="medium-font" (click)="back()"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font">  {{"suggested.title" | translate}} </ion-title>
+
+    <!-- <ion-buttons slot="end" fill="clear"  color='darkest'  class="medium-font bold-font">
+      
+        Sign in
+    </ion-buttons> -->
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="box-border-top">
+  <ion-slides class="walkthrough-slides" pager="false" [options]="slidesOptions">
+    <ion-slide class="slide-item">     
+        <ion-grid  class="ion-padding">
+            <ion-row>
+              <ion-col>
+                <h2 class="auth-title ion-float-left bold-font">
+                  {{"suggested.subtitle" | translate}}
+        
+              </h2>
+            </ion-col>
+            </ion-row>
+
+            <ion-row *ngIf="!accounts || accounts.length === 0">
+              <ion-col class="ion-margin-vertical ion-padding-vertical"  >
+                <div class=" ion-text-center ion-padding">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: #fafafa; display: block;" width="41px" height="41px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                    <circle cx="84" cy="50" r="10" fill="#000000">
+                        <animate attributeName="r" repeatCount="indefinite" dur="1.0416666666666665s" calcMode="spline" keyTimes="0;1" values="10;0" keySplines="0 0.5 0.5 1" begin="0s"></animate>
+                        <animate attributeName="fill" repeatCount="indefinite" dur="4.166666666666666s" calcMode="discrete" keyTimes="0;0.25;0.5;0.75;1" values="#000000;#000000;#000000;#000000;#000000" begin="0s"></animate>
+                    </circle><circle cx="16" cy="50" r="10" fill="#000000">
+                      <animate attributeName="r" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="0s"></animate>
+                      <animate attributeName="cx" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="0s"></animate>
+                    </circle><circle cx="50" cy="50" r="10" fill="#000000">
+                      <animate attributeName="r" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-1.0416666666666665s"></animate>
+                      <animate attributeName="cx" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-1.0416666666666665s"></animate>
+                    </circle><circle cx="84" cy="50" r="10" fill="#000000">
+                      <animate attributeName="r" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-2.083333333333333s"></animate>
+                      <animate attributeName="cx" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-2.083333333333333s"></animate>
+                    </circle><circle cx="16" cy="50" r="10" fill="#000000">
+                      <animate attributeName="r" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-3.1249999999999996s"></animate>
+                      <animate attributeName="cx" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-3.1249999999999996s"></animate>
+                    </circle>
+                    </svg>
+                   <!-- <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> 
+                  <p class="bold-font medium-font">{{"timeline.noposts.title" | translate}}</p>
+                  <p class="regular-font medium-font">{{"timeline.noposts.description" | translate}}</p> -->
+                </div>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col *ngIf="accounts && accounts.length>0">
+                <!-- <ion-searchbar *ngIf="accounts.length != excludedIds.length" [(ngModel)]="searchUser"
+                  placeholder="Search for name or username" showCancelButton="true" cancelButtonText="Done"></ion-searchbar> -->
+      
+                <ion-item *ngFor="let account of accounts  | searchFilter: [excludedIds, searchUser]" lines="none" class="small-input-border box-shadow small-margin-top" color="light"
+                 tappable
+                  (click)="viewUser(account.userId)">
+                  <ion-avatar slot="start" class="small-margin-right">
+                    <img [src]="account.photos? account.photos['128'] : 'assets/profile.png'">
+                  </ion-avatar>
+                  <div slot="start" class="user-description small-margin-right">
+            
+            
+                    <h2 class="bold-font ion-text-wrap">{{account.name}}</h2>
+                    <p>@{{account.username}}</p>
+                  </div>
+                  <ion-button class="small-font" slot="end" (click)="follow(account); $event.stopPropagation();" *ngIf="!isCurrentUser(account.userId) && getStatus(account) != 3" icon-left 
+                    >
+                    <ion-icon name="add"></ion-icon>
+                    {{"search.people.follow" | translate}}
+                  </ion-button>
+                  <ion-button class="small-font" slot="end" (click)="unfollow(account); $event.stopPropagation();" *ngIf="!isCurrentUser(account.userId) && getStatus(account) == 3" icon-left 
+                     fill="outline">
+                    <ion-icon name="remove"></ion-icon>
+                    {{"search.people.unfollow" | translate}}
+      
+                  </ion-button>
+                </ion-item>
+            </ion-col>
+            </ion-row>
+
+        </ion-grid>    
+    </ion-slide>  
+  </ion-slides>
+
+
+</ion-content>
+
+<ion-footer>
+  <div class="footer box-border-top">
+   <ion-grid class="ion-padding">
+     <ion-row>
+       <ion-col>
+        <div class="button_div">  
+          <ion-button expand="full"  color="darkest"  class="bold-font box-shadow botton_btn input-border" shape="round" type="submit"
+              (click)="save();" >{{"suggested.done" | translate}}</ion-button>
+        </div>
+        <div class="legal-stuff xsmall-font">
+          <!-- {{"auth.privacy1" | translate}}<a class="legal-action" (click)="showPrivacyModal()">{{"auth.privacy2" | translate}}</a> {{"auth.privacy.and" | translate}} <a class="legal-action" (click)="showTermsModal()">{{"auth.privacy3" | translate}}</a>. -->
+        </div>
+       </ion-col>
+     </ion-row>
+   </ion-grid>
+  </div>
+</ion-footer>

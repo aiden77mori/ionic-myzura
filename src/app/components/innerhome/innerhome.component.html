@@ -1,0 +1,47 @@
+<!-- /**
+ * Shoppr - E-commerce app starter Ionic 4(https://www.enappd.com)
+ *
+ * Copyright © 2018-present Enappd. All rights reserved.
+ *
+ * This source code is licensed as per the terms found in the
+ * LICENSE.md file in the root directory of this source .
+ */ -->
+
+<ion-row>
+  
+  <ion-col *ngFor="let data of productsData; let i = index;" class="ion-no-margin " size="6">
+    <ion-card *ngIf="data.id" class="card ion-no-margin box-shadow">
+      <ion-badge class="badge" >{{data.brand}}</ion-badge>
+      <button [hidden]="productsData[i].wishlisted ? productsData[i].wishlisted :  wishlisted"   (click)="addWishList(i, data.id)" class="wishlist" ><ion-icon class="medium-font black-color-font" name="heart-outline"></ion-icon></button>
+      <button [hidden]="productsData[i].wishlisted ? !productsData[i].wishlisted : !wishlisted" (click)="removeProductWishlist(i, data.id)" class="wishlist" ><ion-icon class="medium-font black-color-font" name="heart"></ion-icon></button>
+     
+      <div class="image-shell" (click)="open(data.id)">
+        <img [src]="data.photos[256]" [alt]="data.name">
+        <!-- <div class="product-image-overlay"></div> -->
+
+      </div>
+      <ion-card-content (click)="open(data.id)" class="ion-no-padding">
+        <ion-card-title>
+          <ion-row>
+            <ion-col class="ion-text-center ion-padding-horizontal" >
+              <p class="price_title small-font regular-font text-shell ion-text-start" [ngClass]="{'text-loaded': data?.name}"> {{data.name}}  
+                <!-- <span class="old_price_title medium-font bold-font">   TBD € </span>     -->
+              </p> 
+              <h6 class="subtitle small-font text-shell ion-text-start "  [ngClass]="{'text-loaded': data?.price}">{{data.price}} €</h6>
+
+            </ion-col>
+            
+            <!--<ion-col *ngIf="data.offer" no-padding>
+              <ion-text text-left><span class="price"><span class="inline">{{data.currency}}{{data.cost_price}}</span> <strong>{{data.currency}}{{fun.calculate(data.cost_price, data.discount)}}</strong></span></ion-text>
+            </ion-col>
+            <ion-col *ngIf="!data.offer" no-padding>
+              <ion-text text-left><span class="price"><strong>{{data.currency}}{{data.cost_price}}</strong></span></ion-text>
+            </ion-col> -->
+          </ion-row>
+
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+  
+</ion-row>

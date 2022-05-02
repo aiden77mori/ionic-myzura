@@ -1,0 +1,36 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <h2 class="ion-float-left bold-font">
+        {{title}}
+
+    </h2>
+  </ion-col>
+  </ion-row>
+  <ion-list>
+    <ion-item *ngFor="let account of accounts" (click)=" viewUser(account.userId) " >
+      <ion-avatar slot="start">
+        <img  [src]="account.photos? account.photos['128'] : 'assets/profile.png'">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{account.name}}</h2>
+        <p>@{{account.username}}</p>
+      </ion-label>
+      <ion-button class="small-font" slot="end" (click)="follow(account); $event.stopPropagation();" *ngIf="!isCurrentUser(account.userId) && getStatus(account) != 3" icon-left 
+      >
+      <ion-icon name="add"></ion-icon>
+      {{"search.people.follow" | translate}}
+    </ion-button>
+    <ion-button class="small-font" slot="end" (click)="unfollow(account); $event.stopPropagation();" *ngIf="!isCurrentUser(account.userId) && getStatus(account) == 3" icon-left 
+       fill="outline">
+      <ion-icon name="remove"></ion-icon>
+      {{"search.people.unfollow" | translate}}
+
+    </ion-button>
+
+    </ion-item>
+  </ion-list>
+</ion-grid>   
+ 
+
+

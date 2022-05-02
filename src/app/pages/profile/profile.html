@@ -1,0 +1,193 @@
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start"  (click)="openNotifications()">
+      <ion-icon slot="icon-only" name="notifications-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font"> {{user?user.username: "profile.page.title" | translate}} </ion-title>
+
+    <ion-buttons slot="end"  (click)="goSettings()" >
+      <ion-icon slot="icon-only" name="settings-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content  class="box-border-top">
+  <ion-refresher slot="fixed" (ionRefresh)="loadData($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-grid class="ion-padding-horizontal" *ngIf="user">
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <p class="bold-font medium-font"> {{ user.name }}</p>
+
+        <!-- <button (click)="new()">ADD DATA</button> -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <img [src]="user.photos ? user.photos['128'] : 'assets/profile.png'" class="box-shadow full-border userimg">
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <p class="regular-font medium-font"> {{ user.description }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+
+        <ion-row>
+          <ion-col size="4" class="ion-text-center">
+            <p class="small-font"> {{"profile.page.reviews" | translate}}</p>
+            <p class="small-font bold-font"> {{routePostsResolveData?.items ? routePostsResolveData?.items.length : 0}}</p>
+
+          </ion-col>
+
+          <ion-col size="4" class="ion-text-center">
+            <p class="small-font" tappable (click)="getFollowers('followers')"> {{"profile.page.followers" | translate}}</p>
+            <p class="small-font bold-font" tappable (click)="getFollowers('followers')"> {{user.followers? user.followers.length : 0}}</p>
+
+          </ion-col>
+
+          <ion-col size="4" class="ion-text-center">
+            <p class="small-font" tappable (click)="getFollowers('following')"> {{"profile.page.following" | translate}}</p>
+             <p class="small-font bold-font" tappable (click)="getFollowers('following')"> {{user.following? user.following.length : 0}}</p>
+
+          </ion-col>
+        </ion-row>
+        <!-- <div class="user_bottom">
+          <div class="user_counts">
+             <p class="title_p"> Reviews</p>
+             <p  class="count_p"> {{user.reviews? user.reviews.length : 0}}</p>
+          </div>
+          <div class="user_counts" (click)="go_followers()">
+            <p class="title_p"> Followers</p>
+            <p class="count_p"> {{user.followers? user.followers.length : 0}}</p>
+         </div>
+
+         <div class="user_counts">
+          <p class="title_p"> Following</p>
+          <p class="count_p"> {{user.following? user.following.length : 0}}</p>
+         </div>
+
+        </div> -->
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <!-- <ion-col size="6" class="ion-text-center">
+
+        <ion-button size="small"  color="darkest" fill="outline" shape="round" class="small-input-border bold-font box-shadow" (click)="goSettings()" expand="full">
+          <ion-icon name="card"></ion-icon>
+          View Balance</ion-button>
+
+      </ion-col> -->
+      <ion-col size="12" class="ion-text-center">
+        <ion-button size="small"  color="light" shape="round" class="small-input-border bold-font box-shadow" (click)="goSettings()" expand="full">
+          <ion-icon name="create"></ion-icon>
+          {{"profile.page.edit" | translate}}</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+    <!-- <hr> -->
+    <ion-segment [(ngModel)]="icons" mode ="md" color="primary">
+      <ion-segment-button value="reviews">
+        <p class="small-font">{{"profile.page.reviews" | translate}}</p>
+        <!-- <ion-icon name="apps"></ion-icon> -->
+      </ion-segment-button>
+      <ion-segment-button value="closet">
+        <p class="small-font">{{"profile.page.closet" | translate}}</p>
+      </ion-segment-button>
+      <ion-segment-button value="closetPlus">
+        <p class="small-font">
+          <ion-badge class="badge-notifications" [hidden]="!closetPlusData || closetPlusData.length==0">
+          <span class=" small-font regular-font">
+            {{closetPlusData.length}} </span>
+            </ion-badge>
+
+          {{"profile.page.add" | translate}}</p>
+      </ion-segment-button>
+      <ion-segment-button value="saved">
+        <p class="small-font">{{"profile.page.saved" | translate}}</p>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="icons">
+
+      <div *ngSwitchCase="'reviews'">
+        <ion-grid class="ion-padding" *ngIf="!routePostsResolveData?.items || routePostsResolveData?.items.length === 0">
+          <ion-row>
+            <ion-col class="ion-margin-vertical ion-padding-vertical">
+              <div class=" ion-text-center">
+                <!--  <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> -->
+                <p class="bold-font medium-font">{{"timeline.noposts.title" | translate}}</p>
+                <p class="regular-font medium-font">{{"timeline.noposts.description" | translate}}</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+              <!-- sortBy:’asc|desc’: ‘property’ -->
+        <div *ngIf="routePostsResolveData?.items">
+          <app-post-grid  [timeline]="routePostsResolveData?.items"></app-post-grid>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'closet'">
+
+        <app-closet-cat [categories]="categories" [closetList]="closetList" [visitor]="false"></app-closet-cat>
+      </div>
+
+      <div *ngSwitchCase="'closetPlus'">
+        <ion-grid class="ion-padding" *ngIf="!closetPlusData || closetPlusData.length === 0">
+          <ion-row>
+            <ion-col class="ion-margin-vertical ion-padding-vertical">
+              <div class=" ion-text-center">
+                <!-- <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> -->
+                <p class="bold-font medium-font">{{"marketplace.noproducts.title" | translate}}</p>
+                <p class="regular-font medium-font">{{"marketplace.noproducts.description" | translate}}</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid class="ion-padding" *ngIf="closetPlusData &&  closetPlusData.length >0">
+          <ion-row  class="ion-no-margin ion-no-padding ">
+            <ion-col  *ngFor="let prod of closetPlusData;let i = index"  class="ion-no-margin ion-no-padding closet-plus-col"  [ngClass]="i > 0? 'ion-padding-top' : ''" size="12">
+                <app-product-tag [type]="'closetPlus'" [product] = "prod"  [index] ="i"></app-product-tag>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- <ion-grid>
+          <ion-row>
+            <ion-col *ngFor="let photo of favoriteTimeline" size="4" class="col-image" (press)="openOptions(photo.image)">
+              <img src={{photo.image}} (click)="viewPost(photo)">
+            </ion-col>
+          </ion-row>
+        </ion-grid> -->
+      </div>
+
+      <div *ngSwitchCase="'saved'">
+        <ion-grid class="ion-padding" *ngIf="!savedPosts || savedPosts.length === 0">
+          <ion-row>
+            <ion-col class="ion-margin-vertical ion-padding-vertical">
+              <div class=" ion-text-center">
+                <!-- <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> -->
+                <p class="bold-font medium-font">{{"timeline.noposts.title" | translate}}</p>
+                <p class="regular-font medium-font">{{"timeline.noposts.description" | translate}}</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+              <!-- sortBy:’asc|desc’: ‘property’ -->
+        <div *ngIf="savedPosts">
+          <app-post-grid  [timeline]="savedPosts"></app-post-grid>
+        </div>
+      </div>
+
+    </div>
+
+
+
+</ion-content>
+

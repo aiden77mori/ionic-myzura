@@ -1,0 +1,15 @@
+// Custom variables
+// Note:  These ones were added by us and have nothing to do with Ionic CSS Custom Properties
+
+.legal-stuff {
+  text-align: center;
+  // margin: var(--page-margin) 0px;
+  color: var(--ion-color-medium);
+  
+  .legal-action {
+    font-weight: 500;
+    color: var(--ion-color-darkest);
+    cursor: pointer;
+  }
+}
+

@@ -1,0 +1,71 @@
+ion-fab.add-review {
+  height: 110px;
+}
+
+ion-tabs ion-fab {
+  margin-bottom: env(safe-area-inset-bottom);
+  /* fix notch ios*/
+}
+
+ion-tabs ion-fab ion-fab-button {
+  --box-shadow: none;
+}
+
+ion-tabs ion-tab-bar {
+  --border: 0;
+  border: 0;
+  margin: 0;
+  --background: transparent;
+  margin-bottom: -2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+ion-tabs ion-tab-bar:after {
+  content: " ";
+  width: 100%;
+  bottom: 0;
+  background: var(--ion-color-light);
+  height: env(safe-area-inset-bottom);
+  position: absolute;
+}
+
+ion-tabs ion-tab-bar ion-tab-button {
+  --border: 0;
+  --background: var(--ion-color-light);
+  border: 0;
+  margin: 0;
+}
+
+ion-tabs ion-tab-bar ion-tab-button.reviews {
+  margin-left: 0px;
+  border-top-left-radius: 18px;
+}
+
+ion-tabs ion-tab-bar ion-tab-button.interest {
+  margin-right: 0px;
+  border-top-right-radius: 18px;
+}
+
+ion-tabs ion-tab-bar ion-tab-button.explore {
+  margin-left: 0px;
+  border-top-left-radius: 18px;
+}
+
+ion-tabs ion-tab-bar ion-tab-button.profile {
+  margin-left: 0px;
+  border-top-right-radius: 18px;
+}
+
+ion-tabs ion-tab-bar svg {
+  width: 72px;
+  margin-top: 19px;
+}
+
+ion-tabs ion-tab-bar svg path {
+  fill: var(--ion-color-light);
+}
+/*# sourceMappingURL=tabs.page.css.map */

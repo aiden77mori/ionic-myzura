@@ -1,0 +1,32 @@
+.empty-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+h2, p {
+  font-size: 14px;
+}
+
+.user-description {
+  padding: 5px;
+}
+
+.user-description h2, .user-description p {
+  margin: 0;
+  padding: 0;
+}
+/*# sourceMappingURL=new-message.css.map */

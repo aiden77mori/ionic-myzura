@@ -1,0 +1,61 @@
+page-new-group img {
+  width: 100vw;
+  height: 50vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+page-new-group img.activated,
+page-new-group img:active {
+  opacity: 0.5;
+}
+
+page-new-group div.form {
+  background: rgba(6, 28, 88, 0.3) !important;
+}
+
+page-new-group .form ion-list ion-item ion-input,
+page-new-group .form ion-list ion-item ion-textarea {
+  color: #fff !important;
+}
+
+page-new-group .form ion-list {
+  padding: 0;
+  margin: 0 0 0.75em;
+}
+
+page-new-group .form ion-list ion-item {
+  background: transparent;
+}
+
+page-new-group .form ion-list ion-item ion-label {
+  width: 28vw;
+}
+
+page-new-group .members {
+  text-align: center;
+}
+
+page-new-group .members img {
+  border-radius: 100%;
+  width: 3.25em;
+  height: 3.25em;
+  margin: 0.5em;
+}
+
+page-new-group .empty {
+  text-align: center;
+  padding-bottom: 2em;
+}
+
+page-new-group .empty h1 {
+  font-size: 3em;
+}
+
+page-new-group .empty p {
+  font-size: 1.125em;
+  width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*# sourceMappingURL=new-group.css.map */

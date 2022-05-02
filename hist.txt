@@ -1,0 +1,16 @@
+  589  ionic cordova prepare ios --prod --release
+  590  cordova platform rm ios --nosave \ncordova platform add ios@6.0.0 --nosave
+  591  cordova platform rm ios --nosave \ncordova platform add ios@6.0.0 --nosave
+  592  cordova platform rm ios
+  593  ls
+  594  npm i
+  595  cordova platform rm ios
+  596  cordova platform add ios
+  597  ionic cordova platform rm ios
+  598  ionic cordova platform add ios@latest
+  599  cordova plugin add cordova-plugin-firebasex@latest
+  600  cd platforms/ios
+  601  arch -x86_64 pod update
+  602  arch -x86_64 pod install
+  603  pod install --repo-update
+  604  history > ../../hist.txt

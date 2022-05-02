@@ -1,0 +1,321 @@
+<!-- <ion-content style="background-color: transparent;"> -->
+  <!-- <ion-slides [options]="sliderOpts"  >
+    <ion-slide *ngFor="let item of product_list"  style="width: 100%;height: 100%; "> -->
+<div class="smaller-box-border box-shadow"  *ngIf="(product | json) != ({} | json)" [ngClass]="type=='tagged' || type=='post'? 'slide_content_tag' : 'slide_content' ">
+        
+  <div *ngIf="type=='post'">
+      <button class="box-shadow closeTag"
+      (click)="closeModal()">          
+      
+      <ion-icon name="close-outline" class="small-font"></ion-icon>
+    </button>
+  </div>
+    <div class="image_div" *ngIf="!product.photos || (product.photos && product.photos.length==0 )" style="background-color: #fafafa;display: block; padding-top:44px;">
+        <ion-grid class="ion-no-padding"> 
+          <ion-row>
+            <ion-col class="ion-no-margin ion-no-padding">
+              <div class=" ion-text-center ion-no-padding">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: #fafafa; display: block;" width="41px" height="41px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                  <circle cx="84" cy="50" r="10" fill="#000000">
+                      <animate attributeName="r" repeatCount="indefinite" dur="1.0416666666666665s" calcMode="spline" keyTimes="0;1" values="10;0" keySplines="0 0.5 0.5 1" begin="0s"></animate>
+                      <animate attributeName="fill" repeatCount="indefinite" dur="4.166666666666666s" calcMode="discrete" keyTimes="0;0.25;0.5;0.75;1" values="#000000;#000000;#000000;#000000;#000000" begin="0s"></animate>
+                  </circle><circle cx="16" cy="50" r="10" fill="#000000">
+                    <animate attributeName="r" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="0s"></animate>
+                    <animate attributeName="cx" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="0s"></animate>
+                  </circle><circle cx="50" cy="50" r="10" fill="#000000">
+                    <animate attributeName="r" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-1.0416666666666665s"></animate>
+                    <animate attributeName="cx" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-1.0416666666666665s"></animate>
+                  </circle><circle cx="84" cy="50" r="10" fill="#000000">
+                    <animate attributeName="r" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-2.083333333333333s"></animate>
+                    <animate attributeName="cx" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-2.083333333333333s"></animate>
+                  </circle><circle cx="16" cy="50" r="10" fill="#000000">
+                    <animate attributeName="r" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-3.1249999999999996s"></animate>
+                    <animate attributeName="cx" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-3.1249999999999996s"></animate>
+                  </circle>
+                  </svg>
+                <!-- <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> 
+                <p class="bold-font medium-font">{{"timeline.noposts.title" | translate}}</p>
+                <p class="regular-font medium-font">{{"timeline.noposts.description" | translate}}</p> -->
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+          
+      </div>
+      <div class="image_div" *ngIf="product.photos && product.photos[128]">
+        <ion-img (click)="gotoDetails(product.id)" class="product_image smaller-img-border"  [src]="product?.photos ? product.photos[128] : 'assets/images/notfound.png'" ></ion-img>
+      </div>
+          <div class="div_title ion-align-items-center">
+            <ion-row [hidden]="type !='rating'" style="    margin-top: 15px;">
+              <ion-col >
+             
+                  <ionic5-star-rating #rating  class="ion-text-center"
+                  activeIcon = "star"
+                  defaultIcon = "star-outline"
+                  halfIcon = "star-half-sharp"
+                  halfStar = "true"
+                  activeColor = "#000" 
+                  defaultColor = "#000"
+                  readonly="false"
+                  [rating]="product.overallRating? product.overallRating : 5"
+                  fontSize = "xx-large"
+                  (ratingChanged)="logRatingChange($event)">
+                  </ionic5-star-rating> 
+        
+              </ion-col>
+              
+              </ion-row>
+
+              <ion-row [hidden]="type =='rating'">
+              <ion-col >
+                <p class="price_title regular-font">        {{product.price +' €'}}     
+                  <span class="old_price_title regular-font" *ngIf="product.oldPrice ">   {{product.oldPrice +' €'}}  </span>
+                  <ionic5-star-rating #rating class="ion-float-right"
+                  activeIcon = "star"
+                  defaultIcon = "star-outline"
+                  halfIcon = "star-half-sharp"
+                  halfStar = "true"
+                  activeColor = "#000" 
+                  defaultColor = "#000"
+                  readonly="true"
+                  [rating]="getRating(product)"
+                  fontSize = "medium"
+                  (ratingChanged)="logRatingChange($event)">
+                  </ionic5-star-rating> 
+                </p> 
+              </ion-col>
+              
+              </ion-row>
+            <ion-row [hidden]="type =='rating'">
+                  <ion-col >
+                    <p class="name_title black-color-font bold-font" (click)="gotoDetails(product.id)">  {{product.name }}         </p> 
+                  </ion-col>
+            </ion-row>
+            <!-- <div class='logo_div'>
+              <ion-img class="logo_image"  [src]="item.logo" ></ion-img>
+            </div> -->
+
+            <ion-row [hidden]="type =='rating'">
+              <ion-col size="6">
+               <span class="black-color-font ion-float-left">{{product.brand}}</span>
+              </ion-col>
+              <ion-col size="6">
+                <p class="xsmall-font ion-text-start" style=" margin:5px; "> {{"product.component.your.size" | translate}}</p>
+                
+                <ion-row *ngIf="addedBodySizes">
+                  <ion-col siz="4">
+                    <div class="card box-shadow">
+                      {{sizes?.Main ? sizes.Main : "NA" }}
+                    </div>
+                  </ion-col>
+                  <ion-col siz="4" >
+                    <div class="card box-shadow">
+                      {{sizes?.EU ? sizes.EU : "NA"}}
+                    </div>
+                  </ion-col>
+                  <!-- <ion-col siz="4">
+                    <div class="card box-shadow">
+                      NA
+                    </div>
+                  </ion-col> -->
+                </ion-row>
+                <ion-row *ngIf="!addedBodySizes">
+                  <ion-col siz="12">
+                    <div class="card box-shadow">
+                      <!-- {{"product.component.your.nosize" | translate}} -->
+                      
+                      <ion-button class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" fill="outline" style="margin: auto;"
+                      (click)="addSizes()"
+                      ><span style="font-size: 11px;">
+                        {{ "product.component.your.nosize.btn" | translate}}</span> </ion-button>
+                    </div>
+                  </ion-col>
+ 
+                  
+                </ion-row>
+              </ion-col>
+            </ion-row>
+
+            
+            <div [ngSwitch]="type">
+
+              <div *ngSwitchCase="'tag'">
+                <ion-row>
+                  <!-- <ion-col size="6">
+                    <ion-button class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" fill="outline" style="margin: auto;"><span style="font-size: 11px;">
+                      <ion-icon name="close-outline"></ion-icon>
+                      Remove</span> </ion-button>
+
+                  </ion-col> -->
+                  <ion-col size="12">
+                    <ion-button class="small-input-border box-shadow" (click)="tagProduct()" shape="round" size="small" expand="full" color="darkest" style="margin: auto" > <span style="font-size: 11px;">
+                      <ion-icon name="add-outline"></ion-icon>
+                      {{ "product.tag.component.tag" | translate}}</span></ion-button>
+
+                  </ion-col>
+                </ion-row>
+              </div>
+
+              
+              <div *ngSwitchCase="'tagged'">
+                <ion-row >
+                  <ion-col size="12">
+                    <ion-button class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" fill="outline" style="margin: auto;"
+                    (click)="deleteTaggedProduct()"
+                    ><span style="font-size: 11px;">
+                      <ion-icon name="close-outline"></ion-icon>
+                      {{ "product.tag.component.remove" | translate}}</span> </ion-button>
+                  </ion-col>
+                  <!-- <ion-col size="6">
+                    <ion-button class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" style="margin: auto" > <span style="font-size: 11px;">
+                      <ion-icon name="add-outline"></ion-icon>
+                      Add</span></ion-button>
+
+                  </ion-col> -->
+                </ion-row>
+              </div>
+
+
+              <div *ngSwitchCase="'rating'">
+                <ion-row >
+                  <ion-col size="12">
+                    <ion-button class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" fill="outline" style="margin: auto;"
+                    (click)="deleteTaggedProduct()"
+                    ><span style="font-size: 11px;">
+                      <ion-icon name="close-outline"></ion-icon>
+                      {{ "product.tag.component.remove" | translate}}</span> </ion-button>
+                  </ion-col>
+                  <!-- <ion-col size="6">
+                    <ion-button class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" style="margin: auto" > <span style="font-size: 11px;">
+                      <ion-icon name="add-outline"></ion-icon>
+                      Add</span></ion-button>
+
+                  </ion-col> -->
+                </ion-row>
+              </div>
+              <div *ngSwitchCase="'closet'">
+                <div *ngIf="product.photos">
+                  <ion-row *ngIf="!visitor">
+                    <ion-col size="6">
+                      <ion-button class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" fill="outline" style="margin: auto;"
+                      (click)="deleteClosetProduct(product.key)"
+                      ><span style="font-size: 11px;">
+                        <ion-icon name="close-outline"></ion-icon>
+                        {{ "product.tag.component.remove" | translate}}</span> </ion-button>
+                    </ion-col>
+                    <ion-col size="6">
+                      <ion-button (click)="gotoDetails(product.id)"  class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" style="margin: auto" > 
+                        <ion-icon name="basket-outline"></ion-icon>  {{ "product.tag.component.view" | translate}}</ion-button>
+                
+                    </ion-col> 
+                  
+                  </ion-row>
+                  <ion-row *ngIf="visitor">
+                    <ion-col size="12">
+                      <ion-button (click)="gotoDetails(product.id)"  class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" style="margin: auto" > 
+                        <ion-icon name="basket-outline"></ion-icon>  {{ "product.tag.component.view" | translate}}</ion-button>
+                
+                    </ion-col> 
+                  
+                  </ion-row>
+                </div>
+                <div *ngIf="!product.photos">
+                  <ion-row *ngIf="!visitor">
+                    <ion-col size="12">
+                      <ion-button class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" fill="outline" style="margin: auto;"
+                      (click)="deleteClosetProduct(product.key)"
+                      ><span style="font-size: 11px;">
+                        <ion-icon name="close-outline"></ion-icon>
+                        {{ "product.tag.component.remove" | translate}}</span> </ion-button>
+                    </ion-col>
+                  
+                  
+                  </ion-row>
+                  <ion-row *ngIf="visitor">
+                    <!-- <ion-col size="12">
+                      <ion-button (click)="gotoDetails(product.id)"  class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" style="margin: auto" > 
+                        <ion-icon name="basket-outline"></ion-icon>  {{ "product.tag.component.view" | translate}}</ion-button>
+                
+                    </ion-col>  -->
+                  
+                  </ion-row>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'found'">
+                <div *ngIf="product.photos">
+                  <ion-row >
+                    <!-- <ion-col size="12">
+                      <ion-button (click)="gotoDetails(product.id)"  class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" style="margin: auto" > 
+                        <ion-icon name="basket-outline"></ion-icon>  {{ "product.tag.component.view" | translate}}</ion-button>
+                
+                    </ion-col>  -->
+                  
+                  </ion-row>
+
+                </div>
+
+              </div>
+
+              <div *ngSwitchCase="'closetPlus'">
+                <div *ngIf="product.photos">
+                  <ion-row >
+                    <ion-col size="6">
+                      <ion-button class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" fill="outline" style="margin: auto;"
+                      (click)="deleteClosetPlusProduct(product.key)"
+                      ><span style="font-size: 11px;">
+                        <ion-icon name="close-outline"></ion-icon>
+                        {{ "product.tag.component.remove" | translate}}</span> </ion-button>
+                    </ion-col>
+                    <ion-col size="6">
+                      <ion-button class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" style="margin: auto" 
+                      (click)="addClosetProduct(product.id, product.key)"
+                      > <span style="font-size: 11px;">
+                        <ion-icon name="add-outline"></ion-icon>
+                        {{ "product.tag.component.add" | translate}}</span></ion-button>
+              
+                    </ion-col>
+                  </ion-row>
+                </div>
+                <div *ngIf="!product.photos">
+                  <ion-row >
+                    <ion-col size="12">
+                      <ion-button class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" fill="outline" style="margin: auto;"
+                      (click)="deleteClosetPlusProduct(product.key)"
+                      ><span style="font-size: 11px;">
+                        <ion-icon name="close-outline"></ion-icon>
+                        {{ "product.tag.component.remove" | translate}}</span> </ion-button>
+                    </ion-col>
+
+                  </ion-row>
+                </div>
+              </div>
+
+              <div *ngSwitchCase="'post'">
+                <div *ngIf="product.photos">
+                  <ion-row >
+                    <ion-col size="6">
+              
+                    <ion-button class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" fill="outline" style="margin: auto;"
+                    (click)="gotoDetails(product.id)"> {{ "product.tag.component.view" | translate}}</ion-button>
+              
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-button  (click)="openShopLink(product.affiliate_url? product.affiliate_url: product.shop_url, product.id)"   class="small-input-border box-shadow" shape="round" size="small" expand="full" color="darkest" style="margin: auto" > <ion-icon name="basket-outline"></ion-icon>  {{ "product.tag.component.shop" | translate}}</ion-button>
+              
+                  </ion-col>     
+                  </ion-row>
+                </div>
+                <div *ngIf="!product.photos">
+
+                </div>
+              </div>
+            </div>
+            </div>   
+        </div>
+  
+    <!-- </ion-slide>
+  </ion-slides> -->
+<!-- </ion-content> -->
+

@@ -1,0 +1,65 @@
+<ion-header class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="back()">
+      <!-- <ion-icon slot="icon-only" name="arrow-back" (click)="back()" class="medium-font"> </ion-icon> -->
+      <ion-icon
+        slot="icon-only"
+        class="medium-font"
+        src="/assets/images/icon/back.svg"
+        style="margin-top: 10px"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font">
+      {{"settings.page.title" | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="box-border-top">
+  <div>
+    <!-- Profile Menu -->
+    <ion-list>
+      <ion-item lines="none" class="setting-size">
+        <div class="profile-detail">
+          <ion-label class="detail-description">{{"settings.page.home.legalinfo" | translate}}</ion-label>
+        </div>
+      </ion-item>
+      <ion-item lines="none" class="setting-detail">
+        <div slot="start" class="setting-avatar">
+          <img src="/assets/images/icon/clock.svg" />
+        </div>
+        <div class="profile-detail">
+          <ion-label class="detail-description">{{"auth.privacy2" | translate}}</ion-label>
+        </div>
+        <div slot="end" class="profile-icon">
+          <ion-icon src="/assets/images/icon/go.svg" slot="end" tappable (click)="gotoProfit()"></ion-icon>
+        </div>
+      </ion-item>
+      <ion-item lines="none" class="setting-detail">
+        <div slot="start" class="setting-avatar">
+          <img src="/assets/images/icon/shoe.svg" style="width: 24px; height: 24px;"/>
+        </div>
+        <div class="profile-detail" style="margin-left: 12px;">
+          <ion-label class="detail-description">{{"auth.privacy3" | translate}}</ion-label>
+        </div>
+        <div slot="end" class="profile-icon">
+          <ion-icon src="/assets/images/icon/go.svg" slot="end"></ion-icon>
+        </div>
+      </ion-item>
+      <ion-item lines="none" class="setting-detail">
+        <div slot="start" class="setting-avatar">
+          <img src="/assets/images/icon/clock.svg" />
+        </div>
+        <div class="profile-detail">
+          <ion-label class="detail-description">{{"auth.privacy4" | translate}}</ion-label>
+        </div>
+        <div slot="end" class="profile-icon">
+          <ion-icon src="/assets/images/icon/go.svg" slot="end" tappable (click)="gotoProfit()"></ion-icon>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="bottom_bar"></div>
+</ion-footer>

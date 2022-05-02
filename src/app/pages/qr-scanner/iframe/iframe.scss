@@ -1,0 +1,239 @@
+.fab-container {
+  position: relative;
+}
+
+.selected-photo {
+  width: 100%;
+  height: 100vw;
+  object-fit: cover;
+}
+
+.type-toggle {
+  padding-inline-start: 0.5rem;
+
+  .show-option,
+  .hide-option {
+    font-size: 1.2rem;
+    display: block;
+    vertical-align: middle;
+    height: 100%;
+    // In case you want to use text instead of icons
+    &:not(ion-icon) {
+      text-transform: uppercase;
+      font-size: 1rem;
+    }
+  }
+}
+
+.image-list {
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
+.image-list .image {
+  flex-grow: 1;
+  width: 32%;  
+}
+
+
+
+.col-image {
+  padding: 1px !important;
+}
+
+.blink {
+  background-color: red;//$red !important;
+  -webkit-animation-name: blink;
+  -moz-animation-name: blink;
+  -o-animation-name: blink;
+  animation-name: blink;
+  -webktit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -o-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
+.blink-infinite {
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.blink-5 {
+  -webkit-animation-iteration-count: 5;
+  -moz-animation-iteration-count: 5;
+  -o-animation-iteration-count: 5;
+  animation-iteration-count: 5;
+}
+
+.blink-furiously {
+  -webkit-animation-duration: 0.3s;
+  -moz-animation-duration: 0.3s;
+  -o-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+}
+
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@-moz-keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@-o-keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+
+.walkthrough-slides{
+  width: 100%;
+  // height: 90vh;
+}
+
+.slide-item{
+  width: 100%;
+  // height: 90vh;
+}
+.button_div{
+  width: 100%;
+  height:10vh;
+  display: flex;
+}
+.no-padding{
+padding: 0px!important;
+}
+
+.slide-row{
+  display: block;
+  position: absolute;
+  top: 0px;
+}
+
+ion-range {
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: -20px;
+}
+ion-segment {
+  background : #fff !important;
+  margin-top: -15px;
+}
+
+
+
+//   .datetime-placeholder {
+//     margin-left: -17px;
+// }
+ion-datetime {
+padding-left: 0;
+}
+
+.active{
+background : #000;
+--background: #000;
+box-shadow: none;
+div{
+  .tag{
+    background: #fff;
+    color: #000;
+  }
+}
+}
+
+// .in-segment-color .segment-button-indicator-background {
+//   background: 
+// }
+
+
+// .slider-image{
+
+// }
+
+// .img-wrapper{
+
+// }
+
+
+.info-wrapper{
+  padding: 15px 20px;
+
+}
+
+.info-title{
+  margin-top: 6%;
+  // font-weight: bold;
+  color:  var(--ion-color-darkest);
+}
+
+ion-slides {
+  --bullet-background: var(--ion-color-darkest);
+  --bullet-background-active:  var(--ion-color-darkest);
+}
+
+.botton_btn{
+    width: 40%;
+    margin: auto;
+    // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+/* Set the width to the full container and center the content */
+ion-select {
+// width: 100%;
+
+// justify-content: center;
+}
+
+/* Set the flex in order to size the text width to its content */
+ion-select::part(placeholder),
+ion-select::part(text) {
+flex: 0 0 auto;
+}
+
+/* Set the placeholder color and opacity */
+ion-select::part(placeholder) {
+color: #000;
+opacity: 1;
+}
+
+/*
+* Set the font of the first letter of the placeholder
+* Shadow parts work with pseudo-elements, too!
+* https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements
+*/
+ion-select::part(placeholder)::first-letter {
+font-size: 24px;
+font-weight: 500;
+}
+
+/* Set the text color */
+ion-select::part(text) {
+color: #000;
+}
+
+/* Set the icon color and opacity */
+ion-select::part(icon) {
+color: #000;
+opacity: 1;
+}

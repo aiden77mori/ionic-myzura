@@ -1,0 +1,47 @@
+.walkthrough-slides {
+  width: 100%;
+  height: 90vh;
+}
+
+.slide-item {
+  width: 100%;
+  height: 90vh;
+}
+
+.button_div {
+  width: 100%;
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.slide-row {
+  display: block;
+  position: absolute;
+  top: 0px;
+}
+
+ion-content {
+  --padding-bottom: 0 !important;
+}
+
+.info-wrapper {
+  padding: 15px 20px;
+}
+
+.info-title {
+  margin-top: 6%;
+  color: var(--ion-color-darkest);
+}
+
+ion-slides {
+  --bullet-background: var(--ion-color-darkest);
+  --bullet-background-active:  var(--ion-color-darkest);
+}
+
+.botton_btn {
+  width: 40%;
+  margin: auto;
+}
+/*# sourceMappingURL=landing.page.css.map */

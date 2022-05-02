@@ -1,0 +1,64 @@
+.favorite {
+  color: #eb9532;
+}
+
+.col-image {
+  padding: 1px;
+}
+
+.col-image img {
+  width: 100%;
+  height: 120px;
+}
+
+ion-segment {
+  margin-top: 8px;
+}
+
+ion-segment .segment-activated {
+  background-color: #fafafa !important;
+}
+
+.segment-button {
+  color: #9f9f9f !important;
+  border-color: white !important;
+}
+
+.segment-activated {
+  border-color: white !important;
+  color: #5498dc !important;
+}
+
+.segmentidivider {
+  border-top-width: 1px;
+  border-style: solid;
+  border-color: lightgray;
+}
+
+h2, p {
+  font-size: 14px;
+}
+
+.user-description {
+  padding: 5px;
+}
+
+.user-description h2, .user-description p {
+  margin: 0;
+  padding: 0;
+}
+
+.post-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.post-item {
+  width: 25%;
+  overflow: hidden;
+  padding: 2px;
+}
+/*# sourceMappingURL=explore.css.map */

@@ -1,0 +1,49 @@
+.profile {
+  position: relative;
+  overflow: hidden;
+  width: 128px;
+  height: 128px;
+  margin: 0 auto;
+  border-radius: 100%;
+}
+
+.profile img {
+  width: inherit;
+  height: inherit;
+}
+
+h4,
+p {
+  text-align: center;
+}
+
+h4 {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+.divider {
+  width: 12vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ion-icon {
+  color: #fff;
+  font-size: 1.4em;
+}
+
+ion-list {
+  margin-top: 1.125em !important;
+}
+
+ion-list ion-item {
+  background: rgba(0, 0, 0, 0.3) !important;
+  color: #fff !important;
+}
+
+ion-list ion-item.activated {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+/*# sourceMappingURL=verification.css.map */

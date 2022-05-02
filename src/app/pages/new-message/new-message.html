@@ -1,0 +1,58 @@
+
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start" (click)="back()">
+      <ion-icon slot="icon-only"  name="arrow-back-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font"> {{"new.message.title" | translate}} </ion-title>
+
+    
+  </ion-toolbar> 
+
+  <ion-toolbar color="light" class="ion-no-padding"*ngIf="friends && friends.length > 0">
+    <ion-searchbar [(ngModel)]="searchFriend"
+    [placeholder]="this.translate.get('search.people.input.placeholder')" mode="ios"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content   class="box-border-top" >
+  <!-- No friends yet to start a conversation with -->
+  <ion-grid class="ion-padding" *ngIf="friends && friends.length == 0">
+    <ion-row>
+      <ion-col class="ion-margin-vertical ion-padding-vertical">
+        <div class=" ion-text-center">
+          <!-- <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> -->
+          <p class="bold-font medium-font">{{"new.message.notfound.title" | translate}}</p>
+          <p class="regular-font medium-font">{{"new.message.notfound.description" | translate}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+
+
+  <ion-grid class="ion-padding"  *ngIf="friends && friends.length > 0"> 
+    <ion-row>
+      <ion-col class="">
+          <!-- <ion-searchbar *ngIf="accounts.length != excludedIds.length" [(ngModel)]="searchUser"
+            placeholder="Search for name or username" showCancelButton="true" cancelButtonText="Done"></ion-searchbar> -->
+
+          <ion-item *ngFor="let account of friends |  friendFilter:searchFriend" lines="none" class="small-input-border box-shadow small-margin-top" color="light"
+           tappable
+            (click)="message(account.userId)">
+            <ion-avatar slot="start">
+              <img [src]="account.photos? account.photos['128'] : 'assets/profile.png'">
+            </ion-avatar>
+            <div slot="start" class="user-description">
+      
+      
+              <h2 class="bold-font">{{account.name}}</h2>
+              <p>@{{account.username}}</p>
+            </div>
+
+          </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

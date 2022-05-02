@@ -1,0 +1,49 @@
+
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="end" (click)="close()">
+      <ion-icon slot="icon-only" name="close" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title> </ion-title>
+
+
+  </ion-toolbar>
+  
+</ion-header>
+
+
+<ion-content  class="box-border-top" style="height: auto;">
+  <!-- <ion-segment [(ngModel)]="icons" color="primary">
+    <ion-segment-button value="post">
+      <ion-icon name="apps"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="people">
+      <ion-icon name="person"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="hashtag">
+      <i class="fa fa-hashtag"></i>
+    </ion-segment-button>
+  </ion-segment> -->
+
+  <!-- <div *ngIf="!loading">
+    <app-stories [stories]="stories" [addStory]="false"></app-stories>
+  </div> -->
+
+  <!-- <div *ngIf="loading"
+    style="position:fixed; display: flex; width: 100%; height: 70%; align-items: center; justify-content: center; z-index: 9999;">
+    <ion-spinner name="circles"></ion-spinner>
+  </div> -->
+
+  
+  <ion-grid class="ion-no-padding"> 
+    <ion-row>
+      <ion-col class="ion-no-margin ion-no-padding">
+        <div class="content" (click)="close()" tappable>
+          <img style="width: 100%;" src={{image}}/>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+ 
+</ion-content>

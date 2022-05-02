@@ -1,0 +1,138 @@
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start" *ngIf="step == 'type'">
+      <ion-icon slot="icon-only" name="arrow-back-outline" class="medium-font" (click)="back()"> </ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="start" *ngIf="step == 'brand' || step == 'feet'">
+      <ion-icon slot="icon-only" name="arrow-back-outline" class="medium-font" (click)="this.step = 'type'"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font">  {{"auth.shoes.profile" | translate}} </ion-title>
+
+    <!-- <ion-buttons slot="end" fill="clear"  color='darkest'  class="medium-font bold-font">
+      
+        Sign in
+    </ion-buttons> -->
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="box-border-top">
+  <form [formGroup]="shoesForm" >
+    <div [ngSwitch]="step">
+      <ion-grid  *ngSwitchCase="'type'" class="ion-padding fadeInUp animated faster">
+        <ion-row>
+          <ion-col>
+            <h2 class="ion-text-start auth-title  bold-font">
+              
+              {{"auth.shoes.type.title" | translate}}
+          </h2>
+          <p class="ion-text-start ion-no-margin ion-margin-top  regular-font medium-font">{{"auth.shoes.type.description" | translate}} </p>
+
+        </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6" class="ion-margin-top">
+            <ion-item lines='none' class="input-item input-border ion-padding small-font box-shadow" (click)="this.step = 'brand'">
+  
+              <div class="full-width">
+                 
+                <img class="full-width small-image-border" src="assets/images/shoes/shoes.png" >
+                <p class="small-font ion-text-center small-input-border bold-font"> {{"auth.shoes.brand.title" | translate}}</p>
+
+              </div>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6" class="ion-margin-top">
+            <ion-item lines='none' class="input-item input-border ion-padding small-font box-shadow" (click)="this.step = 'feet'">
+  
+              <div class="full-width">  
+                
+                <img class="full-width small-image-border" src="assets/images/shoes/feet.png" >
+                <p class="small-font ion-text-center small-input-border bold-font"> {{"auth.shoes.feet.title" | translate}}</p>
+
+              </div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>  
+      <ion-grid  *ngSwitchCase="'feet'" class="ion-padding fadeInUp animated faster">
+        <ion-row>
+          <ion-col>
+            <h2 class="ion-text-start  auth-title  bold-font">
+              
+              {{"auth.shoes.feet.title" | translate}}
+          </h2>
+          <p class="ion-text-start ion-no-margin ion-margin-top  regular-font medium-font">{{"auth.shoes.feet.description" | translate}} </p>
+
+        </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" class="ion-margin-top">
+            <ion-item lines='none' class="input-item input-border  small-font box-shadow">
+              <ion-input class="input-border" type="number"  [placeholder]="'25cm'" formControlName="feetSize"></ion-input>
+            </ion-item>
+            <div class="error-container">
+              <ng-container *ngFor="let validation of validation_messages.feetSize">
+                <div class="error-message small-font" *ngIf="shoesForm.get('feetSize').hasError(validation.type) && (shoesForm.get('feetSize').dirty || shoesForm.get('feetSize').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+          <ion-col size="12" class="ion-margin-top">
+            <ion-button expand="full"  color="darkest"  class="bold-font box-shadow input-border" shape="round" type="submit"
+            [disabled]="!shoesForm.controls.feetSize.value || !shoesForm.controls.feetSize.valid"  (click)="saveFeet();" >{{"auth.next" | translate}} 
+            <ion-icon slot="end" name="arrow-forward-outline" > </ion-icon>
+          </ion-button>
+
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>    
+
+      <ion-grid  *ngSwitchCase="'brand'" class="ion-padding fadeInUp animated faster">
+        <ion-row>
+          <ion-col>
+            <h2 class="ion-text-start auth-title  bold-font">
+              
+              {{"auth.shoes.brand.title" | translate}}
+          </h2>
+          <p class="ion-text-start ion-no-margin ion-margin-top  regular-font medium-font">{{"auth.shoes.brand.description" | translate}} </p>
+
+        </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" class="ion-margin-top">
+            <ion-item lines='none' class="input-item input-border small-font box-shadow">
+                <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.shoes.brand.choosebrand" | translate}}</p></ion-label>
+                <ion-select okText="OK" cancelText="Close"  multiple="false" formControlName="brand" color="darkest">
+                  <ion-select-option *ngFor="let b of brands" [value]="b.name">{{b.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12" class="ion-margin-top">
+            <ion-item lines='none' class="input-item input-border small-font box-shadow">
+                <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.shoes.brand.choosesize" | translate}}</p></ion-label>
+                <ion-select okText="OK" cancelText="Close"  multiple="false" formControlName="shoeSize" color="darkest">
+                  <ion-select-option *ngFor="let s of shoeSizes" [value]="s">{{s}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12" class="ion-margin-top">
+            <ion-button expand="full"  color="darkest"  class="bold-font box-shadow input-border" shape="round" type="submit"
+            [disabled]="!shoesForm.controls.brand.value || !shoesForm.controls.shoeSize.value"  (click)="saveBrand();" >{{"auth.next" | translate}} 
+            <ion-icon slot="end" name="arrow-forward-outline" > </ion-icon>
+          </ion-button>
+
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>    
+    </div>
+  </form>
+
+</ion-content>
+
+ 

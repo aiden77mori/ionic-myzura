@@ -1,0 +1,76 @@
+.white {
+  color: white !important;
+}
+
+.slide {
+  width: 100%;
+}
+
+.btn-active {
+  background-color: unset;
+  color: white !important;
+  text-decoration: underline;
+  font-weight: bold;
+  border-radius: 3px;
+  font-size: 21px;
+  border-bottom: 1px solid gray;
+  --indicator-color-checked:none !important;
+}
+
+.btn-active ion-text {
+  border-bottom: 2px solid white;
+  padding-bottom: 5px;
+}
+
+.text {
+  font-size: 12px;
+}
+
+.light-bg {
+  background: #f4f5f8;
+}
+
+.my-btn {
+  border: unset !important;
+  border-radius: 5px !important;
+  color: #fafafa;
+  margin: 0 12px !important;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  --background-checked: transparent;
+  min-height: 25px;
+}
+
+.hor-scroll {
+  height: 30px;
+}
+
+.cut {
+  text-decoration: line-through;
+  display: inline-block;
+  margin-right: 5px;
+  margin: auto;
+}
+
+.foot-highlight {
+  color: orange;
+  display: inline-block;
+  margin: auto;
+  margin-left: 9px;
+}
+
+.footer {
+  background-color: #0c0c0c;
+  color: #d2d2d2;
+}
+
+.foot-btn {
+  width: 100%;
+}
+
+.segmenttoolbarSection {
+  width: 100%;
+  --max-height: 30px;
+}
+/*# sourceMappingURL=product-details.css.map */

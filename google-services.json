@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "600386809045",
+    "firebase_url": "https://myzura-1d9a0-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "myzura-1d9a0",
+    "storage_bucket": "myzura-1d9a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600386809045:android:b79de1d782b9b86b2d865c",
+        "android_client_info": {
+          "package_name": "com.myzura.myzura.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600386809045-6gin8ht7dqumu4l09jmaamog3cbq3qsn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFW1-7hF-h3v9_AY3nUpIxsKF-gWbBYrg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "600386809045-6gin8ht7dqumu4l09jmaamog3cbq3qsn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "600386809045-vff2n9pr4remqniviool3h4b3bieo8ua.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.myzura.myzura.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

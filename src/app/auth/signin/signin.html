@@ -1,0 +1,279 @@
+
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="arrow-back-outline" class="medium-font" (click)="back()"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font"> {{"auth.signin" | translate}} </ion-title>
+
+    <!-- <ion-buttons slot="end" fill="clear"  color='darkest'  class="medium-font bold-font">
+      
+        Sign in
+    </ion-buttons> -->
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="box-border-top">
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+  <ion-grid  class="ion-padding">
+      <ion-row>
+        <ion-col>
+          <h2 class="auth-title bold-font">
+          {{"auth.welcome" | translate}}<br/>
+          Myzura
+          <!-- David -->
+        </h2>
+      </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-margin-top">
+            <ion-item lines='none' class="input-item input-border  small-font box-shadow">
+              <ion-input class="input-border" type="email" [placeholder]="this.translate.get('auth.placeholder.email.username')" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
+            </ion-item>
+            <div class="error-container">
+              <ng-container *ngFor="let validation of validation_messages.email">
+                <div class="error-message small-font" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }}</span>
+                </div>
+              </ng-container>
+            </div>
+      
+
+        </ion-col>
+        <ion-col size="12"> 
+          <ion-item lines='none' class="input-item input-border  small-font box-shadow">
+            <app-show-hide-password>
+              <ion-input  class="input-border"  type="password" [placeholder]="this.translate.get('auth.placeholder.password')" formControlName="password" ></ion-input>
+            </app-show-hide-password>
+          </ion-item>
+          <div class="error-container">
+            <ng-container *ngFor="let validation of validation_messages.password">
+              <div class="error-message small-font" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>{{ validation.message }}</span>
+              </div>
+            </ng-container>
+          </div>
+    
+        </ion-col>
+        <ion-col size="12">
+          <a class="a-link small-font ion-float-right ion-margin-vertical" [routerLink]="['/auth/forgot-password']">
+            {{"auth.forgot.password" | translate}}
+          </a>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col>
+          <ion-button class="login-btn input-border bold-font box-shadow" shape="round" type="submit" color="darkest" expand="full"  [disabled]="!loginForm.valid">{{"auth.signin" | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-center ion-margin-top ">
+         <span class="forgot-btn small-font regular-font ion-margin-vertical">
+          {{"auth.not.registered" | translate}}
+          <a class="bold-font a-link" [routerLink]="['/auth/sign-up']">
+            {{"auth.signup" | translate}}
+          </a>
+         </span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+ 
+
+
+  <div class="social-auth-options">
+<!-- 
+    <ion-button class="social-auth-btn facebook-auth-btn input-border box-shadow" shape="round" expand="full" color="facebook" (click)="doFacebookLogin()">
+      <ion-icon slot="start" name="logo-facebook"></ion-icon>       Log In with Facebook
+    </ion-button>
+
+    <ion-button class="social-auth-btn facebook-auth-btn input-border box-shadow" shape="round" expand="full" color="google" (click)="doFacebookLogin()">
+      <ion-icon slot="start" name="logo-facebook"></ion-icon>       Log In with Google
+    </ion-button> -->
+    <!-- <ion-button class="social-auth-btn google-auth-btn input-border" shape="round" expand="full" color="apple" (click)="doAppleLogin()">
+      <ion-icon slot="start" name="logo-apple"></ion-icon>    Sign Up with Apple
+    </ion-button> -->
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="footer box-border-top">
+   <ion-grid class="ion-padding">
+     <ion-row>
+       <ion-col>
+        <div class="legal-stuff xsmall-font">
+          {{"auth.privacy1" | translate}} 
+          <a class="legal-action" (click)="showPrivacyModal()">{{"auth.privacy2" | translate}}</a> 
+          {{"auth.privacy.and" | translate}} 
+          <a class="legal-action" (click)="showTermsModal()">
+            {{"auth.privacy3" | translate}}</a>.
+          & <a class="legal-action" (click)="showLegalNotice()">
+            {{"auth.privacy4" | translate}}</a>.
+        </div>
+       </ion-col>
+     </ion-row>
+   </ion-grid>
+  </div>
+</ion-footer>
+
+
+<!-- 
+<ion-content class="no-scroll login">
+
+
+
+  <div class="form" *ngIf="mode == 'login'">`
+    <div class="top">
+      <ion-img [src]="image | cdvphotolibrary"></ion-img>
+    </div>
+    <form [formGroup]="emailPasswordForm">
+      <ion-list>
+        <ion-item lines="none">
+          <ion-label>Email</ion-label>
+          <ion-input type="email" formControlName="email" placeholder="set your Email"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>Password</ion-label>
+          <ion-input type="password" formControlName="password" placeholder="set your Password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-button icon-left color="light" tappable (click)="login()" [disabled]="!emailPasswordForm.valid" outline
+        block>
+        <ion-icon name="key"></ion-icon>Log in to MyZura
+      </ion-button>
+    </form>
+    <p tappable style="color: #f4f4f4;" (click)="clearForms(); mode = 'forgotPassword'">Forgot your Password?</p>
+
+    <p style="text-align: center;font-size:15px;color: #f4f4f4">OR</p>
+    <p tappable style="color: #f4f4f4;" (click)="clearForms(); mode = 'register'">Don't have an Account?
+      <b>Sign Up</b>
+    </p>
+  </div>
+
+
+
+  <div class="login"></div>
+  <div class="bottom">
+    <div class="buttons" *ngIf="mode == 'main'">
+      <div>
+        <ion-button class="login" tappable (click)="clearForms(); mode = 'login'">Login </ion-button>
+        <p style="text-align: center;font-size:15px;color:rgb(0, 119, 255)">OR</p>
+        <ion-button icon-left class="dark" tappable (click)="clearForms(); mode = 'register'">Signup with your Email
+        </ion-button>
+        <ion-button icon-left class="facebook" tappable (click)="loginProvider.facebookLogin()">
+          <ion-icon name="logo-facebook"></ion-icon>Facebook
+        </ion-button>
+        <ion-button icon-left class="google" tappable (click)="loginProvider.googleLogin()">
+          <ion-icon name="logo-google"></ion-icon>Google
+        </ion-button>
+        <ion-button icon-left class="secondary" tappable (click)="loginProvider.guestLogin()">Guest of honour
+        </ion-button>
+        <ion-button clear tappable (click)="clearForms(); mode = 'forgotPassword'">You have forgot your password
+        </ion-button>
+
+        <p style="text-align: center;font-size:0px;color:rgb(0, 119, 255)">Made by socode</p>
+      </div>
+    </div>
+
+
+    <div class="register-form" *ngIf="mode == 'register'">
+      <div class="close-register">
+        <ion-button fill="clear" color="medium" icon-only tappable
+          (click)="mode = 'login'; step = 1; image = defaultImg">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </div>
+
+      <div class="form" *ngIf="step == 1">
+
+        <div (click)="setPhoto()" class="register-image">
+          <img src="{{ image | cdvphotolibrary}}" alt="">
+          <div class="icon">
+            <ion-icon name="camera"></ion-icon>
+          </div>
+        </div>
+
+        <ion-list>
+          <ion-item lines="none">
+            <ion-label>Name</ion-label>
+            <ion-input [(ngModel)]="name" type="text" placeholder="set your Name"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label>User Name</ion-label>
+            <ion-input [(ngModel)]="username" type="text" placeholder="set your User Name"></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-button [disabled]="username ==='' || name ===''" icon-right color="light" tappable
+          (click)="step = step + 1" outline>
+          Next
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="pa8 form" *ngIf="step == 2">
+        <form [formGroup]="emailPasswordForm">
+          <ion-list>
+            <ion-item lines="none">
+              <ion-label>Email</ion-label>
+              <ion-input type="email" formControlName="email" placeholder="Your Email Address"></ion-input>
+            </ion-item>
+            <ion-item lines="none" s>
+              <ion-label>Password</ion-label>
+              <ion-input type="password" formControlName="password" placeholder="Create Password"></ion-input>
+            </ion-item>
+          </ion-list>
+
+          <p style="text-align: center;font-size:15px;color: #f4f4f4">OR</p>
+          <ion-list class="phone">
+            <ion-item lines="none">
+              <ion-select [(ngModel)]="countryCode" formControlName="countryCode" name="countryCode" slot="start">
+                <ion-select-option *ngFor="let country of countries" [value]="country.dial_code">{{country.code}}
+                  {{country.dial_code}}</ion-select-option>
+              </ion-select>
+              <ion-input [(ngModel)]="phone" type="text" formControlName="phone" placeholder="Phone"></ion-input>
+            </ion-item>
+          </ion-list>
+          <ion-button icon-left color="light" tappable (click)="step = step - 1" outline>
+            <ion-icon name="arrow-back"></ion-icon>
+            Back
+          </ion-button>
+
+          <ion-button id="sign-in-button" icon-left color="light" tappable (click)="register()" outline>
+            <ion-icon name="log-in"></ion-icon>Signup!
+          </ion-button>
+        </form>
+      </div>
+
+    </div>
+
+
+    <div class="form" *ngIf="mode == 'forgotPassword'">
+      <ion-button color="medium" icon-only tappable (click)="clearForms(); mode = 'login'">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+      <form [formGroup]="emailForm">
+        <ion-list>
+          <ion-item lines="none">
+            <ion-label>Email</ion-label>
+            <ion-input type="email" formControlName="email" placeholder="Your Email Address"></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-button icon-left color="light" tappable (click)="forgotPassword()" [disabled]="!emailForm.valid" outline>
+          <ion-icon name="lock-open-outline"></ion-icon>Reset Password
+        </ion-button>
+      </form>
+      <p tappable (click)="clearForms(); mode = 'login'" style="color:#f4f4f4">Password found?
+        <b>Log in</b>
+      </p>
+    </div>
+  </div>
+
+
+
+</ion-content> -->

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACF,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;CAClB;;AAED,AAAA,UAAU,CAAC;EACP,IAAI,EAAE,YAAY;EAClB,OAAO,EAAE,KAAK;EACd,QAAQ,EAAE,MAAM;EAChB,aAAa,EAAE,IAAI;CAEtB;;AAED,AAAA,UAAU,AAAA,MAAM,CAAC;EACb,IAAI,EAAE,CAAC;CACV",
+    "sources": [
+        "post-grid.component.scss"
+    ],
+    "names": [],
+    "file": "post-grid.component.css"
+}

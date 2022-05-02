@@ -1,0 +1,12 @@
+.active {
+  background: #000;
+  --background: #000;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.active div .tag {
+  background: #fff;
+  color: #000;
+}
+/*# sourceMappingURL=body.component.css.map */

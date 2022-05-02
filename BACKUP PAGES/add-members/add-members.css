@@ -1,0 +1,26 @@
+.members {
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.members img {
+  border-radius: 100%;
+  width: 3.25em;
+  height: 3.25em;
+  margin: 0.5em;
+}
+
+.members img.activated,
+.members img:active {
+  opacity: 0.5;
+}
+
+.divider {
+  width: 12vw;
+  border-bottom: solid 0.2em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+}
+/*# sourceMappingURL=add-members.css.map */

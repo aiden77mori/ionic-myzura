@@ -1,0 +1,50 @@
+.no-padding {
+  padding: 0px !important;
+}
+
+ion-segment {
+  background: #fff !important;
+  margin-top: -15px;
+}
+
+.modal_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px;
+}
+
+.modal_title {
+  font-weight: 600;
+  color: var(--ion-color-primary);
+  font-size: large;
+}
+
+.div_searchbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.div_searchbar .search_bar {
+  padding: 0px;
+  width: 100%;
+}
+
+.main_content_div {
+  width: 100%;
+}
+
+.main_content_div .centent_div ion-label {
+  display: block;
+}
+/*# sourceMappingURL=wishlist.css.map */

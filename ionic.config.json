@@ -1,0 +1,10 @@
+{
+  "name": "Myzura",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

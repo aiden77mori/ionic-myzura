@@ -1,0 +1,120 @@
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start" (click)="back()">
+      <ion-icon slot="icon-only"  name="arrow-back-outline"  class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font"> {{"manage.photo.page.title"  | translate}}  </ion-title>
+
+
+    <ion-buttons slot="end" >
+      <ion-button color="primary" class="medium-font" (click)="goToPhoto()" [disabled] ="!selectedPhoto">
+        {{"manage.photo.page.next"  | translate}} 
+      </ion-button>
+    </ion-buttons>
+
+    <!-- <ion-buttons slot="end" *ngIf="myvid">
+      <ion-button color="primary" class="medium-font" (click)="goTovideo()">
+        Next
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+  <!-- <ion-segment color="black"  [(ngModel)]="segment" mode="md" (ionChange)="changeSegment($event)">
+    <ion-segment-button value="gallery"  (click)="changeSegment('gallery')">
+      {{"manage.photo.page.gallery"  | translate}} 
+    </ion-segment-button>
+    <ion-segment-button value="photo" (click)="changeSegment('photo')">
+      {{"manage.photo.page.camera"  | translate}} 
+    </ion-segment-button>
+  <ion-segment-button value="video" class="segment-text" (click)="changeSegment('video')">
+      VIDEO
+    </ion-segment-button>
+
+  </ion-segment> -->
+
+</ion-header>
+
+
+<ion-content  class="box-border-top normal-view" id="page-manage-photo">
+  <div *ngIf="images">
+  <div [ngSwitch]="segment">
+
+    <div *ngSwitchCase="'photo'">
+
+      <!-- <div [style.height.px]="getHeight()" [style.top.px]="getPosition()" class="background-manage" ></div> -->
+
+      <ion-fab vertical="top" horizontal="start" slot="fixed">
+        <ion-fab-button (click)="refresh()" ion-fab color="black" >
+          <ion-icon name="camera-reverse-outline" color="light"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+
+      <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="flash()" ion-fab color="black" >
+          <ion-icon name="flash-outline" *ngIf="flashMode == 'off'" color="light"></ion-icon>
+          <ion-icon name="lash" *ngIf="flashMode == 'on'" color="light"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button (click)="takePicture()" ion-fab color="black" class="take-photo" >
+          <ion-icon name=""></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+    </div>
+
+    <!-- <div *ngSwitchCase="'video'">
+
+     <ion-item *ngIf="myvid">
+  <video controls style="width:95%; margin-left:4%;"> 
+
+ <source src="{{myvid}}"  type="video/mp4" />
+
+</video>
+
+   </ion-item>
+      <ion-fab center bottom large>
+        <ion-fab-button (click)="videotest()" ion-fab color="gray" class="take-photo" >
+          <ion-icon name="" ></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+    </div> -->
+
+    <div *ngSwitchCase="'gallery'" class="fadeInUp animated faster">
+
+      <div class="image-shell">
+        <img [src]="selectedPhoto " class="selected-photo">
+      </div>
+      <ion-row>
+
+        <ion-col size="12" class="ion-text-center ion-padding">
+
+          <ion-button expand="full"  color="darkest" (click)="openGalleryPicker()"  class="bold-font box-shadow input-border" shape="round" type="submit"
+             > 
+            <ion-icon name="images" slot="end"></ion-icon>
+            {{"manage.photo.page.add.more" | translate}}
+           </ion-button>
+           
+        </ion-col>
+      </ion-row>
+      <!-- <div class="image-list">
+        <div *ngFor="let photo of images |  slice: 0:20" class="image image-shell">          
+          <img [src]="photo" (click)="changePhoto(photo)">
+        </div>
+      </div>      -->
+      
+ 
+    </div>
+  </div>
+</div>
+
+
+</ion-content>
+
+
+
+<!-- <ion-footer *ngIf="selectedPhoto" style="bottom: 0px">
+
+</ion-footer> -->

@@ -1,0 +1,47 @@
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start" (click)="back()">
+      <ion-icon slot="icon-only"  name="arrow-back-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font"> {{"search.people.title" | translate}}
+    </ion-title>
+
+    
+  </ion-toolbar> 
+  <ion-toolbar color="light" class="ion-no-padding" *ngIf="accounts">
+    <ion-searchbar  *ngIf="accounts.length != excludedIds.length" [(ngModel)]="searchUser"
+    [placeholder]="this.translate.get('search.people.input.placeholder')" mode="ios"></ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content   class="box-border-top" >
+  <!-- No other users to send friend request right now. -->
+  <ion-grid class="ion-padding" *ngIf="accounts && (accounts.length == 0 || (accounts.length == excludedIds.length))">
+    <ion-row>
+      <ion-col class="ion-margin-vertical ion-padding-vertical">
+        <div class=" ion-text-center">
+          <!-- <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> -->
+          <p class="bold-font medium-font">{{"new.message.notfound.title" | translate}}</p>
+          <p class="regular-font medium-font">{{"new.message.notfound.description" | translate}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+
+
+  <ion-grid class="ion-padding"  *ngIf="accounts && accounts.length > 0 && accounts.length > excludedIds.length"> 
+    <app-user-list [accounts]="accounts | searchFilter: [excludedIds, searchUser]"
+    [following]="following"
+    [title]="'Search Friends'"
+    >
+    </app-user-list>
+
+  </ion-grid>
+ 
+
+  <!-- Show other users excluding yourself, and friends with the help of searchFilter pipe. && accounts.length == excludedIds.length-->
+
+</ion-content>

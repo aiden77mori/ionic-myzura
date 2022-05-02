@@ -1,0 +1,156 @@
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start">
+      <ion-icon *ngIf='step == "buildOutfit"' slot="icon-only" name="arrow-back-outline" class="medium-font" (click)="back()"> </ion-icon>
+      <ion-icon *ngIf='step != "buildOutfit"'slot="icon-only" name="arrow-back-outline" class="medium-font" (click)="step = 'buildOutfit'"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font">  {{"outfits.add.outfit" | translate}} </ion-title>
+
+    <ion-buttons *ngIf='step == "buildOutfit"' slot="end" fill="clear"  color='darkest'  class="medium-font bold-font" >
+      <ion-button color="primary" class="medium-font" (click)="setName()">
+        {{"outfits.next" | translate}}
+      </ion-button>
+      
+  </ion-buttons>
+  <!-- <ion-buttons *ngIf='step == "setName"' slot="end" fill="clear"  color='darkest'  class="medium-font bold-font" (click)="save()">
+      
+    <ion-button color="primary" class="medium-font" (click)="save()">
+      Save
+    </ion-button>
+</ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="box-border-top">
+  <form [formGroup]="outfitForm" >
+    <div [ngSwitch]="step">
+      <ion-grid  *ngSwitchCase="'buildOutfit'" class="ion-padding fadeInUp animated faster">
+        <ion-row>
+          <ion-col>
+            <h2 class="auth-title ion-float-left bold-font">
+             {{"outfits.build" | translate}}
+          </h2>
+        </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" class="ion-margin-top content-outfit" [style.height]='platform.width() + "px"' *ngIf="draggables" id="outfit">
+            <div class="fadeInRight animated top-right medium-font" *ngIf="showOptions">
+              <ion-icon name="trash-outline" (click)="removeItem()"></ion-icon>
+              <ion-icon name="copy-outline" (click)="dupItem()"></ion-icon>
+              <ion-icon name="add-circle-outline" (click)="zoomIn()"></ion-icon>
+              <ion-icon name="remove-circle-outline" (click)="zoomOut()"></ion-icon>
+            </div>
+            <div  *ngFor="let i of this.getKeys(draggables);">
+
+              <!-- <div cdkDrag
+              cdkDragBoundary=".content-outfit"
+              (cdkDragEnded)="dragEnd($event)"
+
+              > -->
+              <div cdkDrag
+              class="drag-box"
+              cdkDropListSortingDisabled="true"
+
+              (cdkDragEnded)="dragEnd($event, i)"
+              [cdkDragFreeDragPosition]="{x:draggables[i].x,y:draggables[i].y}"
+  
+              [style.width]="draggables[i].width+'px'" 
+              >
+              <div class="animacionDiv fadeInUp animated">
+                <a  >
+                  <img (click)="showOptionsPanel(i)" class="small-input-border"
+                   [style.width]="draggables[i].width+'px'"  
+                   [src]="draggables[i].photo"/>
+                </a>
+                </div>
+             
+              </div>
+            </div>
+          </ion-col>
+ 
+        </ion-row>
+ 
+
+      </ion-grid>  
+      <ion-grid  *ngSwitchCase="'setName'" class="ion-padding fadeInUp animated faster">
+        <ion-row>
+          <ion-col>
+            <h2 class="auth-title ion-float-left bold-font">
+
+              {{"outfits.choosename" | translate}}
+
+          </h2>
+        </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" class="ion-margin-top">
+            <ion-item lines='none' class="input-item input-border  small-font box-shadow">
+              <ion-input class="input-border" type="text" [placeholder]="this.translate.get('auth.placeholder.name')" formControlName="name" clearInput autocapitalize="off" inputmode="name"></ion-input>
+            </ion-item>
+            <div class="error-container">
+              <ng-container *ngFor="let validation of validation_messages.name">
+                <div class="error-message small-font" *ngIf="outfitForm.get('name').hasError(validation.type) && (outfitForm.get('name').dirty || outfitForm.get('name').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+          <ion-col size="12" class="ion-margin-top">
+            <ion-button expand="full"  color="darkest"  class="bold-font box-shadow input-border" shape="round" type="submit"
+            [disabled]="!outfitForm.controls.name.value"  (click)="save();" >{{"auth.save" | translate}} 
+            <!-- <ion-icon slot="end" name="arrow-forward-outline" > </ion-icon> -->
+          </ion-button>
+
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>    
+    </div>
+  </form>
+
+
+
+</ion-content>
+
+<ion-footer [hidden]="step == 'setName'" >
+  <div class="footer box-border-top ion-padding-vertical">
+    <ion-grid *ngIf="categoryList">
+      <ion-row class="items-row" >
+        <ion-col size="12" class="ion-no-padding">
+          <p class="ion-float-left ion-no-margin  bold-font medium-font">{{"filters.categories.text" | translate}} </p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-padding ion-no-margin ion-padding-bottom inifinte-scroll " >
+          <ion-button size="small"  [color]="selectedCat==cate_item? 'black' : 'light'" shape="round" class="small-input-border bold-font box-shadow" *ngFor="let cate_item of this.categoryList; let i = index" expand="full"  (click)="this.sel_cat(cate_item)">
+             {{ getCategoryTranslation(cate_item) }}</ion-button>           
+      </ion-row>
+
+       <ion-row class="ion-no-padding ion-no-margin ion-padding-bottom inifinte-scroll " >
+          <ion-col size="3" *ngFor="let product of products" (click)="addItem(product)">  
+            <ion-img style="pointer-events:none" class="fadeInUp animated box-shadow small-input-border"  [src]="product.photos['full']"></ion-img>
+          </ion-col>
+       </ion-row>
+
+
+    </ion-grid>
+
+    <ion-grid *ngIf="!categoryList">
+      <ion-row>
+        <ion-col class="ion-margin-vertical ion-padding-vertical">
+          <!-- <div class=" ion-text-center">
+             <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> 
+            <p class="bold-font medium-font">{{"marketplace.noproducts.title" | translate}}</p>
+            <p class="regular-font medium-font">{{"marketplace.noproducts.description" | translate}}</p>
+          </div> -->
+          <div class=" ion-text-center ion-padding">
+            <p>Loading...</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+  </div>
+
+</ion-footer>

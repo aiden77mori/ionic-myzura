@@ -1,0 +1,41 @@
+.img-no-round {
+  border-radius: 0px !important;
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.description {
+  color: #2d2d2d;
+  font-weight: bold;
+}
+
+.description-logo-icon {
+  font-size: 18px !important;
+}
+
+.description-logo {
+  color: #2d2d2d;
+  font-weight: bold;
+  font-size: 18px !important;
+  margin-left: 20px;
+}
+
+.border-right {
+  border-right: solid 1px #f7f7f7 !important;
+}
+
+ion-row {
+  border-bottom: solid 2px #f7f7f7 !important;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.border-top {
+  border-top: solid 3px #f7f7f7 !important;
+}
+
+.title-share {
+  font-size: 1.8rem !important;
+  margin-bottom: 0px !important;
+}
+/*# sourceMappingURL=publish.css.map */

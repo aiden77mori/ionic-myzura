@@ -1,0 +1,117 @@
+
+
+
+.comment_list{
+
+  padding: 10px 15px;
+}
+
+.comment_item{
+  display: flex;
+  border-bottom: 1px solid lightgray;
+  padding: 10px 0px;
+
+}
+
+
+.blog_userimg{
+  // margin: auto;
+  margin-right: 5px;
+}
+
+
+
+
+
+
+.col_img{
+  width: 50px;
+  display: flex;
+}
+
+.user-avatar{
+  width: 50px;
+  height: 50px;
+}
+
+.col_details{
+  width: calc(100% - 70px);
+  padding: 0px 10px;
+}
+
+
+.user_name{
+  margin: 0px;
+  margin-top: 6px;
+  font-weight: 700;
+
+}
+
+.comment_info{
+  margin: 5px 0px;
+  font-weight: 600;
+  color: darkgray;
+
+}
+
+
+
+.comment_desc{
+  margin: 5px 0px;
+}
+
+.col_btn{
+  width: 20px;
+}
+
+.like_icon_btn{
+  margin-top: 10px;
+}
+
+
+.bottom_bar{
+  display: flex;
+  // background: antiquewhite;
+  min-height: 56px
+}
+
+.message_input{
+  border: 1px solid darkgrey;
+  border-radius: 14px;
+  background: white;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  padding-right: 13px;
+  padding-left: 9px;
+}
+
+.buttons_group{
+  margin-left: 4px;
+  align-items: flex-end;
+  margin-bottom: 5px;
+}
+.attach_btn{
+  font-size: 30px;
+  position: absolute;
+  z-index: 10;
+  bottom: 10px;
+  right: 50px;
+}
+
+.bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.media-button, .send-button {
+  text-align: center;
+  margin-top: 4px;
+  margin-left: 5px;
+  color: #000;
+}
+
+.input-text {
+  width: 100vw;
+}

@@ -1,0 +1,10 @@
+body {
+  background: #fff;
+}
+
+.badge-messages {
+  position: fixed;
+  top: 2px;
+  right: 5px;
+}
+/*# sourceMappingURL=timeline.css.map */

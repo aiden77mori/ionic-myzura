@@ -1,0 +1,49 @@
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+
+    <ion-title class="medium-font bold-font">{{"outfits.title" | translate}}</ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content  class="box-border-top">
+  <ion-refresher slot="fixed" (ionRefresh)="loadData($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-grid  class="ion-padding">
+    <ion-row>
+      <ion-col>
+        <h2 class="ion-float-left bold-font">
+          {{"outfits.subtitle" | translate}}
+
+      </h2>
+    </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-card class="card ion-no-margin box-shadow   add-outfit" (click)="openAddOutfit()">
+          <ion-card-content class="ion-no-padding ion-padding-vertical ion-margin-vertical ion-text-center">
+            <p class="bold-font"> {{"outfits.add" | translate}}</p>
+            <ion-icon  name="add"  class="medium-font xxlarge-font " > </ion-icon>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" *ngFor="let outfit of outfitsData">
+        <ion-card class="card ion-no-margin box-shadow   outfit" (click)="openUpdateOutfit(outfit.key)" [style.background]='outfit.image ? this.getSaniImage(outfit.image) : "#fff"'>
+          <ion-card-content class="ion-no-padding ion-padding-vertical ion-margin-vertical ion-text-center" >
+            <p class="bold-font">{{outfit.name}}</p>
+            <ion-icon  name="shirt"  class="medium-font xxlarge-font " > </ion-icon>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>   
+</ion-content>

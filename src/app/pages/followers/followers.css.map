@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,WAAW,CAAC;EACV,OAAO,EAAE,IAAI;EACb,IAAI,EAAE,CAAC;EACP,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,MAAM;EACvB,cAAc,EAAE,MAAM;EACtB,OAAO,EAAE,GAAG;CACb;;AAED,AAAA,EAAE,EAAE,CAAC,CAAC;EACJ,SAAS,EAAE,IAAI;CAEhB",
+    "sources": [
+        "followers.scss"
+    ],
+    "names": [],
+    "file": "followers.css"
+}

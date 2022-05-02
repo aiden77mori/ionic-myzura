@@ -1,0 +1,115 @@
+.members {
+  text-align: center;
+}
+
+.members img {
+  border-radius: 100%;
+  width: 3.25em;
+  height: 3.25em;
+  margin: 0.5em;
+}
+
+.members img.activated,
+.members img:active {
+  opacity: 0.5;
+}
+
+ion-list {
+  margin-top: 1.125em !important;
+}
+
+ion-list ion-item {
+  background: rgba(0, 0, 0, 0.3) !important;
+  color: #fff !important;
+}
+
+ion-list ion-item.activated {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.profile {
+  position: relative;
+  overflow: hidden;
+  height: 24vh;
+  margin-bottom: -0.625em;
+}
+
+.profile img {
+  width: 28vw;
+  height: 28vw;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.profile img.activated {
+  opacity: 0.5;
+}
+
+h4,
+p {
+  text-align: center;
+}
+
+h4 {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+p.username {
+  margin-bottom: -6px !important;
+  margin-top: 6px !important;
+  font-size: 115%;
+}
+
+p.description {
+  width: 75vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p {
+  color: gray;
+}
+
+h4 span.activated,
+p.activated {
+  opacity: 0.5;
+}
+
+.divider {
+  width: 12vw;
+  border-bottom: solid 0.2em #d6d6d6;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+}
+
+ion-icon {
+  color: #fff;
+  font-size: 1.4em;
+}
+
+button {
+  border-radius: 0.75em !important;
+}
+
+button.danger.activated,
+button.danger:active,
+button.success.activated,
+button.success:active {
+  opacity: 0.5 !important;
+}
+
+p.info {
+  font-size: 110%;
+  color: #fff;
+}
+/*# sourceMappingURL=group-info.css.map */

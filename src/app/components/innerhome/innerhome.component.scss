@@ -1,0 +1,69 @@
+.card {
+    box-shadow: unset;
+    border-radius: 9px;
+    background-color: white !important;
+}
+.price {
+    font-size: 18px;
+    float: left;
+    margin: 3px;
+}
+.inline {
+    font-size: 15px;
+    margin-inline-end: 5px;
+    text-decoration: line-through;
+}
+.subtitle {
+    margin: 0rem !important;
+    color: #000;
+}
+.badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(12, 12, 12, 0.75);
+    border-radius: 0;
+    z-index: 9999;
+}
+
+.wishlist {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0;
+    z-index: 9999;
+    outline: none;
+    background: transparent;
+    ion-icon{
+        font-size:20px
+    }
+}
+
+.old_price_title{
+    opacity: 0.6;
+    font-style: italic;
+    text-decoration: line-through;
+    font-weight: bolder;
+    margin: auto;
+}
+.price_title{
+    width: 100%;
+    margin: auto;
+}
+
+
+
+
+.product-image-overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent 5%, #33474c 100%);
+}
+
+ion-card-title  {
+    padding: 0.5rem;
+    // color: #fff;
+    // bottom: 0;
+    // position: absolute;
+}

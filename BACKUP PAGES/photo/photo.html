@@ -1,0 +1,102 @@
+<ion-content no-bounce>
+  <div *ngIf="mode == 'camera'">
+    <ion-fab right top small>
+      <ion-fab-button ion-fab color="danger" (click)="back()">
+        <ion-icon name="md-arrow-forward"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab left top small>
+      <ion-fab-button ion-fab color="danger">
+        <ion-icon name="ios-settings"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab right bottom small>
+      <ion-fab-button (click)="refresh()" ion-fab clear color="light">
+        <ion-icon name="fa-refresh"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab center bottom large>
+      <ion-fab-button (click)="takePicture()" ion-fab clear color="light">
+        <ion-icon name=""></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+
+
+  <div *ngIf="mode == 'Video'">
+    <ion-fab right bottom small>
+      <ion-fab-button ion-fab color="light" (click)="videotest()">
+        <ion-icon name="ios-videocam"></ion-icon>
+      </ion-fab-button>
+      <ion-fab left top small>
+        <ion-fab-button ion-fab color="danger" (click)="back()">
+          <ion-icon name=""></ion-icon>
+          CANCEL
+        </ion-fab-button>
+      </ion-fab>
+    </ion-fab>
+  </div>
+
+
+  <div *ngIf="mode == 'photo'">
+    <ion-fab right bottom small>
+      <ion-fab-button ion-fab color="light" (click)="save()">
+        <ion-icon name="md-arrow-forward"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab left bottom small>
+      <ion-fab-button ion-fab color="danger" (click)="back()">
+        <ion-icon name="md-arrow-down"></ion-icon>
+        Save
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab left top small>
+      <ion-fab-button ion-fab color="danger" (click)="back()">
+        <ion-icon name=""></ion-icon>
+        CANCEL
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab right top small>
+      <ion-fab-button ion-fab color="danger" (click)="canvas.initModeBrush(); modeBrush()">
+        <ion-icon name="brush"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+
+  <div *ngIf="mode == 'brush'">
+    <ion-fab left top small>
+      <ion-fab-button ion-fab color="danger" (click)="back()">
+        <ion-icon name=""></ion-icon>
+        Undo
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab right="" top small>
+      <ion-fab-button ion-fab color="danger" (click)="done()" style="font-weight: bold">
+        <ion-icon name=""></ion-icon>
+        Done
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+
+
+  <ion-slides class="slide-class" loop="false" slidesPerView="10" *ngIf="mode == 'brush'">
+    <ion-slide *ngFor="let colour of availableColours">
+      <button clear ion-button (click)="canvas.changeColour(colour)">
+        <ion-icon [style.color]="colour" name="fa-circle" class="image-icons"></ion-icon>
+      </button>
+    </ion-slide>
+
+  </ion-slides>
+  <div>{{srcPhoto}}</div>
+  <canvas-draw *ngIf="srcPhoto" src="data:image/jpeg;base64,{{srcPhoto}}" #myCanvasDraw>
+  </canvas-draw>
+
+
+</ion-content>

@@ -1,0 +1,147 @@
+ion-header {
+  background: #2a4449;
+  --background: #2a4449;
+}
+
+ion-toolbar {
+  --background: #2a4449;
+  height : 80px;
+}
+
+ion-title{
+  color: white;
+}
+
+.md,
+.ios {
+  ion-content::part(background) {
+    // --padding-start: 20px;
+    border-top-left-radius: 50px !important;
+    border-top-right-radius: 50px !important;
+    overflow-y: hidden !important;
+
+    --border-top-left-radius: 50px !important;
+    --border-top-right-radius: 50px !important;
+    --overflow-y: hidden !important;
+  }
+
+  ion-content::part(scroll) {
+    margin: 40px 20px 0px !important;
+  }
+
+  ion-title{
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .setting-size{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-weight: bold;
+
+    --display: flex;
+    --justify-content: space-between;
+    --margin-top: 10px;
+    --font-weight: bold;
+
+    .profile-detail{
+      .detail-description{
+        font-size: 20px;
+      }
+    }
+    
+  }
+ }
+
+ion-button{
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 50px;
+
+  --display: flex;
+  --padding-left: 20px;
+  --padding-right: 20px;
+  --height: 50px;
+}
+  
+.buttons{
+    height: 100%;
+    bottom: 60px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    border-radius: 50% !important;
+
+    --height: 100%;
+    --bottom: 60px;
+    --position: absolute;
+    --display: flex;
+    --flex-direction: column;
+    --justify-content: flex-end;
+    --width: 100%;
+    --border-radius: 50% !important;
+
+    .brand-button{
+      --background: #2A4449 !important;
+    }
+
+    .breakdown-button{
+      --border-color: #2A4449;
+      --background: #fff !important;
+      color : #2A4449 !important;
+    }
+}
+
+.balance-detail{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-size: 40px;
+    transform: translateY(-49%) !important;
+    margin-top: 50%;
+
+    --display: flex;
+    --align-content: center;
+    --justify-content: center;
+    --height: 100%;
+    --width: 100%;
+    --font-size: 40px;
+    --transform: translateY(-49%) !important;
+    --margin-top: 50%;
+}
+
+.bottom_bar{
+  margin-bottom: 15px;
+  width: 50%;
+  border: 3px solid #000000;
+  border-radius: 10px;
+
+  --margin-bottom: 15px;
+  --width: 50%;
+  --border: 3px solid #000000;
+  --border-radius: 10px;
+}
+
+ion-footer{
+  display: flex;
+  justify-content: center;
+
+  --display: flex;
+  --justify-content: center;
+}
+
+body {
+  background: #fff; //ruins camera
+}
+
+p > ion-icon {
+  color: #000000;
+  margin-bottom: -1px;
+}
+

@@ -1,0 +1,11 @@
+.legal-stuff {
+  text-align: center;
+  color: var(--ion-color-medium);
+}
+
+.legal-stuff .legal-action {
+  font-weight: 500;
+  color: var(--ion-color-darkest);
+  cursor: pointer;
+}
+/*# sourceMappingURL=signin.css.map */

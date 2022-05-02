@@ -1,0 +1,30 @@
+:root h1 > app-text-shell {
+  --font-size: 32px;
+  --text-shell-line-height: calc(var(--font-size) * 1.2);
+  --text-shell-line-color: #CCC;
+}
+
+:root h2 > app-text-shell {
+  --font-size: 28px;
+  --text-shell-line-height: calc(var(--font-size) * 1.2);
+  --text-shell-line-color: #DDD;
+}
+
+:root h3 > app-text-shell {
+  --font-size: 24px;
+  --text-shell-line-height: calc(var(--font-size) * 1.2);
+  --text-shell-line-color: #DDD;
+}
+
+:root h4 > app-text-shell {
+  --font-size: 20px;
+  --text-shell-line-height: calc(var(--font-size) * 1.2);
+  --text-shell-line-color: #DDD;
+}
+
+:root h5 > app-text-shell {
+  --font-size: 18px;
+  --text-shell-line-height: calc(var(--font-size) * 1.2);
+  --text-shell-line-color: #DDD;
+}
+/*# sourceMappingURL=shell-defaults.css.map */

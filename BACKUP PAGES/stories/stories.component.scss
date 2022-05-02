@@ -1,0 +1,23 @@
+.stories-container {
+    padding: 5px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+.add-story {
+    text-align: center;
+    margin-right: 5px;
+}
+.add-story > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18vw;
+    max-width: 90px;
+    height: 18vw;
+    max-height: 90px;
+    border: 2px dotted #d6d6d6;
+    border-radius: 50%;
+    // color : $dark;
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACI,KADC,CACD,WAAW,CAAC;EACR,YAAY,CAAA,sBAAC;CAChB",
+    "sources": [
+        "loader.page.scss"
+    ],
+    "names": [],
+    "file": "loader.page.css"
+}

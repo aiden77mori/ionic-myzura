@@ -1,0 +1,370 @@
+
+<div [ngSwitch]="tabName">
+  
+  <div  *ngSwitchCase="'bodyType'">
+    <ion-grid *ngIf="gender=='other'"  class="ion-padding">
+      <form [formGroup]="bodyMeasuresForm">
+      <ion-row>
+        <ion-col>
+          
+        <p class="ion-text-start ion-no-margin bold-font xlarge-font">  {{"auth.bodyTypes" | translate}} </p>
+        <p class="ion-text-start ion-no-margin ion-margin-top  regular-font medium-font">{{"auth.bodyMeasures.text" | translate}} </p>
+      
+      </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col  size="12" class="ion-margin-top" >
+          <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+            <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.bodyTypes.buttockcircumference" | translate}}</p></ion-label>
+            <ion-select okText="OK" cancelText="Close"  multiple="false" formControlName="buttockcircumference" color="darkest">
+              <ion-select-option *ngFor="let m of measures" [value]="m">{{m}} cm</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col  size="12" class="ion-margin-top" >
+          <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+            <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.bodyTypes.chestcircumference" | translate}}</p></ion-label>
+            <ion-select okText="OK" cancelText="Close"  multiple="false" formControlName="chestcircumference" color="darkest">
+              <ion-select-option *ngFor="let m of measures" [value]="m">{{m}} cm</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+         <!--  <ion-col  size="12" class="ion-margin-top"hidden >
+         <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+            <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.bodyTypes.crotchheight" | translate}}</p></ion-label>
+            <ion-select okText="OK" cancelText="Close"  multiple="false" formControlName="crotchheight" color="darkest">
+              <ion-select-option *ngFor="let m of measures" [value]="m">{{m}} cm</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col> -->
+        <ion-col  size="12" class="ion-margin-top">
+          <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+            <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.bodyTypes.insideleg" | translate}}</p></ion-label>
+            <ion-select okText="OK" cancelText="Close"  multiple="false" formControlName="insideleg" color="darkest">
+              <ion-select-option *ngFor="let m of measures" [value]="m">{{m}} cm</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <!-- <ion-col  size="12" class="ion-margin-top" hidden >
+          <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+            <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.bodyTypes.lateralmalleolusheight" | translate}}</p></ion-label>
+            <ion-select okText="OK" cancelText="Close"  multiple="false" formControlName="lateralmalleolusheight" color="darkest">
+              <ion-select-option *ngFor="let m of measures" [value]="m">{{m}} cm</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col> -->
+        <ion-col  size="12" class="ion-margin-top" >
+          <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+            <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.bodyTypes.neckcircumference" | translate}}</p></ion-label>
+            <ion-select okText="OK" cancelText="Close"  multiple="false" formControlName="neckcircumference" color="darkest">
+              <ion-select-option *ngFor="let m of measures" [value]="m">{{m}} cm</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col  size="12" class="ion-margin-top" >
+          <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+            <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.bodyTypes.sleeveoutseam" | translate}}</p></ion-label>
+            <ion-select okText="OK" cancelText="Close"  multiple="false" formControlName="sleeveoutseam" color="darkest">
+              <ion-select-option *ngFor="let m of measures" [value]="m">{{m}} cm</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col  size="12" class="ion-margin-top" >
+          <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+            <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.bodyTypes.waistcircumference" | translate}}</p></ion-label>
+            <ion-select okText="OK" cancelText="Close"  multiple="false" formControlName="waistcircumference" color="darkest">
+              <ion-select-option *ngFor="let m of measures" [value]="m">{{m}} cm</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      </form>
+  </ion-grid>   
+  <form [formGroup]="bodyTypesForm">
+    <ion-grid *ngIf="gender=='female'" class="ion-padding">
+        <ion-row>
+          <ion-col>  
+          <p class="ion-text-start ion-no-margin bold-font xlarge-font">  {{"auth.bodyTypes" | translate}} </p>
+          <p class="ion-text-start ion-no-margin ion-margin-top  regular-font medium-font">{{"auth.bodyTypes.choose" | translate}} </p>
+        </ion-col>
+        </ion-row>
+        <ion-row>     
+          <ion-col size="4">
+            
+            <ion-item lines='none' class="input-item input-border ion-padding small-font box-shadow" [class]="selectedFirstBody=='A'? 'active': ''" (click)="setFirstBodyType('A')">
+              <div class="full-width">
+                <p class="small-font ion-text-center small-input-border bold-font tag">A</p>
+  
+                
+                <img class="full-width small-image-border" src="assets/images/body/female/triangle_body_final2.png" >
+  
+              </div>
+            </ion-item>
+        </ion-col>
+         <ion-col size="4">
+            
+            <ion-item lines='none' class="input-item input-border ion-padding small-font box-shadow"  [class]="selectedFirstBody=='B'? 'active': ''" (click)="setFirstBodyType('B')">
+              <div class="full-width">
+                <p class="small-font ion-text-center small-input-border bold-font tag">B</p>
+                <img class="full-width small-image-border" src="assets/images/body/female/x_body_final2.png" >
+  
+              </div>
+            </ion-item>
+        </ion-col>
+         <ion-col size="4">
+            <ion-item lines='none' class="input-item input-border ion-padding small-font box-shadow"  [class]="selectedFirstBody=='C'? 'active': ''" (click)="setFirstBodyType('C')">
+  
+              <div class="full-width">
+                <p class="small-font ion-text-center small-input-border bold-font tag">C</p>
+  
+                
+                <img class="full-width small-image-border" src="assets/images/body/female/inverted_tri body_final2.png" >
+  
+              </div>
+            </ion-item>
+        </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col  size="12" >  
+            <div class="hr"></div>
+  
+            <p *ngIf="selectedFirstBody=='A'" class="ion-text-start ion-no-margin ion-margin-top  bold-font medium-font">{{"auth.bodyTypes.A" | translate}} </p>
+            <p *ngIf="selectedFirstBody=='B'" class="ion-text-start ion-no-margin ion-margin-top  bold-font medium-font">{{"auth.bodyTypes.B" | translate}} </p>
+            <p *ngIf="selectedFirstBody=='C'" class="ion-text-start ion-no-margin ion-margin-top  bold-font medium-font">{{"auth.bodyTypes.C" | translate}} </p>
+          </ion-col>
+         <ion-col size="4" *ngFor="let body of bodyTypes.female[selectedFirstBody]">
+  
+          <ion-item lines='none' class="input-item input-border ion-padding small-font box-shadow fadeInUp animated faster" [class]="selectedSecondBody == body.value ? 'active': ''" (click)="setSecondBodyType(body.value)">
+              <div class="full-width">
+                <p class="small-font ion-text-center small-input-border bold-font tag">{{body.value}}</p>
+  
+                
+                <img class="full-width small-image-border" [src]="body.image" >
+  
+              </div>
+            </ion-item>
+        </ion-col>
+        </ion-row>
+  
+    </ion-grid>   
+    
+    <ion-grid *ngIf="gender=='male'"  class="ion-padding">
+      <ion-row>
+        <ion-col>  
+        <p class="ion-text-start ion-no-margin bold-font xlarge-font">  {{"auth.bodyTypes" | translate}} </p>
+        <p class="ion-text-start ion-no-margin ion-margin-top  regular-font medium-font">{{"auth.bodyTypes.choose" | translate}} </p>
+      </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          
+          <ion-item lines='none' class="input-item input-border ion-padding small-font box-shadow" [class]="selectedFirstBody=='A'? 'active': ''" (click)="setMaleBodyType('A')">
+            <div class="full-width">
+              <p class="small-font ion-text-center small-input-border bold-font tag">A</p>
+  
+              
+              <img class="full-width small-image-border" src="assets/images/body/male/bigger_chest_final2.png" >
+  
+            </div>
+          </ion-item>
+         </ion-col>
+       <ion-col size="4">
+        <ion-item lines='none' class="input-item input-border ion-padding small-font box-shadow" [class]="selectedFirstBody=='B'? 'active': ''" (click)="setMaleBodyType('B')">
+          <div class="full-width">
+            <p class="small-font ion-text-center small-input-border bold-font tag">B</p>
+  
+            
+            <img class="full-width small-image-border" src="assets/images/body/male/chest_final2.png" >
+  
+          </div>
+        </ion-item>
+      </ion-col>
+       <ion-col size="4">
+        <ion-item lines='none' class="input-item input-border ion-padding small-font box-shadow" [class]="selectedFirstBody=='C'? 'active': ''" (click)="setMaleBodyType('C')">
+          <div class="full-width">
+            <p class="small-font ion-text-center small-input-border bold-font tag">C</p>
+  
+            
+            <img class="full-width small-image-border" src="assets/images/body/male/lilbigger_chest_final2.png" >
+  
+          </div>
+        </ion-item>
+      </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col  size="12" >  
+          <div class="hr"></div>
+
+          <p *ngIf="selectedFirstBody=='A'" class="ion-text-start ion-no-margin ion-margin-top  bold-font medium-font">{{"auth.bodyTypes.mA" | translate}} </p>
+          <p *ngIf="selectedFirstBody=='B'" class="ion-text-start ion-no-margin ion-margin-top  bold-font medium-font">{{"auth.bodyTypes.mB" | translate}} </p>
+          <p *ngIf="selectedFirstBody=='C'" class="ion-text-start ion-no-margin ion-margin-top  bold-font medium-font">{{"auth.bodyTypes.mC" | translate}} </p>
+        </ion-col>
+      </ion-row>
+  </ion-grid>    
+  </form>
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <ion-col>
+      <div class="button_div">  
+        <ion-button expand="full" color="darkest" class="bold-font box-shadow botton_btn input-border" shape="round" type="submit"
+          [disabled]="   !bodyTypesForm.valid " (click)="goToType();" >{{"auth.next" | translate}}</ion-button>
+      </div>
+      
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </div>
+
+  <div  *ngSwitchCase="'bodyType2'">
+    <form [formGroup]="bodyTypesForm2">
+      <ion-grid *ngIf="gender=='female'" class="ion-padding">
+          <ion-row>
+            <ion-col>  
+            <p class="ion-text-start ion-no-margin bold-font xlarge-font">  {{"auth.bodyTypes" | translate}} </p>
+            <p class="ion-text-start ion-no-margin ion-margin-top  regular-font medium-font">{{"auth.bodyTypes2.choose" | translate}} </p>
+          </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col  size="12" class="ion-margin-top input-border box-shadow" >
+              <img [src]="femaleBodyTypes[getImageIndex()]"/>
+            </ion-col>
+            <ion-col  size="12" class="ion-margin-top" >
+
+              <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+                <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.bodyTypes.abdomen" | translate}}</p></ion-label>
+
+                <ion-range min="1" max="5" step="1" value="3"  formControlName="abdomen" snaps color="darkest">
+                  <ion-icon slot="start" color="darkest" name="remove"></ion-icon>
+                  <ion-icon slot="end" color="darkest" name="add"></ion-icon>
+                </ion-range>
+              </ion-item>
+            </ion-col>
+
+            <ion-col  size="12" class="ion-margin-top" >
+              <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+                <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.bodyTypes.bottom" | translate}}</p></ion-label>
+
+                <ion-range min="1" max="5" step="1" value="3" formControlName="bottom" snaps color="darkest">
+                  <ion-icon slot="start" color="darkest" name="remove"></ion-icon>
+                  <ion-icon slot="end" color="darkest" name="add"></ion-icon>
+                </ion-range>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        
+    
+      </ion-grid>   
+      
+      <ion-grid *ngIf="gender=='male'"  class="ion-padding">
+        <ion-row>
+          <ion-col>  
+          <p class="ion-text-start ion-no-margin bold-font xlarge-font">  {{"auth.bodyTypes" | translate}} </p>
+          <p class="ion-text-start ion-no-margin ion-margin-top  regular-font medium-font">{{"auth.bodyTypes2.choose" | translate}} </p>
+        </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col  size="12" class="ion-margin-top input-border box-shadow" >
+            <img [src]="maleBodyTypes[getImageIndex()]"/>
+          </ion-col>
+          <ion-col  size="12" class="ion-margin-top" >
+
+            <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+              <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.bodyTypes.abdomen" | translate}}</p></ion-label>
+
+              <ion-range min="1" max="5" step="1" value="3"  formControlName="abdomen" snaps color="darkest">
+                <ion-icon slot="start" color="darkest" name="remove"></ion-icon>
+                <ion-icon slot="end" color="darkest" name="add"></ion-icon>
+              </ion-range>
+            </ion-item>
+          </ion-col>
+
+          <ion-col  size="12" class="ion-margin-top" >
+            <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+              <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.bodyTypes.bottom" | translate}}</p></ion-label>
+
+              <ion-range min="1" max="5" step="1" value="3" formControlName="bottom" snaps color="darkest">
+                <ion-icon slot="start" color="darkest" name="remove"></ion-icon>
+                <ion-icon slot="end" color="darkest" name="add"></ion-icon>
+              </ion-range>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      
+    </ion-grid>   
+    
+    <ion-grid class="ion-padding">
+      <ion-row>
+        <ion-col>
+        <div class="button_div">  
+          <ion-button expand="full" color="darkest" class="bold-font box-shadow botton_btn input-border" shape="round" type="submit"
+            [disabled]="!bodyTypesForm2.valid" (click)="addBody();" >{{"auth.next" | translate}}</ion-button>
+        </div>
+        
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </form>
+  </div>
+
+  <div  *ngSwitchCase="'chestType'">
+    <form [formGroup]="chestTypeForm">
+      <ion-grid class="ion-padding">
+          <ion-row>
+            <ion-col>  
+            <p class="ion-text-start ion-no-margin bold-font xlarge-font">  {{"auth.chestTypes" | translate}} </p>
+            <p class="ion-text-start ion-no-margin ion-margin-top  regular-font medium-font">{{"auth.chestTypes.choose" | translate}} </p>
+          </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col  size="12" class="ion-margin-top" >
+
+              <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+                <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.chestTypes.countries" | translate}} </p>
+                  <!-- <span *ngIf="chestTypeForm.controls.sizesContinent.value=='es'" class="flag-icon flag-icon-es" ></span> 
+                  <span *ngIf="chestTypeForm.controls.sizesContinent.value=='us'" class="flag-icon flag-icon-us" ></span>  -->
+                </ion-label>
+                <ion-select okText="OK" cancelText="Close"  multiple="false" formControlName="sizesContinent" color="darkest">
+                  <ion-select-option value="es">Spain </ion-select-option>
+                  <ion-select-option value="us"><span class="flag-icon flag-icon-us" ></span> USA </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+
+            <ion-col  size="6">
+              <ion-row>
+                <ion-col *ngFor="let chest of pechos;" size="6">
+
+                  <ion-button  [color]="chest==chestTypeForm.controls.chest.value? 'black' : 'light'"  shape="round" class="small-input-border bold-font box-shadow" expand="full" (click)="selectChest(chest)">
+                    {{chest}}</ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <ion-col  size="6">
+              <ion-row>
+                <ion-col *ngFor="let copa of copas;" size="6">
+
+                    <ion-button  [color]="copa==chestTypeForm.controls.cup.value? 'black' : 'light'"  shape="round" class="small-input-border bold-font box-shadow" expand="full" (click)="selectCopa(copa)">
+                      {{copa}}</ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+          </ion-row>
+        
+    
+      </ion-grid>       
+    <ion-grid class="ion-padding">
+      <ion-row>
+        <ion-col>
+        <div class="button_div">  
+          <ion-button expand="full" color="darkest" class="bold-font box-shadow botton_btn input-border" shape="round" type="submit"
+            [disabled]="!chestTypeForm.valid" (click)="doneFemale();" >{{"auth.done" | translate}}</ion-button>
+        </div>
+        
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </form>
+  </div>
+</div>

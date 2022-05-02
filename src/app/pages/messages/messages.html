@@ -1,0 +1,100 @@
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start"  (click)="back()"> 
+      <ion-icon slot="icon-only" name="arrow-back" class="medium-font" > </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font"> {{"messages.title" | translate}} </ion-title>
+
+    <ion-buttons slot="end"  (click)="newMessage()">
+      <ion-icon slot="icon-only" name="create-outline" class="medium-font"  > </ion-icon>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end" fill="clear"  color='darkest'  class="medium-font bold-font">
+      
+        Sign in
+    </ion-buttons> -->
+
+  </ion-toolbar>
+
+  
+  <ion-toolbar color="light" class="ion-no-padding" *ngIf="conversations && conversations.length > 0" >
+    <ion-searchbar [(ngModel)]="searchFriend"
+    [placeholder]="this.translate.get('search.people.input.placeholder')" mode="ios"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content  class="box-border-top">
+
+  
+  <ion-refresher slot="fixed" (ionRefresh)="loadData($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <!-- No conversations to show -->
+  <ion-grid  class="ion-padding" *ngIf="conversations && conversations.length <= 0">
+    <ion-row>
+      <ion-col class="ion-margin-vertical ion-padding-vertical">
+        <div class=" ion-text-center">
+          <!-- <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> -->
+          <p class="bold-font medium-font">{{"messages.notfound.title" | translate}}</p>
+          <p class="regular-font medium-font">{{"messages.notfound.description" | translate}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+    <!-- <h1>
+      <ion-icon name="md-text"></ion-icon>
+    </h1>
+    <p>Uh-oh! You are not part of any conversation yet.</p>
+    <ion-button icon-left tappable (click)="newMessage()">
+      <ion-icon name="add"></ion-icon>New Conversation
+    </ion-button> -->
+  <!-- Show conversations -->
+
+  <ion-grid  class="ion-padding">
+    <ion-row  *ngIf="conversations && conversations.length > 0">
+      <ion-col size="12" *ngFor="let conversation of conversations | conversationFilter:searchFriend" >
+
+        <ion-item-sliding>
+          <ion-item-options side="start"  (click) = "archiveConversation(conversation.userId)">
+            <ion-item-option color="darkest" expandable>
+              Archive
+            </ion-item-option>
+          </ion-item-options>
+      
+          <ion-item 
+          lines='none' class="input-item input-border"
+            (click)="message(conversation.userId)">
+            <ion-avatar item-left style=
+            "border: 4px solid #fff;
+            width: 55px;
+            height: 55px;
+            margin-left: 0;" tappable  class="box-shadow ion-margin-horizontal">
+              <img [src]="conversation?.friend?.profilePic? conversation.friend.profilePic: 'assets/profile.png'">
+            </ion-avatar>
+            <div [ngClass]=hasUnreadMessages(conversation)>
+              <div class="msg-entry">
+                <div>
+                  <h2 >{{conversation?.friend?.name ? conversation.friend.name : 'Deleted User' }}</h2>
+                </div>
+                <div>
+                  <ion-badge color="danger" *ngIf="conversation.unreadMessagesCount > 0">{{conversation.unreadMessagesCount}}
+                  </ion-badge>
+                  <p class="small-font">{{conversation.message}}</p>
+                  <span  class="xsmall-font">{{conversation.date | DateFormatPipe}}</span>
+                </div>
+              </div>
+                          
+            </div>
+          </ion-item>
+      
+          <ion-item-options side="end">
+            <ion-item-option color="danger" expandable (click) = "deleteConversation(conversation.userId)">
+              Delete
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

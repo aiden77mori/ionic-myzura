@@ -1,0 +1,10 @@
+<div class="grid">
+  <div class="grid-item" [ngClass]="post?.video? 'video': ''" (press)="openOptions(post.image)"
+  *ngFor="let post of timeline | hashtag : search">
+
+      <div class="image-shell" *ngIf="post?.photos">
+        <img [src]='post.photos["128"]'  class=""  (click)="viewPost(post)">
+      </div>
+    
+  </div>
+</div>

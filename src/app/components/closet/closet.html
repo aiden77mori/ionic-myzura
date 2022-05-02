@@ -1,0 +1,84 @@
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start" (click)="back()">
+      <ion-icon slot="icon-only" name="arrow-back-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title>{{ "tags.modal.component.your.closet" | translate}}</ion-title>
+
+    <!-- <ion-buttons slot="end"  (click)="openProducts()" >
+       <ion-badge color="danger">{{ getUnreadMessagesCount() }}</ion-badge> 
+      <ion-icon slot="icon-only" name="add-outline" class="medium-font"> </ion-icon>
+    </ion-buttons> -->
+
+  </ion-toolbar>
+  <ion-toolbar color="light" class="ion-no-padding">
+    <!-- <ion-searchbar [(ngModel)]="search"  mode="ios"></ion-searchbar> -->
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content  class="box-border-top" cache-view="false">
+  <!-- <ion-segment [(ngModel)]="icons" color="primary">
+    <ion-segment-button value="post">
+      <ion-icon name="apps"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="people">
+      <ion-icon name="person"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="hashtag">
+      <i class="fa fa-hashtag"></i>
+    </ion-segment-button>
+  </ion-segment> -->
+
+  <!-- <div *ngIf="!loading">
+    <app-stories [stories]="stories" [addStory]="false"></app-stories>
+  </div> -->
+
+  <!-- <div *ngIf="loading"
+    style="position:fixed; display: flex; width: 100%; height: 70%; align-items: center; justify-content: center; z-index: 9999;">
+    <ion-spinner name="circles"></ion-spinner>
+  </div> -->
+
+  
+  <ion-grid class="ion-padding" *ngIf="!closetData || closetData.length === 0"> 
+    <ion-row>
+      <ion-col class="ion-margin-vertical ion-padding-vertical">
+        <div class=" ion-text-center">
+          <!-- <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> -->
+          <p class="bold-font medium-font">{{"marketplace.noproducts.title" | translate}}</p>
+          <p class="regular-font medium-font">{{"marketplace.noproducts.description" | translate}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="ion-padding" *ngIf="closetData &&  closetData.length >0"> 
+    <ion-row  class="ion-no-margin  ion-no-padding">
+      <ion-col  *ngFor="let prod of closetData;let i = index"  class="ion-no-margin ion-no-padding "  [ngClass]="i > 0? 'ion-padding-top' : ''" size="12">
+        <app-product-tag [type]="'closet'" [product] = "prod"  [index] ="i" [visitor]="visitor"></app-product-tag>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <div  [ngSwitch]="icons">
+    <div *ngSwitchCase="'post'">
+      <app-post-grid [timeline]="timelineData" [search]="search"></app-post-grid>
+    </div>
+    <div *ngSwitchCase="'people'">
+      <ion-list *ngIf="users" no-lines>
+        <ion-item *ngFor="let user of users | profilename : search" (click)="viewUser(user.userId)">
+          <ion-avatar item-left tappable>
+            <img src="{{user.avatar}}">
+          </ion-avatar>
+          <div class="user-description">
+            <h2>{{user.name}}</h2>
+            <p>{{user.description}}</p>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div *ngSwitchCase="'hashtag'">
+      <app-post-grid [timeline]="timelineData" [search]="search"></app-post-grid>
+    </div>
+  </div> -->
+
+</ion-content>

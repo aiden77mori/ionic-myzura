@@ -1,0 +1,16 @@
+<ion-list lines="none" *ngIf="postBy !=userId">
+  <ion-item (click)="select('noti')">
+    <ion-label >  {{"popover.notifications" | translate}} </ion-label>
+  </ion-item>
+  <ion-item (click)="select('report')">
+    <ion-label > {{"popover.report" | translate}}</ion-label>
+  </ion-item>
+  <ion-item (click)="select('hide')">
+    <ion-label > {{"popover.hide" | translate}}</ion-label>
+  </ion-item>
+</ion-list>
+<ion-list lines="none" *ngIf="postBy ==userId">
+  <ion-item (click)="removePost()">
+    <ion-label > {{"popover.remove" | translate}}</ion-label>
+  </ion-item>
+</ion-list>

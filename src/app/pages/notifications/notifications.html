@@ -1,0 +1,43 @@
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+
+    <ion-title class="medium-font bold-font">{{"notifications.title" | translate}}</ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content  class="box-border-top">
+  <ion-refresher slot="fixed" (ionRefresh)="loadData($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid  class="ion-padding">
+    <ion-row>
+      <ion-col>
+        <h2 class="ion-float-left bold-font">
+          {{"notifications.title" | translate}}
+
+      </h2>
+    </ion-col>
+    </ion-row>
+
+    <div *ngIf="notificationsData">
+      <ion-list >
+  
+        <ion-item *ngFor="let noti of notificationsData" >
+          <ion-avatar slot="start">
+            <img  [src]="noti.photo? noti.photo : 'assets/profile.png'">
+          </ion-avatar>
+          <ion-label>
+            <h2>@{{noti.body}}</h2>
+            <p class="ion-text-start">{{noti.date | DateFormatPipe}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-grid>   
+
+
+
+</ion-content>

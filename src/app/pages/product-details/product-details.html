@@ -1,0 +1,124 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Timeline
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goMessages()" icon-only large>
+        <ion-badge color="danger">{{ getUnreadMessagesCount() }}</ion-badge>
+        <ion-icon name="paper-plane-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start" (click)="back()">
+      <ion-icon slot="icon-only" name="arrow-back-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font"> {{"product.details.title" | translate}} </ion-title>
+
+    <!-- <ion-buttons slot="end"  (click)="goMessages()" >
+      <ion-badge color="danger">{{ getUnreadMessagesCount() }}</ion-badge>
+      <ion-icon slot="icon-only" name="chatbubbles-outline" class="medium-font"> </ion-icon>
+    </ion-buttons> -->
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content  class="box-border-top">
+  <!-- <div *ngIf="!loading">
+    <app-stories [stories]="stories" [addStory]="true"></app-stories>
+  </div>
+
+  <div *ngIf="loading"
+    style="position:fixed; display: flex; width: 100%; height: 70%; align-items: center; justify-content: center;">
+    <ion-spinner name="circles"></ion-spinner>
+  </div> -->
+
+  <ion-segment color="black" value='details' mode="md" (ionChange)="toggleView($event)">
+    <ion-segment-button  value="details">
+      <ion-label>{{"product.details.details" | translate}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="related">
+      <ion-label>{{"product.details.related" | translate}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="(product | json) != ({} | json)">
+    <ion-slides pager="false" [options]="slideOpts" (ionSlideDidChange)="change()" #Slides>
+      <ion-slide  >
+        <app-component-product [addedCloset] ="addedCloset" [product]="product" [user]="user" [slider]="slider" class="slide"></app-component-product>
+      </ion-slide>
+      <ion-slide style="width: 100%" >
+        <ion-grid class="ion-padding" [hidden]="this.view=='details'"> 
+          <ion-row *ngIf="!(relatedProducts$ | async)?.length "> 
+            <ion-col class="ion-margin-vertical ion-padding-vertical" size="12">
+              <!-- <div class=" ion-text-center">
+                 <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> 
+                <p class="bold-font medium-font">{{"marketplace.noproducts.title" | translate}}</p>
+                <p class="regular-font medium-font">{{"marketplace.noproducts.description" | translate}}</p>
+              </div> -->
+              <div class=" ion-text-center ion-padding">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: #fafafa; display: block;" width="41px" height="41px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                  <circle cx="84" cy="50" r="10" fill="#000000">
+                      <animate attributeName="r" repeatCount="indefinite" dur="1.0416666666666665s" calcMode="spline" keyTimes="0;1" values="10;0" keySplines="0 0.5 0.5 1" begin="0s"></animate>
+                      <animate attributeName="fill" repeatCount="indefinite" dur="4.166666666666666s" calcMode="discrete" keyTimes="0;0.25;0.5;0.75;1" values="#000000;#000000;#000000;#000000;#000000" begin="0s"></animate>
+                  </circle><circle cx="16" cy="50" r="10" fill="#000000">
+                    <animate attributeName="r" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="0s"></animate>
+                    <animate attributeName="cx" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="0s"></animate>
+                  </circle><circle cx="50" cy="50" r="10" fill="#000000">
+                    <animate attributeName="r" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-1.0416666666666665s"></animate>
+                    <animate attributeName="cx" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-1.0416666666666665s"></animate>
+                  </circle><circle cx="84" cy="50" r="10" fill="#000000">
+                    <animate attributeName="r" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-2.083333333333333s"></animate>
+                    <animate attributeName="cx" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-2.083333333333333s"></animate>
+                  </circle><circle cx="16" cy="50" r="10" fill="#000000">
+                    <animate attributeName="r" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-3.1249999999999996s"></animate>
+                    <animate attributeName="cx" repeatCount="indefinite" dur="4.166666666666666s" calcMode="spline" keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-3.1249999999999996s"></animate>
+                  </circle>
+                  </svg>
+              </div>
+            </ion-col>
+          </ion-row>
+      
+            
+          <app-innerhome [productsData]="relatedProducts$ | async" [wishlisted]="false"></app-innerhome>
+      
+      
+          <ion-infinite-scroll threshold="30%" (ionInfinite)="doInfinite($event)">
+            <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            [loadingText]="this.translate.get('marketplace.loading.text')">
+            </ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+        </ion-grid>
+       
+
+      </ion-slide>
+      <!-- <ion-slide>
+        <app-review [product]="product" [bool]="true" class="slide"></app-review>
+      </ion-slide> -->
+
+      <ion-refresher slot="fixed" (ionRefresh)="loadData($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+    
+     
+    </ion-slides>
+  </div>
+
+
+
+ 
+
+  <!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+
+
+</ion-content>

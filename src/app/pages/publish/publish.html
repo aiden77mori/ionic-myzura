@@ -1,0 +1,120 @@
+<ion-header  class="ion-no-border ion-padding-horizontal" *ngIf="step=='tag'">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start" (click)="back()" >
+      <ion-icon slot="icon-only"  name="arrow-back-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+
+    <ion-buttons slot="start" (click)="backTag()" *ngIf="step!='tag'">
+      <ion-icon slot="icon-only"  name="arrow-back-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font"> {{"publish.page.title" | translate}} </ion-title>
+
+    <ion-buttons slot="end" >
+      <ion-button color="primary" class="medium-font"  (click)="next()">
+        {{"publish.page.next" | translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header  class="ion-no-border ion-padding-horizontal" *ngIf="step!='tag'">
+  <ion-toolbar color="light" >
+
+
+    <ion-buttons slot="start" (click)="backTag()">
+      <ion-icon slot="icon-only"  name="arrow-back-outline" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font"> {{"publish.page.title" | translate}} </ion-title>
+
+    <ion-buttons slot="end" >
+      <ion-button color="primary" class="medium-font"  (click)="shareCheck()">
+        {{"publish.page.post" | translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content  class="box-border-top" >
+
+  <ion-grid class="ion-no-padding ion-no-margin fadeInUp animated faster" id="tagId">
+      <ion-row>
+        <ion-col size="12" class="ion-margin">
+          <p class="ion-text-start ion-no-margin bold-font  xlarge-font">{{"publish.page.tag.clothes" | translate}} </p>
+          <p class="ion-text-start ion-no-margin regular-font medium-font">{{"publish.page.tag.clothes.description" | translate}} </p>
+        </ion-col>
+        <ion-col size="12"  class="ion-no-padding ion-no-margin" >
+          <div class="image-shell">
+            <img id="postId" [src]='sanitizer.bypassSecurityTrustResourceUrl(image)' tappable  (click) ="GetCoordinates($event)">
+          </div>
+          <img  *ngFor="let product of taggedProducts;let i = index"   src="assets/icon/tag.png" tappable class="
+          fadeIn animated circle_button blink-shadow"   
+         [ngStyle]="{'left': ( product.tagX + '%' ), top: ( product.tagY + '%' )   }" >
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="ion-padding fadeInUp animated faster" *ngIf="step == 'tag'">
+      <ion-row>
+        <ion-col size="12">
+          <p class="ion-text-start ion-no-margin bold-font  xlarge-font">{{"publish.page.tagged" | translate}} </p>
+          <p class="ion-text-start ion-no-margin regular-font medium-font">{{"publish.page.tagged.description" | translate}}</p>
+        </ion-col>
+        <ion-col  *ngFor="let product of taggedProducts;let i = index"  class="ion-no-margin ion-no-padding ion-padding-top" size="12">
+          <app-product-tag  [type]="'tagged'" [product] = "product"  [index] ="i" [taggedProducts]="taggedProducts"></app-product-tag>
+      </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+
+  
+
+    <ion-grid class="fadeInUp animated faster ion-padding" *ngIf="step == 'write'">
+      <ion-row >
+        <ion-col size="12">
+          <p class="ion-text-start ion-no-margin bold-font  xlarge-font">{{"publish.page.review" | translate}}</p>
+          <p class="ion-text-start ion-no-margin regular-font medium-font">{{"publish.page.review.description" | translate}} </p>
+
+        </ion-col>
+        <ion-col size="12">
+          <ion-item lines='none' class="input-item input-border  small-font box-shadow">
+            <ion-textarea  class="input-border" fz-elastic [placeholder]="this.translate.get('publish.page.placeholder')" [(ngModel)]="postText"></ion-textarea>
+          </ion-item>
+
+
+          <!-- 
+          <ion-list class="list-exit-help">
+           <ion-item >
+             <ion-avatar item-left>
+               <img class="img-no-round" [src]='sanitizer.bypassSecurityTrustResourceUrl(testImg)'>  
+             </ion-avatar>	
+             <ion-textarea fz-elastic placeholder="Write a caption..." [(ngModel)]="postText"></ion-textarea>
+           </ion-item>
+          </ion-list> -->
+
+        </ion-col>
+        <div class="hr"></div>
+
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <p class="ion-text-start ion-no-margin bold-font  xlarge-font">{{"publish.page.rate" | translate}} </p>
+          <p class="ion-text-start ion-no-margin regular-font medium-font">{{"publish.page.rate.description" | translate}}</p>
+        </ion-col>
+        <ion-col  *ngFor="let product of taggedProducts;let i = index"  class="ion-no-margin ion-no-padding ion-padding-top" size="12">
+          <app-product-tag  [type]="'rating'" [product] = "product"  [index] ="i" [taggedProducts]="taggedProducts"></app-product-tag>
+      </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+
+
+
+
+
+
+
+</ion-content>

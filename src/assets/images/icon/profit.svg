@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16.2" height="16.2" viewBox="0 0 16.2 16.2">
+  <g id="profits" transform="translate(0.6 0.6)">
+    <path id="Path_51" data-name="Path 51" d="M7.25,17h4.5C15.5,17,17,15.5,17,11.75V7.25C17,3.5,15.5,2,11.75,2H7.25C3.5,2,2,3.5,2,7.25v4.5C2,15.5,3.5,17,7.25,17Z" transform="translate(-2 -2)" fill="rgba(0,0,0,0)" stroke="#262626" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"/>
+    <path id="Path_52" data-name="Path 52" d="M13.192,10.244a1.78,1.78,0,0,1-.83,1.261V13a.944.944,0,0,1-1.887,0V11.505a1.78,1.78,0,0,1-.83-1.261,1.5,1.5,0,0,1-.023-.264,1.8,1.8,0,0,1,3.533-.468A1.729,1.729,0,0,1,13.192,10.244Z" transform="translate(-3.917 -3.567)" fill="rgba(0,0,0,0)" stroke="#262626" stroke-miterlimit="10" stroke-width="1.2"/>
+    <path id="Path_53" data-name="Path 53" d="M20.126,10.91H14.352" transform="translate(-5.125 -4.228)" fill="rgba(0,0,0,0)" stroke="#262626" stroke-miterlimit="10" stroke-width="1.2"/>
+    <path id="Path_54" data-name="Path 54" d="M7.775,10.91H2" transform="translate(-2 -4.227)" fill="rgba(0,0,0,0)" stroke="#262626" stroke-miterlimit="10" stroke-width="1.2"/>
+  </g>
+</svg>

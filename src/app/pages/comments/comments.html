@@ -1,0 +1,96 @@
+
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start" (click)="dismiss()"> 
+      <ion-icon slot="icon-only" name="arrow-back" (click)="dismiss()" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font"> {{"comments.page.title"  | translate}} </ion-title>
+
+    <!-- <ion-buttons slot="end"  (click)="newMessage()">
+      <ion-icon slot="icon-only" name="create-outline" class="medium-font"  > </ion-icon>
+    </ion-buttons> -->
+    <!-- <ion-buttons slot="end" fill="clear"  color='darkest'  class="medium-font bold-font">
+      
+        Sign in
+    </ion-buttons> -->
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content  class="box-border-top">
+  <div *ngIf="comments" class="comment_list" >
+
+    <div class="comment_item" *ngFor="let item of comments"> 
+      <div class="col_img" >
+        <ion-avatar class="user-avatar">
+          <img class="img" [src]="item?.avatar? item.avatar: 'assets/profile.png' " >
+        </ion-avatar>
+      </div>
+      <div class="col_details" >
+        <p class="user_name medium-font">{{ item?.name ? item.name : 'Deleted User' }}</p>
+        <p class="comment_info xsmall-font">  {{item.dateCreated | DateFormatPipe }}
+          <!-- <span>   Reply </span> -->
+        </p>
+        <!-- <p class="comment_info">{{ item?.create_time }} &nbsp;&nbsp;&nbsp; {{ item.like_count +' likes' }} &nbsp;&nbsp;&nbsp; 
+
+          <span>   Reply </span>
+        </p> -->
+        <p class="comment_desc small-font">{{ item.commentText}} </p>
+<!-- 
+        <ion-button fill="clear" color='dark' size="small" style="    margin-bottom: 10px;">
+          View {{ item?.reply_count }} replies
+        </ion-button> -->
+
+      </div>
+      <div  class="col_btn" >
+        <!-- <ion-icon name="heart-outline" class="like_icon_btn" ></ion-icon> -->
+      </div>
+    </div>
+
+  </div>
+
+
+<!-- 
+  <ion-grid class="ion-padding" *ngIf="!comments || comments.length === 0"> 
+    <ion-row>
+      <ion-col class="ion-margin-vertical ion-padding-vertical">
+        <div class=" ion-text-center">
+           <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> 
+          <p class="bold-font medium-font">{{"timeline.noposts.title" | translate}}</p>
+          <p class="regular-font medium-font">{{"timeline.noposts.description" | translate}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+</ion-content>
+
+<ion-footer>
+  <div class="bottom-bar  ion-margin  ">
+    <div class="blog_userimg ">
+      <ion-avatar style="border: 4px solid #fff;
+"  class="box-shadow ">
+        <img [src]="profilePic">
+      </ion-avatar>
+    </div>
+    <div class="input-text">
+        <!-- <ion-textarea  class="input-border"   autoGrow="true"  fz-elastic [placeholder]="  'Add a comment as ' + user_info.name " [(ngModel)]="commentText"></ion-textarea> -->
+        <ion-searchbar id="commentText" class="text" search-icon="undefined" [placeholder]=" this.translate.get('comments.page.add.comment') " [(ngModel)]="commentText" mode="ios"></ion-searchbar>
+
+      <!-- <ion-input type="text" placeholder="Type your comment" [(ngModel)]="commentText"></ion-input>   -->
+    </div>
+    <div class="send-button xlarge-font"  tappable (click)="postComment()">
+      <ion-icon name="send"></ion-icon>
+    </div>
+  </div>
+  <!-- <div class="bottom_bar">
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+      <ion-fab-button ion-fab mini tappable (click)="sendPhoto()"><ion-icon name="camera"></ion-icon></ion-fab-button>
+    </ion-fab>
+    <ion-input type="text" placeholder="Type your message" [(ngModel)]="message" (focus)="scrollBottom()" (keypress)="onType($event.keyCode)"></ion-input>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button ion-fab mini tappable (click)="send()" [disabled]="!message"><ion-icon name="send"></ion-icon></ion-fab-button>
+    </ion-fab>
+  </div> -->
+</ion-footer>

@@ -1,0 +1,57 @@
+.profile {
+  position: relative;
+  overflow: hidden;
+  height: 24vh;
+  margin-bottom: -0.625em;
+}
+
+.profile img {
+  width: 28vw;
+  height: 28vw;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+h4,
+p {
+  text-align: center;
+}
+
+h4 {
+  margin: 0;
+  padding: 0 0 0.75em;
+  color: #fff;
+}
+
+.divider {
+  width: 12vw;
+  border-bottom: solid 0.2em #d6d6d6;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ion-icon {
+  color: #fff;
+  font-size: 1.4em;
+}
+
+ion-list {
+  margin-top: 1.125em !important;
+}
+
+ion-list ion-item {
+  background: rgba(0, 0, 0, 0.3) !important;
+  color: #fff !important;
+}
+
+ion-list ion-item.activated {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+/*# sourceMappingURL=trial.css.map */

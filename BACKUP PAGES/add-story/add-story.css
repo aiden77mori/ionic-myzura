@@ -1,0 +1,109 @@
+.preview {
+  --background: transparent !important;
+}
+
+.selected-photo {
+  height: 100vw;
+  width: 100%;
+}
+
+.normal-view {
+  --background: #fff !important;
+}
+
+ion-footer, ion-segment {
+  --background: #fff !important;
+  background: #fff !important;
+}
+
+.image-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.image-list .image {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 32%;
+}
+
+* {
+  background-color: trasparent !important;
+}
+
+add-story .scroll-content {
+  background-color: trasparent !important;
+}
+
+ion-content {
+  background-color: trasparent !important;
+}
+
+.background-manage {
+  background-color: trasparent !important;
+  position: relative;
+}
+
+.fab-md-danger {
+  background-color: trasparent !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.take-photo {
+  border-radius: 50%;
+  background-color: #222;
+  -webkit-box-shadow: 0px 0px 0px 17px rgba(219, 219, 219, 0.5) !important;
+  box-shadow: 0px 0px 0px 17px rgba(219, 219, 219, 0.5) !important;
+  margin-bottom: 70px !important;
+}
+
+.col-image {
+  padding: 1px !important;
+}
+
+.blink {
+  background-color: red;
+  -webkit-animation-name: blink;
+  animation-name: blink;
+  -webktit-animation-timing-function: linear;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+}
+
+.blink-infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.blink-5 {
+  -webkit-animation-iteration-count: 5;
+  animation-iteration-count: 5;
+}
+
+.blink-furiously {
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+}
+
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=add-story.css.map */

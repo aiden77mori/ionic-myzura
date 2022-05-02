@@ -1,0 +1,131 @@
+
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start" (click)="back()"> 
+      <ion-icon slot="icon-only" name="arrow-back" class="medium-font"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font"> {{user?user.username: 'Profile'}} </ion-title>
+
+    <!-- <ion-buttons slot="end"  (click)="goMessages()" >
+      <ion-icon slot="icon-only" name="settings-outline" class="medium-font"> </ion-icon>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content  class="box-border-top">
+  <ion-grid class="ion-padding-horizontal" *ngIf="user">
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <p class="bold-font medium-font"> {{ user.name }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <img [src]="user.photos ? user.photos['128'] : 'assets/profile.png'" class="box-shadow full-border userimg">
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <p class="regular-font medium-font"> {{ user.description }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+
+        <ion-row>
+          <ion-col size="4" class="ion-text-center">
+            <p class="small-font"> {{"profile.page.reviews" | translate}}</p>
+            <p class="small-font bold-font"> {{user.timeline? numPosts : 0}}</p>
+
+          </ion-col>
+
+          <ion-col size="4" class="ion-text-center">
+            <p class="small-font" tappable (click)="getFollowers('followers')"> {{"profile.page.followers" | translate}}</p>
+            <p class="small-font bold-font" tappable (click)="getFollowers('followers')"> {{user.followers? user.followers.length : 0}}</p>
+
+          </ion-col>
+
+          <ion-col size="4" class="ion-text-center">
+            <p class="small-font" tappable (click)="getFollowers('following')"> {{"profile.page.following" | translate}}</p>
+             <p class="small-font bold-font" tappable (click)="getFollowers('following')"> {{user.following? user.following.length : 0}}</p>
+
+          </ion-col>
+        </ion-row>
+        <!-- <div class="user_bottom">
+          <div class="user_counts">
+             <p class="title_p"> Reviews</p>
+             <p  class="count_p"> {{user.reviews? user.reviews.length : 0}}</p>
+          </div>
+          <div class="user_counts" (click)="go_followers()">
+            <p class="title_p"> Followers</p>
+            <p class="count_p"> {{user.followers? user.followers.length : 0}}</p>
+         </div>
+    
+         <div class="user_counts">
+          <p class="title_p"> Following</p>
+          <p class="count_p"> {{user.following? user.following.length : 0}}</p>
+         </div>
+    
+        </div> -->
+    
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <!-- <ion-col size="6" class="ion-text-center">
+        
+        <ion-button size="small"  color="darkest" fill="outline" shape="round" class="small-input-border bold-font box-shadow" (click)="goSettings()" expand="full">
+          <ion-icon name="card"></ion-icon>
+          View Balance</ion-button>
+
+      </ion-col> -->
+      <ion-col size="12" class="ion-text-center">
+        <ion-button size="small"  color="darkest" shape="round" class="small-input-border bold-font box-shadow" expand="full" (click)="follow(user); $event.stopPropagation();"
+         *ngIf="getStatus(user) != 3">
+        <ion-icon name="add"></ion-icon>
+        {{"search.people.follow" | translate}}
+
+      </ion-button>
+      <ion-button size="small"  color="light" shape="round" class="small-input-border bold-font box-shadow" expand="full" (click)="unfollow(user); $event.stopPropagation();"
+       *ngIf="getStatus(user) == 3">
+        <ion-icon name="remove"></ion-icon>
+        {{"search.people.unfollow" | translate}}
+
+      </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+    <!-- <hr> -->
+    <ion-segment [(ngModel)]="icons" mode ="md" color="primary">
+      <ion-segment-button value="reviews">
+        <p class="small-font">{{"profile.page.reviews" | translate}}</p>
+        <!-- <ion-icon name="apps"></ion-icon> -->
+      </ion-segment-button>
+      <ion-segment-button value="closet">
+        <p class="small-font">{{"profile.page.closet" | translate}}</p>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="icons">
+
+      <div *ngSwitchCase="'reviews'">
+        
+        <ion-grid class="ion-padding" *ngIf="!timelineData || timelineData.length === 0"> 
+          <ion-row>
+            <ion-col class="ion-margin-vertical ion-padding-vertical">
+              <div class=" ion-text-center">
+                <!-- <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> -->
+                <p class="bold-font medium-font">{{"timeline.noposts.title" | translate}}</p>
+                <p class="regular-font medium-font">{{"timeline.noposts.description" | translate}}</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      
+        <app-post-grid [timeline]="timelineData" [userId] = "userId" [currentUser] = "currentUser"></app-post-grid>
+      </div>
+
+      <div *ngSwitchCase="'closet'">
+        <app-closet-cat [categories]="categories" [closetList]="closetList" [visitor]="true"></app-closet-cat>      
+
+      </div>
+    </div>
+</ion-content>

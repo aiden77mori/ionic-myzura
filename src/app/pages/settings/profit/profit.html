@@ -1,0 +1,46 @@
+<ion-header class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="back()">
+      <!-- <ion-icon slot="icon-only" name="arrow-back" (click)="back()" class="medium-font"> </ion-icon> -->
+      <ion-icon
+        slot="icon-only"
+        class="medium-font"
+        src="/assets/images/icon/back.svg"
+        style="margin-top: 10px"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font">
+      {{"settings.page.home.profit" | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="box-border-top">
+  <div>
+    <!-- Profile Menu -->
+    <ion-item lines="none" class="setting-size">
+      <div class="profile-detail">
+        <ion-label class="detail-description"
+          >{{"settings.page.home.profit" | translate}}</ion-label
+        >
+      </div>
+    </ion-item>
+    <div class="balance-detail">
+      <ion-label class="detail-description">73$</ion-label>
+    </div>
+    <div class="buttons">
+      <ion-button lines="none" class="balance-button">
+        Withdraw Balance
+      </ion-button>
+      <ion-button lines="none" class="brand-button">
+        Detail of the Brands
+      </ion-button>
+      <ion-button lines="none" class="breakdown-button" fill="outline">
+        Balance BreakDown
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="bottom_bar"></div>
+</ion-footer>

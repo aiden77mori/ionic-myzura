@@ -1,0 +1,10 @@
+textarea {
+  width: 100%;
+  border: 0px;
+}
+
+ion-header button,
+ion-header ion-title p {
+  background: transparent;
+}
+/*# sourceMappingURL=add-post.css.map */

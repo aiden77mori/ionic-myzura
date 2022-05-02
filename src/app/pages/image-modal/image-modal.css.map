@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AACE,gBADc,CACd,eAAe,CAAC;EACd,gBAAgB,EAAE,IAAI;CACvB;;AAHH,AAKE,gBALc,CAKd,QAAQ,CAAC;EACP,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK;EACZ,UAAU,EAAE,kBAAkB,CAAC,UAAU;EACzC,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;CAKpB;;AAfH,AAYI,gBAZY,CAKd,QAAQ,CAON,GAAG,CAAC;EACF,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "image-modal.scss"
+    ],
+    "names": [],
+    "file": "image-modal.css"
+}

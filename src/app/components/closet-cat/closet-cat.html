@@ -1,0 +1,37 @@
+<ion-grid class="ion-padding" *ngIf="!categories || categories.length === 0"> 
+  <ion-row>
+    <ion-col class="ion-margin-vertical ion-padding-vertical">
+      <div class=" ion-text-center">
+        <!-- <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> -->
+        <p class="bold-font medium-font">{{"marketplace.noproducts.title" | translate}}</p>
+        <p class="regular-font medium-font">{{"marketplace.noproducts.description" | translate}}</p>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid class="ion-padding" *ngIf="categories &&  categories.length >0"> 
+  <ion-row  class="ion-no-margin  ion-no-padding">
+    <ion-col size="6" *ngFor="let c of categories;let i = index"  class="ion-no-margin ion-no-padding "  [ngClass]="i > 1? 'ion-nopadding-top' : ''"  >
+      <ion-card   class="card ion-no-margin box-shadow no-border" style="border-radius:0;">
+        <ion-badge class="badge"><p class="price_title medium-font regular-font text-shell" [ngClass]="{'text-loaded': closetList[c]?.total}">   {{closetList[c].total }} 
+        </p></ion-badge>
+        <div class="image-shell" (click)="openCloset(closetList[c].products)">
+          <img [src]="closetList[c].photo" [alt]="closetList[c].name">
+          <div class="product-image-overlay"></div>
+          <h6 class="subtitle medium-font text-shell bold-font ion-margin"  [ngClass]="{'text-loaded': closetList[c]?.name}">{{closetList[c].name}}</h6>
+
+        </div>
+<!--         <ion-card-content class="ion-no-padding ion-padding-vertical " (click)="openCloset(closetList[c].products)">
+          <ion-card-title>
+            <ion-row>
+              <ion-col   class="ion-text-center">
+                <h6 class="subtitle small-font text-shell bold-font"  [ngClass]="{'text-loaded': closetList[c]?.name}">{{closetList[c].name}}</h6>
+              </ion-col>
+            </ion-row>
+          </ion-card-title>
+        </ion-card-content> -->
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

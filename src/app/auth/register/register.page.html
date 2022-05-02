@@ -1,0 +1,242 @@
+<ion-header  class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar color="light" >
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="arrow-back-outline" class="medium-font" (click)="back()"> </ion-icon>
+    </ion-buttons>
+    <ion-title class="medium-font bold-font">  {{"auth.profile" | translate}} </ion-title>
+
+    <!-- <ion-buttons slot="end" fill="clear"  color='darkest'  class="medium-font bold-font">
+      
+        Sign in
+    </ion-buttons> -->
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="box-border-top">
+  <ion-slides class="walkthrough-slides" pager="false" [options]="slidesOptions">
+    <ion-slide class="slide-item">
+
+      <form [formGroup]="profileForm" >
+        <ion-grid  class="ion-padding">
+            <ion-row>
+              <ion-col>
+                <h2 class="auth-title ion-float-left bold-font">
+                  {{"auth.profile" | translate}}
+        
+              </h2>
+            </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12" class="ion-margin-top">
+                  <ion-item lines='none' class="input-item input-border  small-font box-shadow">
+                    <ion-input class="input-border" (change)="check()" type="text" [placeholder]="this.translate.get('auth.placeholder.username')" formControlName="username" clearInput autocapitalize="off" inputmode="nausernameme"></ion-input>
+                  </ion-item>
+                  <div class="error-container">
+                    <ng-container *ngFor="let validation of validation_messages.username">
+                      <div class="error-message small-font" *ngIf="profileForm.get('username').hasError(validation.type) && (profileForm.get('username').dirty || profileForm.get('username').touched)">
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                        <span>{{ validation.message }}</span>
+                      </div>
+
+                      <div class="error-message small-font" *ngIf="usernameCheck">
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                        <span>Username already taken</span>
+                      </div>
+                      <div class="error-message small-font" *ngIf="this.checkSpace()">
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                        <span>Username cannot include spaces</span>
+                      </div>
+
+                    </ng-container>
+                  </div>
+              </ion-col>
+
+              <ion-col size="12" class="ion-margin-top">
+                <ion-item lines='none' class="input-item input-border  small-font box-shadow">
+                  <ion-input class="input-border" type="text" [placeholder]="this.translate.get('auth.placeholder.name')" formControlName="name" clearInput autocapitalize="off" inputmode="name"></ion-input>
+                </ion-item>
+                <div class="error-container">
+                  <ng-container *ngFor="let validation of validation_messages.name">
+                    <div class="error-message small-font" *ngIf="profileForm.get('name').hasError(validation.type) && (profileForm.get('name').dirty || profileForm.get('name').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      <span>{{ validation.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+
+              <ion-col size="12" class="ion-margin-top ion-margin-bottom">
+                <ion-item lines='none' class="input-item input-border  small-font box-shadow">
+                  <!-- <ion-label position="floating">MM/DD/YYYY</ion-label> -->
+                  <ion-datetime displayFormat="MMMM/DD/YYYY" min="1900-03-14" max="2012-12-09"  [placeholder]="this.translate.get('auth.placeholder.birthDate')" formControlName="birthDate" value="2002-09-23T15:03:46.789"></ion-datetime>
+                
+                </ion-item>
+                <div class="error-container">
+                  <ng-container *ngFor="let validation of validation_messages.birthDate">
+                    <div class="error-message small-font" *ngIf="profileForm.get('birthDate').hasError(validation.type) && (profileForm.get('birthDate').dirty || profileForm.get('birthDate').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      <span>{{ validation.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+
+
+                <ion-col size="12" class="ion-margin-top">
+                  <p class="ion-text-start ion-no-margin regular-font medium-font">{{"auth.register.start" | translate}} </p>
+
+                  <br>
+                  <ion-item lines='none' class="input-item input-border no-padding small-font box-shadow">
+                    <ion-segment color="black" value='female' mode="md" (ionChange)="genderChanged($event)">
+                    <ion-segment-button  value="male">
+                      <ion-label>{{"auth.bodyMeasures.male" | translate}}</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="female">
+                      <ion-label>{{"auth.bodyMeasures.female" | translate}}</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="other">
+                      <ion-label>{{"auth.bodyMeasures.other" | translate}}</ion-label>
+                    </ion-segment-button>
+                  </ion-segment>
+                  </ion-item>
+                  <!-- <div class="error-container">
+                    <ng-container *ngFor="let validation of validation_messages.username">
+                      <div class="error-message small-font" *ngIf="bodyMeasuresForm.get('username').hasError(validation.type) && (bodyMeasuresForm.get('username').dirty || bodyMeasuresForm.get('username').touched)">
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                        <span>{{ validation.message }}</span>
+                      </div>
+                    </ng-container>
+                  </div> -->
+              </ion-col>
+
+            </ion-row>
+
+        </ion-grid>    
+      </form>
+       
+
+    </ion-slide>    
+    <ion-slide class="slide-item">
+      <form [formGroup]="bodyMeasuresForm" >
+        <ion-grid  class="ion-padding">
+            <ion-row>
+              <ion-col>
+                
+              <p class="ion-text-start ion-no-margin bold-font xlarge-font">  {{"auth.bodyMeasures" | translate}} </p>
+              <p class="ion-text-start ion-no-margin ion-margin-top  regular-font medium-font">{{"auth.bodyMeasures.text" | translate}} </p>
+              <br>
+              <p class="ion-text-start ion-no-margin regular-font medium-font">{{"auth.bodyMeasures.text2" | translate}} </p>
+
+            </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12" class="ion-margin-top">
+                  <ion-item lines='none' class="input-item input-border no-padding small-font box-shadow">
+                    <ion-segment color="black" value='female' mode="md" (ionChange)="genderChanged($event)">
+                    <ion-segment-button  value="male">
+                      <ion-label>{{"auth.bodyMeasures.male" | translate}}</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="female">
+                      <ion-label>{{"auth.bodyMeasures.female" | translate}}</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="other">
+                      <ion-label>{{"auth.bodyMeasures.other" | translate}}</ion-label>
+                    </ion-segment-button>
+                  </ion-segment>
+                  </ion-item>
+                  <!-- <div class="error-container">
+                    <ng-container *ngFor="let validation of validation_messages.username">
+                      <div class="error-message small-font" *ngIf="bodyMeasuresForm.get('username').hasError(validation.type) && (bodyMeasuresForm.get('username').dirty || bodyMeasuresForm.get('username').touched)">
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                        <span>{{ validation.message }}</span>
+                      </div>
+                    </ng-container>
+                  </div> -->
+              </ion-col>
+
+              <ion-col  size="12" class="ion-margin-top" >
+                <ion-item  lines='none' class="input-item input-border small-font box-shadow">
+                  <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.bodyMeasures.height" | translate}}</p></ion-label>
+                  <ion-select okText="OK" cancelText="Close"  multiple="false" formControlName="height" color="darkest">
+                    <ion-select-option *ngFor="let height of heights" [value]="height">{{height}} cm</ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+                <!-- <div class="error-container">
+                  <ng-container *ngFor="let validation of validation_messages.name">
+                    <div class="error-message small-font" *ngIf="bodyMeasuresForm.get('name').hasError(validation.type) && (bodyMeasuresForm.get('name').dirty || bodyMeasuresForm.get('name').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      <span>{{ validation.message }}</span>
+                    </div>
+                  </ng-container>
+                </div> -->
+              </ion-col>
+
+              <ion-col size="12" class="ion-margin-top">
+                <ion-item lines='none' class="input-item input-border small-font box-shadow">
+                  <!-- <div class="full-width">
+                    <p class="small-font ion-float-left bold-font">  {{"auth.bodyMeasures.weight" | translate}}</p>
+                    <p class="small-font ion-float-right ">{{bodyMeasuresForm.controls.weight.value}} KG</p>
+                    <br>
+                    <ion-range min="30" max="200" step="1" pin="true" class="input-border" formControlName="weight" snaps color="darkest">
+                      <ion-icon slot="start" size="small" color="darkest" name="speedometer-outline"></ion-icon>
+                      <ion-icon slot="end" color="darkest" name="speedometer-outline"></ion-icon>
+                    </ion-range>
+                  </div> -->
+
+                    <ion-label><p class="small-font ion-float-left bold-font">  {{"auth.bodyMeasures.weight" | translate}}</p></ion-label>
+                    <ion-select okText="OK" cancelText="Close"  multiple="false" formControlName="weight" color="darkest">
+                      <ion-select-option *ngFor="let weight of weights" [value]="weight">{{weight}} kg</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <!-- <div class="error-container">
+                  <ng-container *ngFor="let validation of validation_messages.name">
+                    <div class="error-message small-font" *ngIf="bodyMeasuresForm.get('name').hasError(validation.type) && (bodyMeasuresForm.get('name').dirty || bodyMeasuresForm.get('name').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      <span>{{ validation.message }}</span>
+                    </div>
+                  </ng-container>
+                </div> -->
+              </ion-col>
+
+            </ion-row>
+
+        </ion-grid>    
+      </form>
+       
+      
+
+    </ion-slide>  
+    <ion-slide class="slide-item">     
+      <app-body [params]="params" [userId]="userId" [gender]="bodyMeasuresForm.controls.gender.value" [firstTime]="true"></app-body>
+    </ion-slide>  
+  </ion-slides>
+
+
+</ion-content>
+
+<ion-footer [hidden]="currentSlide == 'bodyType'" >
+  <div class="footer box-border-top">
+   <ion-grid class="ion-padding">
+     <ion-row>
+       <ion-col>
+        <div class="button_div">  
+          <!-- <ion-button expand="full" color="light" class="bold-font box-shadow botton_btn input-border" [disabled]="currentSlide=='profile'" shape="round" >Skip</ion-button> -->
+          <ion-button expand="full"  color="darkest"  class="bold-font box-shadow botton_btn input-border" shape="round" type="submit"
+            [hidden]="currentSlide!='profile'" 
+            [disabled]="!profileForm.valid || this.usernameCheck || checkSpace()"  (click)="addProfile();" >{{"auth.done" | translate}}</ion-button>
+
+            
+          <ion-button expand="full"  color="darkest"  class="bold-font box-shadow botton_btn input-border" shape="round" type="submit"
+            [hidden]="currentSlide!='bodyMeasures'" 
+            [disabled]="!bodyMeasuresForm.valid"  (click)="onSlideNext(); addBodyMeasures();" >{{"auth.next" | translate}}</ion-button>
+        </div>
+        <div class="legal-stuff xsmall-font">
+          <!-- {{"auth.privacy1" | translate}}<a class="legal-action" (click)="showPrivacyModal()">{{"auth.privacy2" | translate}}</a> {{"auth.privacy.and" | translate}} <a class="legal-action" (click)="showTermsModal()">{{"auth.privacy3" | translate}}</a>. -->
+        </div>
+       </ion-col>
+     </ion-row>
+   </ion-grid>
+  </div>
+</ion-footer>
