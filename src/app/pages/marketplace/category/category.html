@@ -44,7 +44,7 @@
         mode="md"
         color="primary"
         *ngIf="favBrands"
-        style="padding-left: 0px; padding-right: 0px;"
+        style="padding-bottom: 10px;"
       >
         <ion-button 
         size="small"
@@ -60,7 +60,7 @@
         mode="md"
         color="primary"
         *ngIf="tempButtons"
-        style="padding-left: 0px; padding-right: 0px;"
+        style="padding-bottom: 10px;"
       >
         <ion-button 
         size="small"
@@ -233,6 +233,12 @@
         class="ion-padding"
         *ngIf=" (products$ | async)?.length  && outputFilters.reset"
       >
+        <ion-row>
+          <div class="brand-detail">
+            <ion-label class="bold-font medium-font">Your selection</ion-label>
+            <ion-label class="small-font">See all</ion-label>
+          </div>
+        </ion-row>
         <app-innerhome
           [productsData]="products$ | async"
           [wishlisted]="false"

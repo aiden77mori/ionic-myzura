@@ -23,7 +23,7 @@
       </ion-icon>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar class="ion-no-padding">
+  <ion-toolbar class="ion-no-padding" style="padding-bottom: 15px; --padding-bottom: 15px;">
     <ion-searchbar
       style="padding-bottom: 0 !important"
       [(ngModel)]="searchProduct"
@@ -298,7 +298,10 @@
           <ion-button
             class="filter"
             lines="none"
-            style="height: 50px; width: 100%"
+            style="
+              height: 50px;
+              width: 100%;
+            "
             (click)="openCategory()"
           >
             Filter by Category
@@ -306,7 +309,9 @@
           <ion-button
             class="brand"
             lines="none"
-            style="height: 50px; width: 100%"
+            style="
+              height: 50px;
+              width: 100%;"
             (click)="openLocalBrand()"
           >
             Local brands near you
@@ -482,28 +487,41 @@
         <ion-row>
           <ion-row
             size="12"
-            class="ion-no-margin ion-text-center bold-font"
+            class="ion-no-margin ion-text-center bold-font categoryList"
             *ngFor="let cate_item of this.outputFilters.categoryList;let i = index"
-            style="
-              width: 50%;
+            style="    
               display: flex;
-              height: 60px;
-              align-items: center;
-              justify-content: space-around;
-            "
+              justify-content: space-between;
+              width: 50%;
+              height: 80px;"
           >
-            
-            <h1
-              class="small-font text-shell ion-text-center bold-font"
-              [ngClass]="{'text-loaded': cate_item?.name}"
-            >
-              {{cate_item.name}}
-            </h1>
-            <img
-              [src]="cate_item.image"
-              [alt]="cate_item.name"
-              style="width: 40px; height: 40px"
-            />
+            <div class="category_name" 
+            style="
+              width: 65%;
+              display: flex;
+              justify-content: flex-start; 
+              align-items: center;
+              align-content: center; 
+              padding-left: 15px;">
+              <h1
+                class="small-font text-shell ion-text-center bold-font"
+                [ngClass]="{'text-loaded': cate_item?.name}"
+              >
+                {{cate_item.name}}
+              </h1>
+            </div>
+            <div class="category_image" 
+            style="
+              padding-right: 15px; 
+              display: flex; 
+              align-content: center; 
+              align-items: center;">
+              <img
+                [src]="cate_item.image"
+                [alt]="cate_item.name"
+                style="width: 30px; height: 40px;"
+              />
+            </div>
             <!-- <ion-card class="card no-border ion-no-margin box-shadow">
               <div>
                 <div class="product-image-overlay"></div>

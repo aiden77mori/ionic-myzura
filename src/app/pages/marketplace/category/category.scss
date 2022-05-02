@@ -11,6 +11,13 @@ ion-toolbar {
 ion-title{
   color: white;
   text-align: center;
+  padding-bottom: 10px;
+  font-weight: bold;
+
+  --text-align: center;
+  --padding-bottom: 10px;
+  --font-weight: bold;
+
 }
 
 ion-icon{
@@ -41,15 +48,18 @@ ion-button:hover{
   color:white
   
 }
+
 .brand-detail{
   display: flex;
   width: 100%;
   justify-content: space-between;
+  --justify-content: space-between;
 }
 
 ion-button{
-  height: 30px;
+  height: 40px;
   text-transform: capitalize;
+  --text-transform: capitalize;
 }
 
 .favorite {
