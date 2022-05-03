@@ -65,6 +65,13 @@ ion-card-title  {
   
 }
 
+.brand_button
+{
+  --background: #cfcfcf !important;
+  background: #cfcfcf !important;
+  color: black;
+}
+
 .brand-detail{
   display: flex;
   width: 100%;
@@ -157,6 +164,6 @@ h2, p {
 }
 
 .categoryList:hover{
-  background: #efefef;
-  --background: #efefef;
+  background: grey;
+  --background: grey;
 }

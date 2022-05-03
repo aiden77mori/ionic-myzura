@@ -1,5 +1,5 @@
 <ion-header  class="ion-no-border ion-padding-horizontal">
-  <ion-toolbar color="light" >
+  <ion-toolbar>
     <ion-buttons slot="start"  (click)="openNotifications()">
       <ion-icon slot="icon-only" name="notifications-outline" class="medium-font"> </ion-icon>
     </ion-buttons>
@@ -9,23 +9,10 @@
       <ion-icon slot="icon-only" name="settings-outline" class="medium-font"> </ion-icon>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
-
-
-<ion-content  class="box-border-top">
   <ion-refresher slot="fixed" (ionRefresh)="loadData($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-
-
   <ion-grid class="ion-padding-horizontal" *ngIf="user">
-    <ion-row>
-      <ion-col class="ion-text-center">
-        <p class="bold-font medium-font"> {{ user.name }}</p>
-
-        <!-- <button (click)="new()">ADD DATA</button> -->
-      </ion-col>
-    </ion-row>
     <ion-row>
       <ion-col size="12" class="ion-text-center">
         <img [src]="user.photos ? user.photos['128'] : 'assets/profile.png'" class="box-shadow full-border userimg">
@@ -36,23 +23,33 @@
     </ion-row>
     <ion-row>
       <ion-col class="ion-text-center">
+        <p class="bold-font medium-font"> {{ user.name + " " + user.username }}</p>
+
+        <!-- <button (click)="new()">ADD DATA</button> -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <p class="small-font"> Looking for new ways to combine <br> my clothes in Myzura</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
 
         <ion-row>
           <ion-col size="4" class="ion-text-center">
-            <p class="small-font"> {{"profile.page.reviews" | translate}}</p>
             <p class="small-font bold-font"> {{routePostsResolveData?.items ? routePostsResolveData?.items.length : 0}}</p>
+            <p class="small-font"> {{"profile.page.reviews" | translate}}</p>
 
           </ion-col>
-
           <ion-col size="4" class="ion-text-center">
-            <p class="small-font" tappable (click)="getFollowers('followers')"> {{"profile.page.followers" | translate}}</p>
             <p class="small-font bold-font" tappable (click)="getFollowers('followers')"> {{user.followers? user.followers.length : 0}}</p>
+            <p class="small-font" tappable (click)="getFollowers('followers')"> {{"profile.page.followers" | translate}}</p>
 
           </ion-col>
-
           <ion-col size="4" class="ion-text-center">
-            <p class="small-font" tappable (click)="getFollowers('following')"> {{"profile.page.following" | translate}}</p>
              <p class="small-font bold-font" tappable (click)="getFollowers('following')"> {{user.following? user.following.length : 0}}</p>
+             <p class="small-font" tappable (click)="getFollowers('following')"> {{"profile.page.following" | translate}}</p>
 
           </ion-col>
         </ion-row>
@@ -83,14 +80,18 @@
           View Balance</ion-button>
 
       </ion-col> -->
-      <ion-col size="12" class="ion-text-center">
-        <ion-button size="small"  color="light" shape="round" class="small-input-border bold-font box-shadow" (click)="goSettings()" expand="full">
-          <ion-icon name="create"></ion-icon>
-          {{"profile.page.edit" | translate}}</ion-button>
+      <ion-col class="ion-text-center">
+        <ion-button class="medium-font bold-font edit_profile" (click)="goSettings()">
+          {{"profile.page.edit" | translate}}
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
-    <!-- <hr> -->
+</ion-header>
+
+
+<ion-content  class="box-border-top">
+  <!-- <hr> -->
     <ion-segment [(ngModel)]="icons" mode ="md" color="primary">
       <ion-segment-button value="reviews">
         <p class="small-font">{{"profile.page.reviews" | translate}}</p>

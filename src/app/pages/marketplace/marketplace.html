@@ -283,12 +283,9 @@
           class="ion-no-padding ion-no-margin ion-padding-bottom inifinte-scroll"
         >
           <ion-button
-            size="small"
-            color="light"
             shape="round"
-            class="small-input-border bold-font box-shadow"
+            class="small-input-border bold-font box-shadow brand_button"
             *ngFor="let b of favBrands;let i = index"
-            expand="full"
             (click)="openSustainableBrand()"
           >
             {{ b}}</ion-button
@@ -493,7 +490,9 @@
               display: flex;
               justify-content: space-between;
               width: 50%;
-              height: 80px;"
+              height: 60px;
+              margin-bottom: 10px;
+              margin-top: 10px;"
           >
             <div class="category_name" 
             style="

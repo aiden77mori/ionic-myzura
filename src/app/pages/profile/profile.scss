@@ -1,3 +1,31 @@
+ion-header{
+  background: #2a4449;
+  --background: #2a4449;
+}
+
+ion-toolbar{
+  background: #2a4449;
+  --background: #2a4449;
+}
+
+ion-title{
+  color: white;
+  text-align: center;
+}
+
+ion-button{
+  background: #ff00 !important;
+  --background: #ff00 !important;
+}
+
+.edit_profile{
+  height: 40px;
+  border: 1px solid white;
+  border-radius: 10px;
+
+  --border: 1px solid white;
+  --border-radius: 10px;
+}
 
 .userimg {
   // max-width: 90px;
@@ -210,4 +238,9 @@ ion-segment .segment-activated {
 
 .closet-plus-col:last-child {
   margin-bottom: 45px;
+}
+
+ion-icon {
+  color: #fff;
+  margin-bottom: -1px;
 }

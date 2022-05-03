@@ -19,180 +19,159 @@ ion-title{
 }
 
 ion-content{
-  --border-top-left-radius: 10px !important;
-  --border-top-right-radius: 10px !important;
+  --border-radius: 30px !important;
+  --border-radius: 30px !important;
 
-  border-top-left-radius: 10px !important;
-  border-top-right-radius: 10px !important;
+  border-radius: 30px !important;
+  border-radius: 30px !important;
 }
 
-.md,
-.ios {
-  ion-content::part(background) {
-    // --padding-start: 20px;
-    --border-top-left-radius: 50px !important;
-    --border-top-right-radius: 50px !important;
-    --overflow-y: hidden !important;
+ion-title{
+  text-align: center;
+  --text-align: center;
+}
 
-    border-top-left-radius: 50px !important;
-    border-top-right-radius: 50px !important;
-    overflow-y: hidden !important;
-  }
+.setting-profile {
+display: flex;
+justify-content: space-between;
+margin-top: 20px;
+border-radius: 10px;
+padding-bottom: 20px;
 
-  ion-content::part(scroll) {
-    margin: 40px 20px 0px !important;
-    --margin: 40px 20px 0px !important;
-  }
+--display: flex;
+--justify-content: space-between;
+--margin-top: 20px;
+--border-radius: 10px;
+--padding-bottom: 20px;
 
-  ion-title{
-      margin-top: 10px;
-      text-align: center;
-
-      --margin-top: 10px;
-      --text-align: center;
-  }
-
-  .setting-profile {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    border-radius: 10px;
-    padding-bottom: 20px;
-
+  .profile-avatar {
     --display: flex;
-    --justify-content: space-between;
-    --margin-top: 20px;
-    --border-radius: 10px;
-    --padding-bottom: 20px;
+    --align-items: center;
+    --position: relative;
+    --margin-inline-end: 0px;
 
-    .profile-avatar {
-      --display: flex;
-      --align-items: center;
-      --position: relative;
-      --margin-inline-end: 0px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-inline-end: 0px;
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
 
-      display: flex;
-      align-items: center;
-      position: relative;
-      margin-inline-end: 0px;
-      img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-
-        --width: 50px;
-        --height: 50px;
-        --border-radius: 50%;
-      }
-    }
-
-    .profile-detail {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      height: 100%;
-      margin-left: 20px;
-
-      --display: flex;
-      --flex-direction: column;
-      --justify-content: space-around;
-      --height: 100%;
-      --margin-left: 20px;
-
-      .detail-fullname {
-        color: black;
-        font-size: 16px;
-        font-weight: bold;
-      }
-      .detail-nickname {
-        color: #a6a6a6;
-        font-size: 16px;
-      }
-
-      .detail-description{
-        color: black;
-        font-size: 16px;
-        font-weight: bold;
-      }
-    }   
-    .setting-avatar {
-      display: flex;
-      align-items: center;
-      position: relative;
-      margin-inline-end: 0px;
-
-      --display: flex;
-      --align-items: center;
-      --position: relative;
-      --margin-inline-end: 0px;
-
-      img {
-        width: 15px;
-        height: 15px;
-      }
+      --width: 50px;
+      --height: 50px;
+      --border-radius: 50%;
     }
   }
 
-  .setting-detail{
+  .profile-detail {
     display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    margin-left: 10px;
-    border-radius: 10px;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    margin-left: 20px;
 
     --display: flex;
-    --justify-content: space-between;
-    --margin-top: 15px;
-    --margin-left: 10px;
-    --border-radius: 10px;
+    --flex-direction: column;
+    --justify-content: space-around;
+    --height: 100%;
+    --margin-left: 20px;
 
-    .profile-detail {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      height: 100%;
-      margin-left: 20px;
+    .detail-fullname {
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .detail-nickname {
+      color: #a6a6a6;
+      font-size: 16px;
+    }
 
-      --display: flex;
-      --flex-direction: column;
-      --justify-content: space-around;
-      --height: 100%;
-      --margin-left: 20px;
+    .detail-description{
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }   
+  .setting-avatar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-inline-end: 0px;
 
-      .detail-fullname {
-        color: black;
-        font-size: 16px;
-        font-weight: bold;
-      }
-      .detail-nickname {
-        color: #a6a6a6;
-        font-size: 16px;
-      }
+    --display: flex;
+    --align-items: center;
+    --position: relative;
+    --margin-inline-end: 0px;
 
-      .detail-description{
-        color: black;
-        font-size: 16px;
-        font-weight: bold;
-      }
-    }   
-    .setting-avatar {
-      display: flex;
-      align-items: center;
-      position: relative;
-      margin-inline-end: 0px;
-
-      --display: flex;
-      --align-items: center;
-      --position: relative;
-      --margin-inline-end: 0px;
-
-      img {
-        width: 15px;
-        height: 15px;
-      }
+    img {
+      width: 15px;
+      height: 15px;
     }
   }
 }
+
+.setting-detail{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-left: 10px;
+  border-radius: 10px;
+
+  --display: flex;
+  --justify-content: space-between;
+  --margin-top: 15px;
+  --margin-left: 10px;
+  --border-radius: 10px;
+
+  .profile-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    margin-left: 20px;
+
+    --display: flex;
+    --flex-direction: column;
+    --justify-content: space-around;
+    --height: 100%;
+    --margin-left: 20px;
+
+    .detail-fullname {
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .detail-nickname {
+      color: #a6a6a6;
+      font-size: 16px;
+    }
+
+    .detail-description{
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }   
+  .setting-avatar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-inline-end: 0px;
+
+    --display: flex;
+    --align-items: center;
+    --position: relative;
+    --margin-inline-end: 0px;
+
+    img {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
+
 
 body {
   background: #fff; //ruins camera
@@ -200,7 +179,7 @@ body {
 }
 
 p > ion-icon {
-  color: #000000;
+  color: #fff;
   margin-bottom: -1px;
 }
 

@@ -6,7 +6,6 @@
         slot="icon-only"
         class="medium-font"
         src="/assets/images/icon/back.svg"
-        style="margin-top: 10px;"
       ></ion-icon>
     </ion-buttons>
     <ion-title class="medium-font bold-font">
@@ -21,11 +20,11 @@
     <ion-list>
       <ion-item lines="none" class="setting-profile">
         <div slot="start" class="profile-avatar">
-          <img src="/assets/images/icon/avatar.svg" />
+          <img [src]="user.photos ? user.photos['128'] : 'assets/profile.png'"/>
         </div>
         <div class="profile-detail">
-          <ion-label class="detail-fullname">Juan Sebastian</ion-label>
-          <ion-label class="detail-nickname"> Mira aixo</ion-label>
+          <ion-label class="detail-fullname">{{user.name +" " +user.username}}</ion-label>
+          <ion-label class="detail-nickname"> {{user.username}}</ion-label>
         </div>
         <div slot="end" class="profile-icon">
           <ion-icon src="/assets/images/icon/lock.svg" slot="end"></ion-icon>

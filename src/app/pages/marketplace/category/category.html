@@ -23,10 +23,12 @@
       </ion-icon>
     </ion-buttons>
   </ion-toolbar>
-  <ion-title *ngIf="this.title && this.subtitle" style="text-align: start;  padding-left: 0px;">
-     {{this.title}}<br>
-    {{this.subtitle}}
-  </ion-title>
+  <ion-toolbar class="ion-no-padding">
+    <ion-title *ngIf="this.title && this.subtitle" style="text-align: start;  padding-left: 0px;">
+      {{this.title}}<br>
+     {{this.subtitle}}
+    </ion-title>
+  </ion-toolbar>
   <ion-toolbar class="ion-no-padding">
     <ion-searchbar
       [(ngModel)]="searchProduct"

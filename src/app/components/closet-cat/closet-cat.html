@@ -13,7 +13,7 @@
 <ion-grid class="ion-padding" *ngIf="categories &&  categories.length >0"> 
   <ion-row  class="ion-no-margin  ion-no-padding">
     <ion-col size="6" *ngFor="let c of categories;let i = index"  class="ion-no-margin ion-no-padding "  [ngClass]="i > 1? 'ion-nopadding-top' : ''"  >
-      <ion-card   class="card ion-no-margin box-shadow no-border" style="border-radius:0;">
+      <ion-card   class="card ion-no-margin box-shadow no-border" style="border-radius: 10px;">
         <ion-badge class="badge"><p class="price_title medium-font regular-font text-shell" [ngClass]="{'text-loaded': closetList[c]?.total}">   {{closetList[c].total }} 
         </p></ion-badge>
         <div class="image-shell" (click)="openCloset(closetList[c].products)">
