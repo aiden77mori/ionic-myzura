@@ -6,17 +6,15 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {  take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { LoadingProvider } from '../../services/loading.provider';
+import { LoadingProvider } from '../../../../services/loading.provider';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { DataProvider } from '../../services/data.provider';
-import { FirebaseProvider } from '../../services/firebase.provider';
+import { DataProvider } from '../../../../services/data.provider';
+import { FirebaseProvider } from '../../../../services/firebase.provider';
 import { TranslateProvider } from 'src/app/services/translate.service';
 import { SampleShellListingModel } from 'src/app/services/shell/sample-shell.model';
-import { FiltersPage } from './filters/filters';
 import { ProductsProvider } from 'src/app/services/providers/producs.provider';
 import { MyZuraApiService } from 'src/app/services/myzura.api.service';
 import { Events } from 'src/app/services/Events';
-import { WishlistPage } from './wishlist/wishlist';
 import { ProductsFilterProvider } from 'src/app/services/providers/products.filter.provider';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { GlobalDataService } from 'src/app/services/global.data.service';
@@ -30,11 +28,11 @@ import { LocalProductsProvider } from 'src/app/services/providers/localproducs.p
  */
 
 @Component({
-  selector: 'page-marketplace',
-  templateUrl: 'marketplace.html',
-  styleUrls: ['marketplace.scss']
+  selector: 'page-selectbrand',
+  templateUrl: 'selectbrand.html',
+  styleUrls: ['selectbrand.scss']
 })
-export class MarketplacePage implements OnInit {
+export class SelectBrandPage implements OnInit {
   routeProductsResolveData: SampleShellListingModel;
   @ViewChild(IonContent, { static: false }) content: IonContent;
 
@@ -99,7 +97,7 @@ export class MarketplacePage implements OnInit {
     // public storyService: StoryService
     ) {
     
-
+      console.log("Start Select BrandPage");
       this.outputFilters.categoryList = this.globalData.CATEGORIES.sort(function(a, b) {
         var textA = a.name.toUpperCase();
         var textB = b.name.toUpperCase();
@@ -294,55 +292,7 @@ export class MarketplacePage implements OnInit {
     // })
     this.productsFilterProvider.destroy()
 
-  }
-  async openFilters(){
-    let modal = await this.modalCtrl.create({
-      component: FiltersPage,
-      componentProps: { 
-        outputFilters:this.outputFilters,
-      }
-    });
-
-    modal.onDidDismiss()
-    .then((data) => {
-      this.fullProducts = []
-      this.outputFilters = data['data']; // Here's your selected user!
-      console.log("DATA RETURNED,", this.outputFilters)
-      if(!this.outputFilters.reset){
-        let params = {
-          user_id: this.firebaseProvider.getCurrentUserId(),
-          color: this.outputFilters["color"],
-          gender:  this.outputFilters["gender"],
-          categories: this.outputFilters["categories"],
-          brands: this.outputFilters["brands"],
-          price:  this.outputFilters["price"]
-  
-        }
-
-        this.productsFilterProvider.destroy()
-        this.myzuraApi.getProductsByFilter(params).then((products:any)=>{
-          this.productsFilterProvider.setList(products)
-  
-          this.filterProducts$ = this.productsFilterProvider.filterProducts$;
-          // this.productsFilterProvider.nextPage()
-  
-          // this.fullProducts = []
-          // Object.values(products.filtered_products).map(async (key)=>{
-          //   await this.dataProvider.getProductById(key).query.once("value", res=>{
-          //     this.fullProducts.push(res.val())
-          //   })
-  
-          //   console.log(this.fullProducts);
-  
-          // })
-        })
-      }
-    });
-    modal.present();
-
-
-
-  }
+  }  
 
   //View User  
   viewUser(userId) {
@@ -424,29 +374,6 @@ export class MarketplacePage implements OnInit {
 
   openQr(){
     alert("COMING SOON")
-  }
-
- async openFavorites(){
-     console.log("Modal")
-    let modal = await this.modalCtrl.create({
-      component: WishlistPage,
-      componentProps: { 
-        // products:this.routeProductsResolveData?.items,
-        // profilePic: this.user.profilePic ? this.user.profilePic : 'assets/profile.png',
-        // update: (comment: any) => {
-        //   const { comments } = this.item;
-        //   if (comments) {
-        //     this.item.comments = comments + 1;
-        //   } else {
-        //     this.item.comments = 1;
-        //   }
-
-        //   this.item.isComment = true;
-        // }
-      }
-    });
-    modal.present();
-    // this.navCtrl.navigateForward('tabs/marketplace/wishlist');
   }
 
   openCategory(){

@@ -1,17 +1,16 @@
 <ion-header  class="ion-no-border ion-padding-horizontal">
-  <ion-toolbar color="light" >
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-icon *ngIf='step == "buildOutfit"' slot="icon-only" name="arrow-back-outline" class="medium-font" (click)="back()"> </ion-icon>
-      <ion-icon *ngIf='step != "buildOutfit"'slot="icon-only" name="arrow-back-outline" class="medium-font" (click)="step = 'buildOutfit'"> </ion-icon>
+      <ion-icon *ngIf='step == "buildOutfit"' slot="icon-only" src="/assets/images/icon/back.svg" class="medium-font" (click)="back()"> </ion-icon>
+      <ion-icon *ngIf='step != "buildOutfit"'slot="icon-only" src="/assets/images/icon/back.svg" class="medium-font" (click)="step = 'buildOutfit'"> </ion-icon>
     </ion-buttons>
     <ion-title class="medium-font bold-font">  {{"outfits.add.outfit" | translate}} </ion-title>
 
-    <ion-buttons *ngIf='step == "buildOutfit"' slot="end" fill="clear"  color='darkest'  class="medium-font bold-font" >
-      <ion-button color="primary" class="medium-font" (click)="setName()">
+    <ion-buttons *ngIf='step == "buildOutfit"' slot="end" fill="clear" class="medium-font bold-font" >
+      <ion-button color="light" class="medium-font" (click)="setName()" >
         {{"outfits.next" | translate}}
       </ion-button>
-      
-  </ion-buttons>
+    </ion-buttons>
   <!-- <ion-buttons *ngIf='step == "setName"' slot="end" fill="clear"  color='darkest'  class="medium-font bold-font" (click)="save()">
       
     <ion-button color="primary" class="medium-font" (click)="save()">

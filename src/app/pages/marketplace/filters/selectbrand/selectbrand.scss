@@ -163,14 +163,7 @@ h2, p {
   border-radius: 0px;
 }
 
-.out-category {
-  justify-content: space-between;
-  padding: 5px;
-
-  .categoryList{
-    background: rgba(0,0,0,0.1);
-    --background: rgba(0,0,0,0.1);
-    border-radius: 5px;
-  }
+.categoryList:hover{
+  background: grey;
+  --background: grey;
 }
-

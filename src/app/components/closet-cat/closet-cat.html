@@ -14,11 +14,13 @@
   <ion-row  class="ion-no-margin  ion-no-padding">
     <ion-col size="6" *ngFor="let c of categories;let i = index"  class="ion-no-margin ion-no-padding "  [ngClass]="i > 1? 'ion-nopadding-top' : ''"  >
       <ion-card   class="card ion-no-margin box-shadow no-border" style="border-radius: 10px;">
-        <ion-badge class="badge"><p class="price_title medium-font regular-font text-shell" [ngClass]="{'text-loaded': closetList[c]?.total}">   {{closetList[c].total }} 
-        </p></ion-badge>
-        <div class="image-shell" (click)="openCloset(closetList[c].products)">
+        <ion-badge class="badge" style="border-radius: 10px; background: #2a4449;">
+          <p class="price_title medium-font regular-font text-shell" [ngClass]="{'text-loaded': closetList[c]?.total}">   {{closetList[c].total }} 
+          </p>
+        </ion-badge>
+        <div class="image" (click)="openCloset(closetList[c].products)">
           <img [src]="closetList[c].photo" [alt]="closetList[c].name">
-          <div class="product-image-overlay"></div>
+          <!-- <div class="product-image-overlay"></div> -->
           <h6 class="subtitle medium-font text-shell bold-font ion-margin"  [ngClass]="{'text-loaded': closetList[c]?.name}">{{closetList[c].name}}</h6>
 
         </div>

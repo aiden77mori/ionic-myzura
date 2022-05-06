@@ -1,137 +1,305 @@
-
-
-  <ion-grid class="ion-no-padding" >
-    <ion-row>
-      <ion-col>
-        <ion-slides pager="true" [options]="slideOpts">
-          <ion-slide *ngFor="let i of product.shop_photos;">
-            <img class="image box-border-bottom" [src]="i">
-          </ion-slide>
-        </ion-slides>
-        <ion-badge class="badge" > 
-         <div style="color:#000"> <ion-icon name="images" style="margin-right:5px" ></ion-icon>{{product.shop_photos.length}} </div>
-        </ion-badge>
-        <ion-row class="hover-buttons ion-justify-content-end">
-          <!-- <ion-icon size="small" float-right name="logo-instagram" class="fab" (click)="shareViaInstagram(product.image[0])"></ion-icon> -->
-          <ion-icon size="small" name="share" class="fab" (click)="shareCommon(product.shop_photos[0])"></ion-icon>
-          <ion-icon *ngIf="wishlisted " size="small"  name="heart" class="ion-float-right fab" (click)="removeProductWishlist(product.id)" disabled></ion-icon>
-          <ion-icon *ngIf="!wishlisted " size="small"  name="heart-outline" class="ion-float-right fab" (click)="addWishList(product.id)" disabled></ion-icon>
-          <!-- <ion-icon *ngIf="!liked" size="small" float-right name="heart-empty" class="fab" (click)="like()"></ion-icon>
+<ion-grid class="ion-no-padding">
+  <ion-row>
+    <ion-col>
+      <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide *ngFor="let i of product.shop_photos">
+          <img class="image box-border-bottom" [src]="i" />
+        </ion-slide>
+      </ion-slides>
+      <ion-badge class="badge">
+        <div style="color: #000">
+          <ion-icon name="images" style="margin-right: 5px"></ion-icon
+          >{{ product.shop_photos.length }}
+        </div>
+      </ion-badge>
+      <ion-row class="hover-buttons ion-justify-content-end">
+        <!-- <ion-icon size="small" float-right name="logo-instagram" class="fab" (click)="shareViaInstagram(product.image[0])"></ion-icon> -->
+        <ion-icon
+          size="small"
+          name="share"
+          class="fab"
+          (click)="shareCommon(product.shop_photos[0])"
+        ></ion-icon>
+        <ion-icon
+          *ngIf="wishlisted"
+          size="small"
+          name="heart"
+          class="ion-float-right fab"
+          (click)="removeProductWishlist(product.id)"
+          disabled
+        ></ion-icon>
+        <ion-icon
+          *ngIf="!wishlisted"
+          size="small"
+          name="heart-outline"
+          class="ion-float-right fab"
+          (click)="addWishList(product.id)"
+          disabled
+        ></ion-icon>
+        <!-- <ion-icon *ngIf="!liked" size="small" float-right name="heart-empty" class="fab" (click)="like()"></ion-icon>
           <ion-icon *ngIf="liked" size="small" float-right name="heart" class="fab red" (click)="like()"></ion-icon> -->
-        </ion-row>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-grid class="ion-padding" color="light">
+  <ion-row>
+    <ion-col class="ion-no-margin">
+      <p class="p_title bold-font large-font">
+        {{ product.name }}
+      </p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <p class="price_title medium-font regular-font">
+        {{ product.price }} €
+        <span class="old_price_title medium-font regular-font" hidden>
+          TBD €
+        </span>
 
-      </ion-col>
-    </ion-row>
-  
-  
-  </ion-grid >
-    <ion-grid  class="ion-padding" color="light">
+        <ionic5-star-rating
+          #rating
+          class="ion-float-right"
+          activeIcon="star"
+          defaultIcon="star-outline"
+          halfIcon="star-half-sharp"
+          halfStar="true"
+          activeColor="#000"
+          defaultColor="#000"
+          readonly="true"
+          [rating]="product.overallRating ? product.overallRating : 5"
+          fontSize="medium"
+          (ratingChanged)="logRatingChange($event)"
+        >
+        </ionic5-star-rating>
+
+        <!-- <span class="ion-float-right medium-font ratings_title regular-font"
+          >{{ product.totalRatings }}
+          {{ "product.component.reviews" | translate }}</span
+        > -->
+
+        <!-- <ion-icon name="bookmark-outline" class="book_icon_btn"></ion-icon> -->
+      </p>
+    </ion-col>
+  </ion-row>
+  <ion-row style="justify-content: flex-end">
+    <span class="ion-float-right small-font ratings_title regular-font">
+      Opinions
+    </span>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <p class="medium-font regular-font left-title">
+        {{ product.description }}
+        <!-- <ion-icon name="bookmark-outline" class="book_icon_btn"></ion-icon> -->
+      </p>
+      <p class="medium-font bold-font left-title">
+        <!-- {{ product.brand }} -->
+        Category:
+        <br />
+        <br />
+        <!-- <ion-icon name="bookmark-outline" class="book_icon_btn"></ion-icon> -->
+        <span
+          class="fab-category bold-font medium-font ion-margin ion-padding-horizontal"
+        >
+          {{ product.category }}</span
+        >
+      </p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="12" *ngIf="user.addedBodySizes">
+      <p class="bold-font ion-text-start" style="margin: 5px">
+        {{ "product.component.your.size" | translate }}
+      </p>
+
       <ion-row>
-        <ion-col class="ion-no-margin" >
-          <p class="p_title bold-font large-font"> {{product.name}} 
-            <ionic5-star-rating #rating class="ion-float-right"
-            activeIcon = "star"
-            defaultIcon = "star-outline"
-            halfIcon = "star-half-sharp"
-            halfStar = "true"
-            activeColor = "#000" 
-            defaultColor = "#000"
-            readonly="true"
-            [rating]="product.overallRating? product.overallRating : 5"
-            fontSize = "medium"
-            (ratingChanged)="logRatingChange($event)">
-            </ionic5-star-rating>         </p> 
-  
+        <ion-col size="5">
+          <div class="card">
+            {{ sizes?.Main ? sizes.Main : "NA" }}
+          </div>
         </ion-col>
-        
-        </ion-row>
-      <ion-row>
-        <ion-col >
-          <p class="price_title medium-font regular-font">       {{product.price}} € 
-            <span class="old_price_title medium-font regular-font" hidden>   TBD €  </span>
-  
-            <span class="ion-float-right medium-font ratings_title regular-font">{{product.totalRatings }} {{"product.component.reviews" | translate}}</span>
-            <!-- <ion-icon name="bookmark-outline" class="book_icon_btn"></ion-icon> -->
-  
-          </p> 
+        <ion-col size="5">
+          <div class="card">
+            {{ sizes?.EU ? sizes.EU : "NA" }}
+          </div>
         </ion-col>
-        
-        </ion-row>
-        <div class="sep"></div>
-
-        <ion-row>
-          <ion-col >
-            <p class="medium-font regular-font ">{{product.description}}
-              <!-- <ion-icon name="bookmark-outline" class="book_icon_btn"></ion-icon> -->
-            </p> 
-            <p class="medium-font bold-font ">{{product.brand}}
-              <br>
-              <br>
-              <!-- <ion-icon name="bookmark-outline" class="book_icon_btn"></ion-icon> -->
-              <span class="fab-category bold-font medium-font ion-margin ion-padding-horizontal"> {{product.category}}</span>
-
-            </p>
-
-          </ion-col>
-          
-          </ion-row>
-  
-          <ion-row>
-            <ion-col size="12" *ngIf="user.addedBodySizes">
-              <p class="bold-font ion-text-start" style=" margin:5px; "> {{"product.component.your.size" | translate}}</p>
-              
-              <ion-row>
-                <ion-col siz="4">
-                  <div class="card box-shadow">
-                    {{sizes?.Main ? sizes.Main : "NA" }}
-                  </div>
-                </ion-col>
-                <ion-col siz="4" >
-                  <div class="card box-shadow">
-                    {{sizes?.EU ? sizes.EU : "NA"}}
-                  </div>
-                </ion-col>
-                <!-- <ion-col siz="4">
+        <!-- <ion-col siz="4">
                   <div class="card box-shadow">
                     NA
                   </div>
                 </ion-col> -->
-              </ion-row>
-            </ion-col>
+      </ion-row>
+    </ion-col>
 
-            <ion-col size="12" *ngIf="!user.addedBodySizes">
-              <p class="bold-font ion-text-start" style=" margin:5px; "> 
-                {{"product.component.your.nosize" | translate}}</p>
-              
-              <ion-row>
-                <ion-col siz="12">
-                  <ion-button class="small-input-border box-shadow" shape="round"  expand="full" color="darkest" fill="outline" style="margin: auto;"
-                  (click)="addSizes()"
-                  ><span>
-                    {{ "product.component.your.nosize.btn" | translate}}</span> </ion-button>
-                </ion-col>
-              </ion-row>
-            </ion-col>
-            <div class="sep"></div>
+    <!-- <ion-col size="12" *ngIf="!user.addedBodySizes">
+      <p class="bold-font ion-text-start" style="margin: 5px">
+        {{ "product.component.your.nosize" | translate }}
+      </p>
 
-            <ion-col size="12">
-              <ion-button size="medium"  color="darkest"   (click)="openShopLink(product.affiliate_url? product.affiliate_url: product.shop_url, product.id)" shape="round" class="small-input-border bold-font box-shadow" expand="full"  style="margin: auto;   margin-top: 8px;" > 
-                <ion-icon name="basket-outline"></ion-icon> {{"product.component.shop.now" | translate}}</ion-button>
+      <ion-row>
+        <ion-col siz="12">
+          <ion-button
+            class="small-input-border box-shadow"
+            shape="round"
+            expand="full"
+            color="darkest"
+            fill="outline"
+            style="margin: auto"
+            (click)="addSizes()"
+            ><span> {{ "product.component.your.nosize.btn" | translate }}</span>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-col> -->
 
-                <ion-button *ngIf="!addedCloset" (click)="addToCloset(product.id)" size="medium"  color="darkest"   shape="round" class="small-input-border bold-font box-shadow" expand="full" style="margin: auto;   margin-top: 5px;" > 
-                  <ion-icon name="add-outline"></ion-icon>
-                  {{"product.component.add.closet" | translate}}</ion-button>
+    <ion-col size="12">
+      <ion-button
+        size="medium"
+        (click)="
+          openShopLink(
+            product.affiliate_url ? product.affiliate_url : product.shop_url,
+            product.id
+          )
+        "
+        shape="round"
+        class="small-input-border small-font buy-btn"
+        expand="full"
+        style="margin: auto; margin-top: 8px"
+      >
+        <!-- <ion-icon name="basket-outline"></ion-icon> -->
+        <!-- {{ "product.component.shop.now" | translate }} -->
+        Buy now
+      </ion-button>
 
-                  <ion-button disabled *ngIf="addedCloset" size="medium"  color="darkest" fill="outline"   shape="round" class="small-input-border bold-font box-shadow" expand="full"  style="margin: auto;   margin-top: 5px;" > 
-                    <ion-icon name="add-outline"></ion-icon>
-                    {{this.translate.get("product.component.already.added" )}}</ion-button>
-  
-            </ion-col>
+      <ion-button
+        *ngIf="!addedCloset"
+        (click)="addToCloset(product.id)"
+        size="medium"
+        shape="round"
+        class="small-input-border small-font closet-btn"
+        expand="full"
+        style="margin: auto; margin-top: 5px"
+      >
+        <!-- <ion-icon name="add-outline"></ion-icon> -->
+        <!-- {{ "product.component.add.closet" | translate }} -->
+        Add to closet
+      </ion-button>
 
-          </ion-row>
-    </ion-grid>
+      <ion-button
+        disabled
+        *ngIf="addedCloset"
+        size="medium"
+        color="darkest"
+        fill="outline"
+        shape="round"
+        class="small-input-border bold-font"
+        expand="full"
+        style="margin: auto; margin-top: 5px"
+      >
+        <ion-icon name="add-outline"></ion-icon>
+        {{ this.translate.get("product.component.already.added") }}</ion-button
+      >
+    </ion-col>
+  </ion-row>
 
-  <!-- <ion-row lines="none" class="row">
+  <ion-row>
+    <div class="brand-detail">
+      <ion-label class="bold-font medium-font">Your selection</ion-label>
+      <ion-label class="small-font">See all</ion-label>
+    </div>
+  </ion-row>
+
+  <ion-row>
+    <ion-col class="ion-no-margin" size="6">
+      <ion-card class="card ion-no-margin box-shadow">
+        <!-- <ion-badge class="badge">{{ data.brand }}</ion-badge> -->
+        <button [hidden]="wishlisted" class="wishlist">
+          <ion-icon
+            class="medium-font black-color-font"
+            name="heart-outline"
+          ></ion-icon>
+        </button>
+        <button [hidden]="!wishlisted" class="wishlist">
+          <ion-icon
+            class="medium-font black-color-font"
+            name="heart"
+          ></ion-icon>
+        </button>
+        <div class="image-shell">
+          <img [src]="'/assets/profile.jpg'" [alt]="asdf" />
+        </div>
+        <ion-card-content class="ion-no-padding">
+          <ion-card-title>
+            <ion-row>
+              <ion-col class="ion-text-center ion-padding-horizontal">
+                <p class="price_title small-font regular-font ion-text-start">
+                  <!-- {{ data.name }} -->
+                  Skinny suit pants fit
+                </p>
+                <h6 class="subtitle small-font ion-text-start">
+                  <!-- {{ data.price }} € -->
+                  $29.99
+                </h6>
+              </ion-col>
+            </ion-row>
+          </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col class="ion-no-margin" size="6">
+      <ion-card class="card ion-no-margin box-shadow">
+        <!-- <ion-badge class="badge">{{ data.brand }}</ion-badge> -->
+        <button [hidden]="wishlisted" class="wishlist">
+          <ion-icon
+            class="medium-font black-color-font"
+            name="heart-outline"
+          ></ion-icon>
+        </button>
+        <button [hidden]="!wishlisted" class="wishlist">
+          <ion-icon
+            class="medium-font black-color-font"
+            name="heart"
+          ></ion-icon>
+        </button>
+        <div class="image-shell">
+          <img [src]="'/assets/profile.jpg'" [alt]="asdf" />
+        </div>
+        <ion-card-content class="ion-no-padding">
+          <ion-card-title>
+            <ion-row>
+              <ion-col class="ion-text-center ion-padding-horizontal">
+                <p class="price_title small-font regular-font ion-text-start">
+                  <!-- {{ data.name }} -->
+                  Skinny suit pants fit
+                </p>
+                <h6 class="subtitle small-font ion-text-start">
+                  <!-- {{ data.price }} € -->
+                  $29.99
+                </h6>
+              </ion-col>
+            </ion-row>
+          </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <p class="medium-font regular-font left-title">
+        <!-- {{ product.description }} -->
+        Opinions and Outfits of other Users
+        <!-- <ion-icon name="bookmark-outline" class="book_icon_btn"></ion-icon> -->
+      </p>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- <ion-row lines="none" class="row">
     <ion-text class="name">{{product.name}}</ion-text>
   </ion-row>
   <ion-row>
@@ -141,22 +309,29 @@
   </ion-row>
    -->
 
-   <div class="sep"></div>
+<div *ngIf="!loading && timelineData">
+  <app-post-card
+    *ngFor="let item of timelineData"
+    [item]="item"
+    [user]="user"
+  ></app-post-card>
+</div>
 
-
-
-  <div *ngIf="!loading && timelineData">
-    <app-post-card *ngFor="let item of timelineData" [item]="item" [user]="user"></app-post-card>
-  </div>
-  
-  <ion-grid class="ion-padding" *ngIf="!timelineData || timelineData.length === 0"> 
-    <ion-row>
-      <ion-col class="ion-margin-vertical ion-padding-vertical">
-        <div class=" ion-text-center">
-          <!-- <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> -->
-          <p class="bold-font medium-font">{{"timeline.noposts.title" | translate}}</p>
-          <p class="regular-font medium-font">{{"timeline.noposts.description" | translate}}</p>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-grid
+  class="ion-padding"
+  *ngIf="!timelineData || timelineData.length === 0"
+>
+  <ion-row>
+    <ion-col class="ion-margin-vertical ion-padding-vertical">
+      <div class="ion-text-center">
+        <!-- <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> -->
+        <p class="bold-font medium-font">
+          {{ "timeline.noposts.title" | translate }}
+        </p>
+        <p class="regular-font medium-font">
+          {{ "timeline.noposts.description" | translate }}
+        </p>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

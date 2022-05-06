@@ -150,3 +150,9 @@ ion-card-title  {
   position: absolute;
 }
 
+.local-brand-grid {
+  ion-row {
+    padding: 15px 0 10px 0;
+    --padding: 15px 0 10px 0;
+  }
+}

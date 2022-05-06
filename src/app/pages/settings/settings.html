@@ -18,7 +18,7 @@
   <div *ngIf="user">
     <!-- Profile Menu -->
     <ion-list>
-      <ion-item lines="none" class="setting-profile">
+      <ion-item lines="none" class="setting-profile" >
         <div slot="start" class="profile-avatar">
           <img [src]="user.photos ? user.photos['128'] : 'assets/profile.png'"/>
         </div>
@@ -30,7 +30,7 @@
           <ion-icon src="/assets/images/icon/lock.svg" slot="end"></ion-icon>
         </div>
       </ion-item>
-      <ion-item lines="none" class="setting-detail">
+      <ion-item lines="none" class="setting-detail" (click)="gotoProfit()">
         <div slot="start" class="setting-avatar">
           <img src="/assets/images/icon/profit.svg" />
         </div>
@@ -38,10 +38,10 @@
           <ion-label class="detail-description">{{"settings.page.home.profit" | translate}}</ion-label>
         </div>
         <div slot="end" class="profile-icon">
-          <ion-icon src="/assets/images/icon/go.svg" slot="end" tappable (click)="gotoProfit()"></ion-icon>
+          <ion-icon src="/assets/images/icon/go.svg" slot="end" tappable></ion-icon>
         </div>
       </ion-item>
-      <ion-item lines="none" class="setting-detail">
+      <ion-item lines="none" class="setting-detail" (click)="gotoPersonalInfo()">
         <div slot="start" class="setting-avatar">
           <img src="/assets/images/icon/info.svg" />
         </div>
@@ -49,10 +49,10 @@
           <ion-label class="detail-description">{{"settings.page.home.personalinfo" | translate}}</ion-label>
         </div>
         <div slot="end" class="profile-icon">
-          <ion-icon src="/assets/images/icon/go.svg" slot="end" tappable (click)="gotoPersonalInfo()"></ion-icon>
+          <ion-icon src="/assets/images/icon/go.svg" slot="end" tappable ></ion-icon>
         </div>
       </ion-item>
-      <ion-item lines="none" class="setting-detail">
+      <ion-item lines="none" class="setting-detail" (click)="gotoSizeInfo()">
         <div slot="start" class="setting-avatar">
           <img src="/assets/images/icon/size.svg" />
         </div>
@@ -60,7 +60,7 @@
           <ion-label class="detail-description">{{"settings.page.home.sizeinfo" | translate}}</ion-label>
         </div>
         <div slot="end" class="profile-icon">
-          <ion-icon src="/assets/images/icon/go.svg" slot="end" tappable (click)="gotoSizeInfo()"></ion-icon>
+          <ion-icon src="/assets/images/icon/go.svg" slot="end" tappable ></ion-icon>
         </div>
       </ion-item>
       <ion-item lines="none" class="setting-detail">
@@ -74,7 +74,7 @@
           <ion-icon src="/assets/images/icon/switch.svg" slot="end"></ion-icon>
         </div>
       </ion-item>
-      <ion-item lines="none" class="setting-detail">
+      <ion-item lines="none" class="setting-detail" (click)="gotoSecurity()">
         <div slot="start" class="setting-avatar">
           <img src="/assets/images/icon/security.svg" />
         </div>
@@ -82,10 +82,10 @@
           <ion-label class="detail-description">{{"settings.page.home.security" | translate}}</ion-label>
         </div>
         <div slot="end" class="profile-icon">
-          <ion-icon src="/assets/images/icon/go.svg" slot="end" tappable (click)="gotoSecurity()"></ion-icon>
+          <ion-icon src="/assets/images/icon/go.svg" slot="end" tappable ></ion-icon>
         </div>
       </ion-item>
-      <ion-item lines="none" class="setting-detail">
+      <ion-item lines="none" class="setting-detail" (click)="gotoLegalInfo()">
         <div slot="start" class="setting-avatar">
           <img src="/assets/images/icon/legal.svg" />
         </div>
@@ -93,7 +93,7 @@
           <ion-label class="detail-description">{{"settings.page.home.legalinfo" | translate}}</ion-label>
         </div>
         <div slot="end" class="profile-icon">
-          <ion-icon src="/assets/images/icon/go.svg" slot="end" tappable (click)="gotoLegalInfo()"></ion-icon>
+          <ion-icon src="/assets/images/icon/go.svg" slot="end" tappable ></ion-icon>
         </div>
       </ion-item>
       <ion-item lines="none" class="setting-detail">

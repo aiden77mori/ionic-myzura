@@ -10,6 +10,21 @@ p {
   margin: 2px 0 2px 0;
 }
 
+ion-grid {
+  ion-row {
+    ion-col {
+      ion-card {
+        width: 95%;
+      }
+    }
+    ion-col:nth-child(2) {
+      ion-card {
+        float: right;
+      }
+    }
+  }
+}
+
 .badge {
   position: absolute;
   top: 0;
@@ -23,7 +38,7 @@ p {
   position: absolute;
     bottom: 0;
     left: 0;
-    color: #fff;
+    color: #000;
     right: 0;
 }
 .badge-notifications{
@@ -46,4 +61,33 @@ p {
 
 .fab-container {
   // position: relative;
+}
+
+.image{
+  // background: linear-gradient(to right, rgb(238, 238, 238) 8%, rgb(221, 221, 221) 18%, rgb(238, 238, 238) 33%) 0% 0% / 800px 104px;
+  padding-bottom: 100%;
+  height: 0px;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to right, rgb(238, 238, 238) 8%, rgb(221, 221, 221) 18%, rgb(238, 238, 238) 33%);
+    background-size: 800px 104px;
+    // animation: animateBackground 2s ease-in-out infinite;
+  }
+  & > img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    &[src=""],
+    &[src="null"] {
+      display: none;
+    }
+  }
 }

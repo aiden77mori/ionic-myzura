@@ -1,191 +1,174 @@
-
-<ion-header  class="ion-no-border ion-padding-horizontal">
-  <ion-toolbar color="light" >
-    <ion-buttons slot="start" (click)="dismiss()"> 
-      <ion-icon slot="icon-only" name="arrow-back" (click)="dismiss()" class="medium-font"> </ion-icon>
+<ion-header class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="dismiss()">
+      <!-- <ion-icon slot="icon-only" name="arrow-back" (click)="back()" class="medium-font"> </ion-icon> -->
+      <ion-icon
+        slot="icon-only"
+        class="medium-font"
+        src="/assets/images/icon/back.svg"
+      ></ion-icon>
     </ion-buttons>
-    <ion-title class="medium-font bold-font"> {{"filters.page.title"  | translate}} </ion-title>
-
-    <!-- <ion-buttons slot="end"  (click)="newMessage()">
-      <ion-icon slot="icon-only" name="create-outline" class="medium-font"  > </ion-icon>
-    </ion-buttons> -->
-    <!-- <ion-buttons slot="end" fill="clear"  color='darkest'  class="medium-font bold-font">
-      
-        Sign in
-    </ion-buttons> -->
-
+    <ion-title class="medium-font bold-font">
+      {{"filters.page.title" | translate}}
+    </ion-title>
   </ion-toolbar>
-  <ion-segment [(ngModel)]="filterType" mode ="md" color="primary">
-    <ion-segment-button value="categories" >
-      <p class="small-font">{{"filters.categories.btn"  | translate}}</p>
-    </ion-segment-button>
-    <ion-segment-button value="brands">
-      <p class="small-font">{{"filters.brands.btn"  | translate}}</p>
-    </ion-segment-button>
-    <ion-segment-button value="price">
-      <p class="small-font">{{"filters.price.btn"  | translate}}</p>
-    </ion-segment-button>
-  </ion-segment>
 </ion-header>
-<ion-content  class="box-border-top">
-
-  <div [ngSwitch]="filterType"  class="main_content_div  ion-padding">
-
-    <div  class="centent_div" *ngSwitchCase="'categories'" >
-      <!-- <ion-segment (ionChange)=" genderChanged($event)" style="width: 60%;" value='female' mode ="md" color="primary" >
-        <ion-segment-button value="female">
-          <ion-label>{{"filters.female.btn"  | translate}}</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="male">
-          <ion-label>{{"filters.male.btn"  | translate}}</ion-label>
-        </ion-segment-button>
-      </ion-segment> -->
-      <ion-grid class="no-padding">
-        <ion-row>
-          <ion-col size="12" class="ion-margin ion-no-padding">
-            <p class="ion-float-left ion-no-margin  bold-font small-font">{{"filters.colors.text" | translate}} </p>
-          </ion-col>
-          <ion-col size="2" class="no-margin" *ngFor="let c of colors">
-            <ion-fab-button class="small-font" size="small"  [ngClass]="c" (click) ="sel_col(c)">
-              <ion-icon name="checkmark-circle-outline" [ngStyle]="{'color': c=='white'? 'black' : 'white'}" *ngIf="this.color==c" ></ion-icon>
-            </ion-fab-button>
-          </ion-col>
-          <div class="hr"></div>
-      </ion-row>
-        <ion-row>
-          <ion-col size="12" class="ion-margin ion-no-padding">
-            <p class="ion-float-left ion-no-margin  bold-font small-font">{{"filters.gender.text" | translate}} </p>
-          </ion-col>
-          
-            <ion-col size="12" class="ion-margin-vertical margin-vertical-fix">
-              <ion-item lines='none' class="input-item input-border no-padding small-font box-shadow">
-                <ion-segment color="black" [value]='this.outputFilters.gender' mode="md" (ionChange)="genderChanged($event)">
-                <ion-segment-button  value="Male">
-                  <ion-label>{{"auth.bodyMeasures.male" | translate}}</ion-label>
-                </ion-segment-button>
-                <ion-segment-button value="Female">
-                  <ion-label>{{"auth.bodyMeasures.female" | translate}}</ion-label>
-                </ion-segment-button>
-              </ion-segment>
-              </ion-item>
-
-            </ion-col>
-            <div class="hr"></div>
-
-        </ion-row>
-      </ion-grid>  
-        <div class="subcategor_div">
-          <ion-row class="items-row" >
-            <ion-col size="12" class="ion-margin ion-no-padding">
-              <p class="ion-float-left ion-no-margin  bold-font small-font">{{"filters.categories.text" | translate}} </p>
-            </ion-col>
-            <ion-col class="category_col" *ngFor="let cate_item of this.outputFilters.categoryList;let i = index">
-
-              <div  class="category_item" >
-                <!-- [ngStyle]="{'border-color': cate_item.status=='enable'?'orangered':'#787878'}" -->
-                <!-- <ion-button  size="small"  (click)="sel_cat(i,1)"  color="darkest" shape="round" class="small-input-border bold-font box-shadow" expand="full"  style="margin:3px; height: 60px; width: 100%;" > 
-                  {{ cate_item.name}}</ion-button> -->
-
-                <!-- <ion-img class="category_image img-border" [src]="cate_item.image"   (click)="sel_cat(i,1)"    ></ion-img>
-                <div class="category_title"><p style="margin:0">{{ cate_item.name}}</p></div> -->
-                <!-- <ion-button *ngIf="cate_item.status==true"  size="small"  (click)="sel_cat(i,1)"  color="darkest" shape="round" class="cover_div small-input-border bold-font box-shadow" expand="full"  style="margin:3px; height: 60px; width: 100%;" > 
-                  <ion-icon name="checkmark-circle-outline" class="select_icon"></ion-icon>
-                </ion-button> -->
-
-                <ion-button size="small"  [color]="cate_item.status==true? 'black' : 'light'" shape="round" class="small-input-border bold-font box-shadow" expand="full"  (click)="sel_cat(i,1)">
-                  <!-- <ion-icon *ngIf="cate_item.status==true" name="checkmark-circle-outline"></ion-icon> -->
-                  {{ cate_item.name}}</ion-button>
-              </div>            
-
-            </ion-col>
-          </ion-row>
+<ion-content class="box-border-top">
+  <div class="brand_content">
+    <ion-row>
+      <div class="brand-detail">
+        <ion-label class="bold-font medium-font"
+          >{{"filters.brands.text" | translate}}</ion-label
+        >
+        <ion-label
+          class="small-font"
+          (click)="onClickMore()"
+          style="cursor: pointer"
+          >See more</ion-label
+        >
       </div>
-
-      <!--    
-      <div class="subcategor_div" *ngIf="sel_gender=='male'">
-        <ion-row class="items-row" >
-          <ion-col size="4" class="category_col" *ngFor="let cate_item of male_category_list ;let i = index">
-
-            <div  class="category_item" >
-              <ion-img class="category_image" [src]="cate_item.image"   (click)="sel_cat(i,2)"    ></ion-img>
-              <div class="category_title"><p style="margin:0">{{ cate_item.name}}</p></div>
-              <div *ngIf="cate_item.status=='enable'" class="cover_div" (click)="sel_cat(i,2)">
-              
-                <ion-icon name="checkmark-circle-outline" class="select_icon"></ion-icon>
-
-              </div>
-            </div>            
-
-          </ion-col>
-        </ion-row>
-     </div> -->
-
-
-  </div>
-
-  <div  class="centent_div" *ngSwitchCase="'brands'">
-
-    <div class="subcategor_div" >
-      <ion-row class="items-row" >
-        <ion-col size="12" class="ion-margin ion-no-padding">
-          <p class="ion-text-start ion-no-margin  bold-font small-font">{{"filters.brands.text" | translate}} </p>
-          <p class="ion-text-start hint_p">Try the search bar to find specific products</p> 
-
+    </ion-row>
+    <ion-row
+      class="category_col ion-no-padding ion-no-margin ion-padding-bottom inifinte-scroll"
+    >
+      <div
+        class="category_item"
+        *ngFor="let cate_item of logolist;let i = index"
+      >
+        <ion-button
+          size="small"
+          shape="round"
+          class="small-input-border bold-font box-shadow brand_button"
+          expand="full"
+          (click)="sel_cat(i,2)"
+        >
+          {{ cate_item.name}}</ion-button
+        >
+      </div>
+    </ion-row>
+    <ion-grid class="no-padding">
+      <ion-row>
+        <ion-col size="12" class="ion-no-margin ion-no-padding">
+          <p class="ion-float-left ion-no-margin bold-font medium-font">
+            {{"filters.colors.text" | translate}}
+          </p>
         </ion-col>
-
-        <ion-col class="category_col" *ngFor="let cate_item of logolist;let i = index">
-
-          <div  class="category_item" >
-            
-            <ion-button size="small"  [color]="cate_item.status==true? 'black' : 'light'" shape="round" class="small-input-border bold-font box-shadow" expand="full"  (click)="sel_cat(i,2)">
-              <!-- <ion-icon *ngIf="cate_item.status==true" name="checkmark-circle-outline"></ion-icon> -->
-              {{ cate_item.name}}</ion-button>
-
-            <!--  -->
-            <!-- <ion-img class="category_image_logo img-border" [src]="cate_item.image"   (click)="sel_cat(i,2)"  [ngStyle]="{'border-color': cate_item.status==true?'black':'#787878'}"  ></ion-img>
-            <div class="category_title"><p style="margin:0" [ngStyle]="{'color': cate_item.status==true?'black':'#787878'}">{{ cate_item.name}}</p></div>
-            <div *ngIf="cate_item.status==true" class="cover_div_logo" (click)="sel_cat(i,2)">
-            
-              <ion-icon name="checkmark-circle-outline" class="select_icon"></ion-icon>
-
-            </div> -->
-          </div>            
-
+        <ion-col size="3" class="ion-no-margin" *ngFor="let c of colors">
+          <ion-button
+            class="small-font box-shadow color_button"
+            size="small"
+            [ngClass]="c"
+            (click)="sel_col(c)"
+          >
+            <ion-icon
+              name="checkmark-circle-outline"
+              [ngStyle]="{'color': c=='white'? 'black' : 'white'}"
+              *ngIf="this.color==c"
+            ></ion-icon>
+          </ion-button>
         </ion-col>
       </ion-row>
-   </div>
-
+      <ion-row>
+        <ion-col size="12" class="ion-no-margin ion-no-padding">
+          <p class="ion-float-left ion-no-margin bold-font medium-font">
+            {{"filters.gender.text" | translate}}
+          </p>
+        </ion-col>
+        <ion-col
+          class="ion-margin-vertical margin-vertical-fix"
+          style="display: flex"
+        >
+          <ion-button
+            (click)="apply()"
+            shape="round"
+            expand="full"
+            class="small-input-border bold-font box-shadow gender_btn"
+            style="margin: 20px auto; width: 90%"
+          >
+            {{"auth.bodyMeasures.male" | translate}}</ion-button
+          >
+          <ion-button
+            (click)="apply()"
+            shape="round"
+            class="small-input-border bold-font box-shadow gender_btn"
+            expand="full"
+            style="margin: 20px auto; width: 90%"
+          >
+            {{"auth.bodyMeasures.female" | translate}}</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
-  <div  class="centent_div" *ngSwitchCase="'price'">
-    <p style="    text-align: center;   font-size: larger;   font-weight: 700;">
-      <span>{{sel_price.lower}}€</span> - 
-      <span *ngIf="sel_price.upper == 800">+{{sel_price.upper}}€</span>
-      <span *ngIf="sel_price.upper < 800">{{sel_price.upper}}€</span>
-    </p>
-
-    <div style="width: 90%;   margin: auto;">
-      
-      <ion-range dualKnobs="true" min="0" max="800" color="primary" [(ngModel)]="sel_price">
-      </ion-range>
-      <div style="display: flex;">
-        <ion-label slot="start" style="    width: 50%;   margin-left: 10px;">0€</ion-label>
-        <ion-label slot="end"  style="    width: 50%; text-align: right;  margin-right: 10px;">+800€</ion-label>
+  <div class="centent_div">
+    <ion-row>
+      <ion-col size="12" class="ion-no-margin ion-no-padding">
+        <p class="ion-float-left ion-no-margin bold-font medium-font">
+          {{"filters.price.btn" | translate}}
+        </p>
+      </ion-col>
+      <div class="ion-no-margin ion-no-padding" style="width: 100%">
+        <div style="display: flex">
+          <span slot="start" style="width: 50%">{{sel_price.lower}}€</span> -
+          <span slot="end" style="width: 50%; text-align: right"
+            >{{sel_price.upper}}€</span
+          >
+        </div>
+        <ion-range
+          class="ion-no-margin ion-no-padding range"
+          dualKnobs="true"
+          min="0"
+          max="800"
+          [(ngModel)]="sel_price"
+        >
+        </ion-range>
       </div>
+    </ion-row>
+    <div class="subcategor_div">
+      <ion-row>
+        <ion-col size="12" class="ion-no-margin ion-no-padding">
+          <p class="ion-float-left ion-no-margin bold-font medium-font">
+            {{"filters.categories.text" | translate}}
+          </p>
+        </ion-col>
+        <ion-col
+          size="4"
+          class="ion-no-margin ion-no-padding category_col"
+          *ngFor="let cate_item of this.outputFilters.categoryList;let i = index"
+        >
+          <ion-button
+            size="small"
+            shape="round"
+            class="small-input-border box-shadow ion-no-padding category_button"
+            (click)="sel_cat(i,1)"
+            style="width: 95%"
+          >
+            {{ cate_item.name}}</ion-button
+          >
+        </ion-col>
+      </ion-row>
     </div>
-      
   </div>
-
-
-
-</div>
 </ion-content>
-
-<ion-footer style="display: flex;">    
-  <ion-button  (click)="apply()"    color="darkest" shape="round" class="small-input-border bold-font box-shadow" expand="full"  style="margin:20px auto;width:40%;" > 
-    <ion-icon name="checkmark-outline"></ion-icon>
-    {{"filters.apply.btn" | translate}}</ion-button>
-    <ion-button  (click)="reset()"    color="darkest" fill="outline" shape="round" class="small-input-border bold-font box-shadow" expand="full"  style="margin:20px auto;width:40%;" > 
-      <ion-icon name="close-outline"></ion-icon>
-      {{"filters.reset.btn" | translate}}</ion-button>
+<ion-footer style="display: flex; background: transparent">
+  <ion-button
+    (click)="reset()"
+    shape="round"
+    class="small-input-border bold-font cancel-btn"
+    expand="full"
+    style="margin: 20px auto; width: 45%"
+  >
+    <!-- <ion-icon name="close-outline"></ion-icon> -->
+    {{"filters.reset.btn" | translate}}</ion-button
+  >
+  <ion-button
+    (click)="apply()"
+    shape="round"
+    class="small-input-border bold-font apply-btn"
+    expand="full"
+    style="margin: 20px auto; width: 45%"
+  >
+    <!-- <ion-icon name="checkmark-outline"></ion-icon> -->
+    {{"filters.apply.btn" | translate}}</ion-button
+  >
 </ion-footer>
-

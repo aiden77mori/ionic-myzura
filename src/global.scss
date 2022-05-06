@@ -104,17 +104,36 @@ body{
 // background:#fff;  //ruins camera
 
 }
+
 ion-app {
   background: #2A4449;
+  --background: #2A4449;
 }
 ion-header{
-  background: #fff;
-  // background: #2A4449;
+  //--background: #fff;
+  --background: #2A4449;
+  background: #2A4449;
+}
+
+ion-toolbar {
+  --background: #2a4449;
+  background: #2a4449;
+}
+
+ion-title{
+  color: white;
+  text-align: center;
+  text-align: center;
+  padding-bottom: 15px;
+  --padding-bottom: 15px;
 }
 
 ion-content {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+
+  --border-top-left-radius: 10px;
+  --border-top-right-radius: 10px;
 }
 //TYPOGRAPHY
 
@@ -650,8 +669,6 @@ p.text-shell {
   width: 100%;
 }
 
-
-
 .modal-fullscreen {
   .modal-wrapper {
       position: absolute;
@@ -663,16 +680,10 @@ p.text-shell {
   }
 }
 
-
-
 ion-button{
   font-family: Montserrat !important;
 
 }
-
-
-
-
 
 .category_item{
   //  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
@@ -762,8 +773,6 @@ ion-button{
     z-index: 100;
   }
 
-
-
   .vertical-align-content > *
 {
      display: flex!important;
@@ -771,9 +780,72 @@ ion-button{
      align-items: center!important;
 }
 
-
 .inifinte-scroll{
   flex-wrap: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
+}
+
+.setting-detail{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+
+  --ion-background-color: rgba(0,0,0,0.1);
+
+  --display: flex;
+  --justify-content: space-between;
+  --margin-top: 10px;
+  --margin-left: 10px;
+  --margin-right: 10px;
+  --border-radius: 10px;
+
+  .profile-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    margin-left: 20px;
+
+    --display: flex;
+    --flex-direction: column;
+    --justify-content: space-around;
+    --height: 100%;
+    --margin-left: 20px;
+
+    .detail-fullname {
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .detail-nickname {
+      color: #a6a6a6;
+      font-size: 16px;
+    }
+
+    .detail-description{
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }   
+  .setting-avatar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-inline-end: 0px;
+
+    --display: flex;
+    --align-items: center;
+    --position: relative;
+    --margin-inline-end: 0px;
+
+    img {
+      width: 15px;
+      height: 15px;
+    }
+  }
 }

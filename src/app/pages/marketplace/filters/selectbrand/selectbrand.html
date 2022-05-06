@@ -1,6 +1,6 @@
 <ion-header class="ion-no-border ion-padding-horizontal">
   <ion-toolbar>
-    <ion-buttons slot="start" (click)="openFavorites()">
+    <ion-buttons slot="start">
       <ion-icon slot="icon-only" name="heart-outline" class="medium-font">
       </ion-icon>
     </ion-buttons>
@@ -12,7 +12,6 @@
     <ion-buttons
       slot="end"
       *ngIf="this.outputFilters.reset"
-      (click)="openFilters()"
     >
       <!-- <ion-badge color="danger">{{ getUnreadMessagesCount() }}</ion-badge> -->
       <ion-icon slot="icon-only" name="filter-outline" class="medium-font">
@@ -26,11 +25,6 @@
   <ion-toolbar class="ion-no-padding" style="padding-bottom: 15px; --padding-bottom: 15px;">
     <ion-searchbar
       style="padding-bottom: 0 !important"
-      [(ngModel)]="searchProduct"
-      (keypress)="searchEvent($event.keyCode)"
-      (change)="searchChangeEvent()"
-      (ionClear)="clearSearch()"
-      [placeholder]="this.translate.get('marketplace.input.placeholder')"
       mode="ios"
     ></ion-searchbar>
   </ion-toolbar>
@@ -481,7 +475,7 @@
     </ion-row>
   </ion-grid> --><!--Doronin-->
       <ion-grid class="ion-no-padding" *ngIf="outputFilters.categoryList.length>0">
-        <ion-row class="out-category">
+        <ion-row>
           <ion-row
             size="12"
             class="ion-no-margin ion-text-center bold-font categoryList"
@@ -489,7 +483,7 @@
             style="    
               display: flex;
               justify-content: space-between;
-              width: 48%;
+              width: 50%;
               height: 60px;
               margin-bottom: 10px;
               margin-top: 10px;"

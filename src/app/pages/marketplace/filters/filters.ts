@@ -15,7 +15,7 @@ import { ProductsFilterProvider } from 'src/app/services/providers/products.filt
 })
 export class FiltersPage {
   // @Input() postKey: string;
-  filterType="categories";
+  filterType="category";
   // sel_gender='';
   sel_price:any={upper:800, lower:0}
   filter_subcategory:any=[];
@@ -25,6 +25,8 @@ export class FiltersPage {
 
 colors= [ "red", "yellow" ,"blue", "brown", "orange", "green", "violet", "black", "pink", "white", "grey", "beige"]
 color=""
+searchBrand =""
+
 
   @Input() outputFilters
 
@@ -186,4 +188,7 @@ color=""
     this.navCtrl.back();
   }
 
+  onClickMore(){
+    this.navCtrl.navigateForward('tabs/brands');
+  }
 }

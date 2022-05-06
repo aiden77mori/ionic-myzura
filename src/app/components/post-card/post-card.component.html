@@ -1,80 +1,172 @@
 <div class="blog_div">
   <div class="blog_header ion-margin-horizontal">
     <div class="blog_userimg">
-      <ion-avatar style="border: 4px solid #fff;
-"  class="box-shadow "tappable (click)="viewUser(item.postBy)">
-        <img [src]="item.avatar ?item.avatar : 'assets/profile.png'">
+      <ion-avatar
+        style="border: 4px solid #fff"
+        class="box-shadow"
+        tappable
+        (click)="viewUser(item.postBy)"
+      >
+        <img [src]="item.avatar ? item.avatar : 'assets/profile.png'" />
       </ion-avatar>
     </div>
-    <div class="blog_userinfo"  (click)="viewUser(item.postBy)">
-      <p class="blog_username small-font bold-montserrat-font text-shell big-text-shell" style="text-align: left;" [ngClass]="{'text-loaded': item?.name}"> {{item.name}}</p>
-      <p class="blog_time xsmall-font  text-shell" style="text-align: left;" [ngClass]="{'text-loaded': item?.dateCreated}"> {{item.dateCreated | DateFormatPipe}}</p>
+    <div class="blog_userinfo" (click)="viewUser(item.postBy)">
+      <p
+        class="blog_username small-font bold-montserrat-font text-shell big-text-shell"
+        style="text-align: left"
+        [ngClass]="{ 'text-loaded': item?.name }"
+      >
+        {{ item.name }}
+      </p>
+      <p
+        class="blog_time xsmall-font text-shell"
+        style="text-align: left"
+        [ngClass]="{ 'text-loaded': item?.dateCreated }"
+      >
+        {{ item.dateCreated | DateFormatPipe }}
+      </p>
       <!-- <p class="blog_time"> {{item.dateCreated }}</p> -->
-
     </div>
     <!-- <div class="blog_followbtn">
        <ion-button size="small" expand="block" color="secondary" style=" min-width: 90px;">Follow</ion-button> 
     </div> -->
-    <ion-icon class="ion-margin-vertical moreIcon" (click)="openMenu(item,$event)" name="ellipsis-vertical-outline">
+    <ion-icon
+      class="ion-margin-vertical moreIcon"
+      (click)="openMenu(item, $event)"
+      name="ellipsis-vertical-outline"
+    >
     </ion-icon>
   </div>
 
   <div class="blog_image image-shell">
-    <ion-icon *ngIf="doubleTapped" name="chevron-up-circle" color="darkest" class="likeEffect slide-up-fade-in"></ion-icon>
+    <ion-icon
+      *ngIf="doubleTapped"
+      name="chevron-up-circle"
+      color="darkest"
+      class="likeEffect slide-up-fade-in"
+    ></ion-icon>
 
-    <img class="" [src]="item?.image" tappable (click)="showTags(item)" (dblclick)="showTags(item)"> 
-        <!-- <ion-icon [hidden] ="!getShowTags(item.image)" *ngFor="let product_item of item.taggedProducts; let i = index" name="ellipse" [color]="product_item.tagColor" class="fadeIn animated  circle_button"   
+    <img
+      class=""
+      style="padding: 10px; border-radius: 25px;"
+      [src]="item?.image"
+      tappable
+      (click)="showTags(item)"
+      (dblclick)="showTags(item)"
+    />
+    <!-- <ion-icon [hidden] ="!getShowTags(item.image)" *ngFor="let product_item of item.taggedProducts; let i = index" name="ellipse" [color]="product_item.tagColor" class="fadeIn animated  circle_button"   
     [ngStyle]="{'left': ( product_item.tagX + '%' ), top: ( product_item.tagY + '%' )   }" (click)="open_product(product_item, i)" ></ion-icon> -->
 
-    <img [hidden] ="!getShowTags(item.image)" *ngFor="let product_item of item.taggedProducts; let i = index"  src="assets/icon/tag.png" tappable  class="
-    fadeIn animated circle_button blink-shadow"   
-    [ngStyle]="{'left': ( product_item.tagX + '%' ), top: ( product_item.tagY + '%' )   }" (click)="open_product(product_item, i)" >
+    <img
+      [hidden]="!getShowTags(item.image)"
+      *ngFor="let product_item of item.taggedProducts; let i = index"
+      src="assets/icon/tag.png"
+      tappable
+      class="fadeIn animated circle_button blink-shadow"
+      [ngStyle]="{
+        left: product_item.tagX + '%',
+        top: product_item.tagY + '%'
+      }"
+      (click)="open_product(product_item, i)"
+    />
   </div>
 
-  <div class="blog_btndiv ion-padding-top ion-padding-horizontal ">
-    <div class="blog_iconbtn_div ion-margin-right text-left">
-      <ion-icon *ngIf="!item.isLike" name="chevron-up-circle-outline" class="blog_icon_btn large-font" (click)="likePost(item)"></ion-icon>
-      <ion-icon *ngIf="item.isLike" name="chevron-up-circle" color="darkest" class="blog_icon_btn  large-font" (click)="delikePost(item)"></ion-icon>
-      <p class="count_p  "  [ngClass]="{'text-loaded': item?.likes }">{{item.likes}}{{item.likes > 1? ' likes': 'like'}}
-      </p>
-    </div>
-    <div class="blog_iconbtn_div  ion-margin-right text-left" (click)="commentPost(item)" >
-      <ion-icon name="chatbubble-outline" class="blog_icon_btn large-font"></ion-icon>
+  <div
+    class="blog_btndiv ion-padding-top ion-padding-horizontal"
+    style="padding: 10px"
+  >
+    <ion-row class="blog_iconbtn_div ion-margin-right text-left">
+      <ion-icon
+        *ngIf="!item.isLike"
+        name="heart-outline"
+        class="blog_icon_btn large-font"
+        (click)="likePost(item)"
+      ></ion-icon>
+      <ion-icon
+        *ngIf="item.isLike"
+        name="heart"
+        color="darkest"
+        class="blog_icon_btn large-font"
+        (click)="delikePost(item)"
+      ></ion-icon>
+      <span class="count_p" [ngClass]="{ 'text-loaded': item?.likes }">
+        <!-- {{ item.likes }}{{ item.likes > 1 ? " likes" : "like" }} -->
+        {{ item.likes }}
+      </span>
+    </ion-row>
+    <ion-row
+      class="blog_iconbtn_div ion-margin-right text-left"
+      (click)="commentPost(item)"
+    >
+      <ion-icon
+        name="chatbubble-outline"
+        class="blog_icon_btn large-font"
+      ></ion-icon>
       <!-- <a class="count_p" (click)="commentPost(item)" color="dark">View all {{item.comments}} comments</a> -->
 
-      <p class="count_p "  [ngClass]="{'text-loaded': item?.comments}">{{item.comments}}</p>
-    </div>
-    <div class="blog_iconbtn_div ion-margin-right  text-left">
-      <ion-icon name="share-social-outline" class="blog_icon_btn large-font"></ion-icon>
-      <p class="count_p "> &nbsp;</p>
-
-    </div>
-    <div style="width: auto;margin: auto;">
-    </div>
-    <div class="blog_iconbtn_div text-right">
-      <ion-icon *ngIf="!isFavorite(item)" name="bookmark-outline" class="blog_icon_btn large-font" (click)="bookmarkPost(item)" ></ion-icon>
-      <ion-icon *ngIf="isFavorite(item)" name="bookmark" color="darkest" class="blog_icon_btn" (click)="bookmarkPost(item)"></ion-icon>
-      <p class="count_p "  [ngClass]="{'text-loaded': item?.save_count }"> {{ item?.save_count }}</p>
-    </div>
+      <span class="count_p" [ngClass]="{ 'text-loaded': item?.comments }">
+        {{ item.comments }}
+      </span>
+    </ion-row>
+    <ion-row class="blog_iconbtn_div ion-margin-right text-left">
+      <ion-icon
+        name="share-social-outline"
+        class="blog_icon_btn large-font"
+      ></ion-icon>
+      <p class="count_p">&nbsp;</p>
+    </ion-row>
+    <div style="width: auto; margin: auto"></div>
+    <!-- <ion-row class="blog_iconbtn_div text-right">
+      <ion-icon
+        *ngIf="!isFavorite(item)"
+        name="bookmark-outline"
+        class="blog_icon_btn large-font"
+        (click)="bookmarkPost(item)"
+      ></ion-icon>
+      <ion-icon
+        *ngIf="isFavorite(item)"
+        name="bookmark"
+        color="darkest"
+        class="blog_icon_btn"
+        (click)="bookmarkPost(item)"
+      ></ion-icon>
+      <span class="count_p" [ngClass]="{ 'text-loaded': item?.save_count }">
+        {{ item?.save_count }}
+      </span>
+    </ion-row> -->
   </div>
 
-  <div hidden class="views_count">
-    <!-- {{ item.views_count }} views -->
-  </div>
-  <div class="blog_desc ion-margin-horizontal " >
-    <span class="bold-montserrat-font small-font text-shell "  (click)="viewUser(item.postBy)" [ngClass]="{'text-loaded': item?.username}"> {{item.username}}</span>
+  <!-- <div hidden class="views_count"> -->
+  <!-- {{ item.views_count }} views -->
+  <!-- </div> -->
 
-    <span *ngFor="let text of item.postText" class="text-shell"  [ngClass]="{'text-loaded': item?.postText}">
-      {{text.substring(0,1)==="#"? "": " " +text}}
-      <a (click)="searchByHashTag(text)" *ngIf="text.substring(0,1)==='#'" id="hashtagevt"
-        class="hashtagevt">{{' ' +text}}</a>
+  <div class="blog_desc ion-margin-horizontal">
+    <!-- <span
+      class="bold-montserrat-font small-font text-shell"
+      (click)="viewUser(item.postBy)"
+      [ngClass]="{ 'text-loaded': item?.username }"
+    >
+      {{ item.username }}</span
+    > -->
+
+    <span
+      *ngFor="let text of item.postText"
+      class="text-shell"
+      [ngClass]="{ 'text-loaded': item?.postText }"
+    >
+      <!-- {{text.substring(0,1)==="#"? "": " " +text}} -->
+      <!-- <a (click)="searchByHashTag(text)" *ngIf="text.substring(0,1)==='#'" id="hashtagevt"
+        class="hashtagevt">{{' ' +text}}</a> -->
+      <!-- {{ text }} -->
+      Laurasanchen My new pants look amazing with anything, it goes a lot with
+      my style ...more
     </span>
   </div>
 
-  <div style="text-align: left;" class=" ion-margin-horizontal">
+  <!-- <div style="text-align: left;" class=" ion-margin-horizontal">
     <ion-button fill="clear" color='dark' size="small" style="    margin-bottom: 10px;" class=" ion-no-padding">
       <ion-icon name="add-outline"></ion-icon>
       &nbsp;    <a (click)="commentPost(item)" class="xsmall-font" color="dark">{{"post.card.view.all" | translate}} {{item.comments}} {{"post.card.comments" | translate}}</a>
     </ion-button>
-  </div>
+  </div> -->
 </div>

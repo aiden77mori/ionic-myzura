@@ -75,6 +75,10 @@ const routes: Routes = [
         loadChildren: () => import("../pages/marketplace/category/category.module").then( m => m.CategoryPageModule),
       },
       {
+        path: 'brands',
+        loadChildren: () => import("../pages/marketplace/filters/selectbrand/selectbrand.module").then( m => m.SelectBrandPageModule),
+      },
+      {
         path: 'marketplace',
         children: [
           {

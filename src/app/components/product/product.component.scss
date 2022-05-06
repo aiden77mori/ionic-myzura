@@ -2,12 +2,55 @@
     // height: 270px;
 }
 
+// .card {
+//   // -webkit-box-shadow: unset;
+//   //         box-shadow: unset;
+//   border-radius: 9px;
+//   background-color: rgba(0, 0, 0, 0.1);
+//   padding:0.5rem;
+// }
 .card {
-  -webkit-box-shadow: unset;
-          box-shadow: unset;
+  box-shadow: unset;
   border-radius: 9px;
   background-color: white !important;
-  padding:0.7rem;
+}
+.price {
+  font-size: 18px;
+  float: left;
+  margin: 3px;
+}
+.inline {
+  font-size: 15px;
+  margin-inline-end: 5px;
+  text-decoration: line-through;
+}
+
+.wishlist {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0;
+  z-index: 9999;
+  outline: none;
+  background: transparent;
+  ion-icon{
+      font-size:20px
+  }
+}
+.buy-btn {
+  --background: #2a4449;
+}
+.closet-btn {
+  --background: #fff;
+  border: 1px solid #2a4449;
+  --color: #2a4449;
+}
+.brand-detail{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  --justify-content: space-between;
+  padding: 15px 5px;
 }
 
 .product-image-overlay{
@@ -25,18 +68,18 @@
 .red{
     color: red;
 }
-.price {
-    font-size: 15px;
-    float: left;
-    width: 100% !important;
-    text-align: center !important;
-    margin: 3px;
-}
-.inline {
-    font-size: 12px;
-    margin-inline-end: 5px;
-    text-decoration: line-through;
-}
+// .price {
+//     font-size: 15px;
+//     float: left;
+//     width: 100% !important;
+//     text-align: center !important;
+//     margin: 3px;
+// }
+// .inline {
+//     font-size: 12px;
+//     margin-inline-end: 5px;
+//     text-decoration: line-through;
+// }
 .badge {
     background-color: rgba(0, 0, 0, 0.2);
     padding: 8px 5px;
@@ -206,6 +249,9 @@
 .p_title{
     text-align: left;
     margin: 0px;
+}
+.left-title {
+  text-align: left;
 }
 
 .ratings_title{

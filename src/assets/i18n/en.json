@@ -110,7 +110,7 @@
 
   "notifications.title": "Notifications",
 
-  "outfits.title": "Outfits",
+  "outfits.title": "Saved Outfits",
   "outfits.subtitle": "Your outfits",
   "outfits.add": "Add New...",
   "outfits.build": "Build Ourfit",
@@ -165,10 +165,10 @@
   "filters.page.title": "Filters",
   "filters.apply.btn" : "Apply Filters",
   "filters.reset.btn" : "Reset All",
-  "filters.colors.text" : "Choose Colors",
-  "filters.gender.text" : "Choose",
-  "filters.brands.text" : "Choose Brands",
-  "filters.categories.text" : "Choose Categories",
+  "filters.colors.text" : "Select color",
+  "filters.gender.text" : "Select",
+  "filters.brands.text" : "Select brand",
+  "filters.categories.text" : "Select categories",
   "filters.categories.btn" : "Category",
   "filters.brands.btn" : "Brands",
   "filters.price.btn" : "Price",

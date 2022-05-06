@@ -30,6 +30,10 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="android-targetSdkVersion" value="29" />
     <platform name="android">
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
+            <application android:networkSecurityConfig="@xml/network_security_config" />
+            <application android:requestLegacyExternalStorage="true" />
+        </edit-config>
         <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -284,6 +288,13 @@
     <plugin name="cordova-clipboard" spec="^1.3.0" />
     <engine name="browser" spec="5.0.4" />
     <engine name="android" spec="9.0.0" />
+    <plugin name="cordova-plugin-firebasex">
+        <variable name="IOS_STRIP_DEBUG" value="true" />
+        <variable name="FIREBASE_ANALYTICS_COLLECTION_ENABLED" value="false" />
+        <variable name="FIREBASE_PERFORMANCE_COLLECTION_ENABLED" value="false" />
+        <variable name="FIREBASE_CRASHLYTICS_COLLECTION_ENABLED" value="false" />
+        <variable name="SETUP_RECAPTCHA_VERIFICATION" value="true" />
+    </plugin>
     <plugin name="cordova-plugin-mixpanel" spec="^4.7.1">
         <variable name="PLAY_SERVICES_VERSION" value="+" />
         <variable name="FIREBASE_VERSION" value="+" />

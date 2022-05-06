@@ -12,19 +12,17 @@
   </ion-toolbar>
 </ion-header> -->
 
-
-<ion-header  class="ion-no-border ion-padding-horizontal">
-  <ion-toolbar color="light" >
+<ion-header class="ion-no-border ion-padding-horizontal">
+  <ion-toolbar>
     <ion-buttons slot="start" (click)="back()">
-      <ion-icon slot="icon-only" name="arrow-back-outline" class="medium-font"> </ion-icon>
+      <!-- <ion-icon slot="icon-only" name="arrow-back" (click)="back()" class="medium-font"> </ion-icon> -->
+      <ion-icon
+        slot="icon-only"
+        class="medium-font"
+        src="/assets/images/icon/back.svg"
+      ></ion-icon>
     </ion-buttons>
     <ion-title class="medium-font bold-font"> {{"product.details.title" | translate}} </ion-title>
-
-    <!-- <ion-buttons slot="end"  (click)="goMessages()" >
-      <ion-badge color="danger">{{ getUnreadMessagesCount() }}</ion-badge>
-      <ion-icon slot="icon-only" name="chatbubbles-outline" class="medium-font"> </ion-icon>
-    </ion-buttons> -->
-
   </ion-toolbar>
 </ion-header>
 
@@ -40,12 +38,12 @@
   </div> -->
 
   <ion-segment color="black" value='details' mode="md" (ionChange)="toggleView($event)">
-    <ion-segment-button  value="details">
+    <!-- <ion-segment-button  value="details">
       <ion-label>{{"product.details.details" | translate}}</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="related">
+    </ion-segment-button> -->
+    <!-- <ion-segment-button value="related">
       <ion-label>{{"product.details.related" | translate}}</ion-label>
-    </ion-segment-button>
+    </ion-segment-button> -->
   </ion-segment>
 
   <div *ngIf="(product | json) != ({} | json)">
@@ -53,16 +51,19 @@
       <ion-slide  >
         <app-component-product [addedCloset] ="addedCloset" [product]="product" [user]="user" [slider]="slider" class="slide"></app-component-product>
       </ion-slide>
-      <ion-slide style="width: 100%" >
+      
+      <!-- <ion-slide style="width: 100%" >
         <ion-grid class="ion-padding" [hidden]="this.view=='details'"> 
           <ion-row *ngIf="!(relatedProducts$ | async)?.length "> 
-            <ion-col class="ion-margin-vertical ion-padding-vertical" size="12">
+            <ion-col class="ion-margin-vertical ion-padding-vertical" size="12"> -->
               <!-- <div class=" ion-text-center">
                  <ion-icon class="xxlarge-font" name="alert-outline"></ion-icon> 
                 <p class="bold-font medium-font">{{"marketplace.noproducts.title" | translate}}</p>
                 <p class="regular-font medium-font">{{"marketplace.noproducts.description" | translate}}</p>
               </div> -->
-              <div class=" ion-text-center ion-padding">
+
+
+              <!-- <div class=" ion-text-center ion-padding">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: #fafafa; display: block;" width="41px" height="41px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
                   <circle cx="84" cy="50" r="10" fill="#000000">
                       <animate attributeName="r" repeatCount="indefinite" dur="1.0416666666666665s" calcMode="spline" keyTimes="0;1" values="10;0" keySplines="0 0.5 0.5 1" begin="0s"></animate>
@@ -98,7 +99,7 @@
         </ion-grid>
        
 
-      </ion-slide>
+      </ion-slide> -->
       <!-- <ion-slide>
         <app-review [product]="product" [bool]="true" class="slide"></app-review>
       </ion-slide> -->

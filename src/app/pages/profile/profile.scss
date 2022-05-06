@@ -31,7 +31,7 @@ ion-button{
   // max-width: 90px;
   width: 90px;
   height: 90px;
-  border: 4px solid #fff;
+  // border: 4px solid #fff;
 
 }
 p {
@@ -68,7 +68,11 @@ p {
   // position: relative;
 }
 
-
+ion-row {
+  ion-col {
+    padding-bottom: 0px !important;
+  }
+}
 
 
 // background-color: white;
@@ -243,4 +247,21 @@ ion-segment .segment-activated {
 ion-icon {
   color: #fff;
   margin-bottom: -1px;
+}
+
+.user-statistic {
+  ion-col:after {
+    content: "";
+    height: 40%;
+    width: 1px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #e2e2e2;
+  }
+  ion-col:last-child:after {
+    // border-right: none;
+    height: 0%;
+  }
 }

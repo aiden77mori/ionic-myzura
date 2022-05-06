@@ -32,17 +32,25 @@ ion-title{
 }
 
 .setting-profile {
-display: flex;
-justify-content: space-between;
-margin-top: 20px;
-border-radius: 10px;
-padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 
---display: flex;
---justify-content: space-between;
---margin-top: 20px;
---border-radius: 10px;
---padding-bottom: 20px;
+  --display: flex;
+  --justify-content: space-between;
+  --margin-top: 20px;
+  --margin-bottom: 20px;
+  --border-radius: 10px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+
+  --ion-background-color: rgba(0,0,0,0.1);
 
   .profile-avatar {
     --display: flex;
@@ -112,65 +120,69 @@ padding-bottom: 20px;
   }
 }
 
-.setting-detail{
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-  margin-left: 10px;
-  border-radius: 10px;
+// .setting-detail{
+//   display: flex;
+//   justify-content: space-between;
+//   margin-top: 10px;
+//   margin-left: 10px;
+//   margin-right: 10px;
+//   border-radius: 10px;
 
-  --display: flex;
-  --justify-content: space-between;
-  --margin-top: 15px;
-  --margin-left: 10px;
-  --border-radius: 10px;
+//   --ion-background-color: rgba(0,0,0,0.1);
 
-  .profile-detail {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 100%;
-    margin-left: 20px;
+//   --display: flex;
+//   --justify-content: space-between;
+//   --margin-top: 10px;
+//   --margin-left: 10px;
+//   --margin-right: 10px;
+//   --border-radius: 10px;
 
-    --display: flex;
-    --flex-direction: column;
-    --justify-content: space-around;
-    --height: 100%;
-    --margin-left: 20px;
+//   .profile-detail {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-around;
+//     height: 100%;
+//     margin-left: 20px;
 
-    .detail-fullname {
-      color: black;
-      font-size: 16px;
-      font-weight: bold;
-    }
-    .detail-nickname {
-      color: #a6a6a6;
-      font-size: 16px;
-    }
+//     --display: flex;
+//     --flex-direction: column;
+//     --justify-content: space-around;
+//     --height: 100%;
+//     --margin-left: 20px;
 
-    .detail-description{
-      color: black;
-      font-size: 16px;
-      font-weight: bold;
-    }
-  }   
-  .setting-avatar {
-    display: flex;
-    align-items: center;
-    position: relative;
-    margin-inline-end: 0px;
+//     .detail-fullname {
+//       color: black;
+//       font-size: 16px;
+//       font-weight: bold;
+//     }
+//     .detail-nickname {
+//       color: #a6a6a6;
+//       font-size: 16px;
+//     }
 
-    --display: flex;
-    --align-items: center;
-    --position: relative;
-    --margin-inline-end: 0px;
+//     .detail-description{
+//       color: black;
+//       font-size: 16px;
+//       font-weight: bold;
+//     }
+//   }   
+//   .setting-avatar {
+//     display: flex;
+//     align-items: center;
+//     position: relative;
+//     margin-inline-end: 0px;
 
-    img {
-      width: 15px;
-      height: 15px;
-    }
-  }
-}
+//     --display: flex;
+//     --align-items: center;
+//     --position: relative;
+//     --margin-inline-end: 0px;
+
+//     img {
+//       width: 15px;
+//       height: 15px;
+//     }
+//   }
+// }
 
 
 body {
